@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { getProducts } from "../redux/actions/productsAction.js";
+import { getProducts } from "../redux/actions/productAction.js";
 import FilterBar from "./FilterBar.jsx";
 import ProductsList from "./ProductsList.jsx";
 

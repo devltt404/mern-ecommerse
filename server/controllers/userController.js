@@ -15,7 +15,7 @@ export const loginUser = async (req, res, next) => {
     if (user && (await user.matchPassword(password))) {
       respondWithToken({ user, successMsg: "Login successful", res });
     } else {
-      res.status(401);
+      res.status(400);
       throw new Error("Invalid email or password");
     }
   } catch (error) {
@@ -58,7 +58,6 @@ export const getUser = async (req, res, next) => {
     res.status(200).json({
       user: { id: req.user._id, name: req.user.name, role: req.user.role },
       cart: req.user.cart,
-      
     });
   } catch (error) {
     next(error);

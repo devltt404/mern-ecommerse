@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ProductForm from "../../components/ProductForm.jsx";
-import { addProduct } from "../../redux/actions/productsAction.js";
+import { addProduct } from "../../redux/actions/productAction.js";
 
 const AddProductPage = () => {
   const navigate = useNavigate();

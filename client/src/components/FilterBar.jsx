@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { LuMinus } from "react-icons/lu";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../redux/actions/productsAction.js";
+import { getProducts } from "../redux/actions/productAction.js";
 import Button from "./Button.jsx";
 import Checkbox from "./Checkbox.jsx";
 import FilterItem from "./FilterItem.jsx";

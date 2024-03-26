@@ -10,7 +10,6 @@ import { authUser } from "../redux/actions/userAction.js";
 const LoginPage = () => {
   const dispatch = useDispatch();
 
-  //TODO: LOADING BUTTON
   return (
     <Formik
       initialValues={{

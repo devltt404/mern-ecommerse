@@ -7,9 +7,9 @@ import {
   setUserAvatar,
   setUserError,
   setUserLoading,
+  setUsers,
 } from "../slices/userSlice.js";
 
-//TODO: MERGE CART IN LOCAL STORAGE TO DATABASE CART
 export const authUser =
   ({ endpoint, ...userData }) =>
   async (dispatch) => {
@@ -78,5 +78,41 @@ export const logoutUser =
     }
   };
 
+export const getUsers =
+  ({ ...options }) =>
+  async (dispatch) => {
+    try {
+      dispatch(setUserLoading());
+      const { data } = await userAxios.get("/", { params: options });
+      dispatch(setUsers(data));
+    } catch (error) {
+      handleActionError(dispatch, error, setUserError, true);
+    }
+  };
 
+export const deleteUser = (userId) => async (dispatch) => {
+  try {
+    dispatch(setUserLoading());
+    const { data } = await userAxios.delete(`/${userId}`);
+    await dispatch(getUsers({ page: 1, limit: 5 }));
+    toast.success(data.message);
+  } catch (error) {
+    handleActionError(dispatch, error, setUserError, true);
+  }
+};
 
+export const updateUserAvatar =
+  ({ index, image }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch(setUserLoading());
+      const { users } = getState().user;
+      const { data } = await userAxios.put(`/avatar/${users[index]._id}`, {
+        image,
+      });
+      dispatch(setUserAvatar({ index, image }));
+      toast.success(data.message);
+    } catch (error) {
+      handleActionError(dispatch, error, setUserError, true);
+    }
+  };

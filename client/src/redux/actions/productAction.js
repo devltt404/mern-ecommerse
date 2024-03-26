@@ -5,7 +5,9 @@ import {
   addProductReview,
   setProduct,
   setProductError,
+  setProductImage,
   setProductLoading,
+  setProducts,
 } from "../slices/productSlice.js";
 
 export const getProductById = (navigate, id) => async (dispatch) => {
@@ -36,3 +38,68 @@ export const addReview =
       handleActionError(dispatch, error, setProductError, true);
     }
   };
+
+export const getProducts =
+  ({ ...filterOptions }) =>
+  async (dispatch) => {
+    try {
+      dispatch(setProductLoading());
+      const { data } = await productAxios.get("/", {
+        params: filterOptions,
+      });
+      dispatch(setProducts(data));
+    } catch (error) {
+      handleActionError(dispatch, error, setProductError, true);
+    }
+  };
+
+export const updateProductImage =
+  ({ index, image }) =>
+  async (dispatch, getState) => {
+    try {
+      dispatch(setProductLoading());
+      const { products } = getState().products;
+      const { data } = await productAxios.put(`/image/${products[index]._id}`, {
+        image,
+      });
+      dispatch(setProductImage({ index, image }));
+      toast.success(data.message);
+    } catch (error) {
+      handleActionError(dispatch, error, setProductError, true);
+    }
+  };
+
+export const addProduct =
+  ({ ...productData }) =>
+  async (dispatch) => {
+    try {
+      dispatch(setProductLoading());
+      const { data } = await productAxios.post("/", productData);
+      toast.success(data.message);
+    } catch (error) {
+      handleActionError(dispatch, error, setProductError, true);
+    }
+  };
+
+export const editProduct =
+  ({ ...productData }) =>
+  async (dispatch) => {
+    try {
+      dispatch(setProductLoading());
+      const { data } = await productAxios.put("/", productData);
+      toast.success(data.message);
+    } catch (error) {
+      handleActionError(dispatch, error, setProductError, true);
+    }
+  };
+
+export const deleteProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch(setProductLoading());
+    const { data } = await productAxios.delete(`/${productId}`);
+    await dispatch(getProducts({ page: 1, limit: 5 }));
+    toast.success(data.message);
+  } catch (error) {
+    handleActionError(dispatch, error, setProductError, true);
+  }
+};

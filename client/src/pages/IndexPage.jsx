@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import ProductsList from "../components/ProductsList.jsx";
-import { getProducts } from "../redux/actions/productsAction.js";
+import { getProducts } from "../redux/actions/productAction.js";
 
 const IndexPage = () => {
   const dispatch = useDispatch();

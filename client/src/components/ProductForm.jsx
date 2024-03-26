@@ -1,15 +1,15 @@
 import { Form, Formik } from "formik";
 import { useSelector } from "react-redux";
 import * as Yup from "yup";
-import { categoriesSelector } from "../redux/slices/categoriesSlice.js";
-import { productsSelector } from "../redux/slices/productsSlice.js";
+import { categorySelector } from "../redux/slices/categorySlice.js";
+import { productSelector } from "../redux/slices/productSlice.js";
 import Button from "./Button.jsx";
 import FormInput from "./FormInput.jsx";
 import FormSelectInput from "./FormSelectInput.jsx";
 
 const ProductForm = ({ initialValues, onSubmit }) => {
-  const { productsLoading } = useSelector(productsSelector);
-  const { categories } = useSelector(categoriesSelector);
+  const { productLoading } = useSelector(productSelector);
+  const { categories } = useSelector(categorySelector);
 
   return (
     <Formik
@@ -46,7 +46,7 @@ const ProductForm = ({ initialValues, onSubmit }) => {
               type="submit"
               variant="fill"
               size="sm"
-              isLoading={productsLoading}
+              isLoading={productLoading}
               disabled={!formik.dirty || !formik.isValid}
             >
               Add Product

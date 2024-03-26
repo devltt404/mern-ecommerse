@@ -1,14 +1,11 @@
-import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ProductForm from "../../components/ProductForm.jsx";
-import { editProduct } from "../../redux/actions/productsAction.js";
+import { editProduct } from "../../redux/actions/productAction.js";
 
 const EditProductPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {}, []);
 
   return (
     <div>

@@ -2,10 +2,10 @@ import { FaPlus } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Button from "../../components/Button.jsx";
 import CategoriesTable from "../../components/CategoriesTable.jsx";
-import { categoriesSelector } from "../../redux/slices/categoriesSlice.js";
+import { categorySelector } from "../../redux/slices/categorySlice.js";
 
 const CategoriesPage = () => {
-  const { categories } = useSelector(categoriesSelector);
+  const { categories } = useSelector(categorySelector);
 
   return (
     <div>

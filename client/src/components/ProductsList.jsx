@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { productsSelector } from "../redux/slices/productsSlice.js";
+import { productSelector } from "../redux/slices/productSlice.js";
 import Loading from "./Loading.jsx";
 import ProductCard from "./ProductCard.jsx";
 
@@ -10,8 +10,9 @@ const ProductsList = ({ size = "md" }) => {
     lg: "grid-cols-4",
   };
 
-  const { products, productsLoading } = useSelector(productsSelector);
-  return productsLoading ? (
+  const { products, productLoading } = useSelector(productSelector);
+
+  return productLoading ? (
     <Loading />
   ) : products.length > 0 ? (
     <div className={`grid ${sizeClasses[size]} gap-12`}>

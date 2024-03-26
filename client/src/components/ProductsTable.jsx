@@ -7,8 +7,8 @@ import {
   deleteProduct,
   getProducts,
   updateProductImage,
-} from "../redux/actions/productsAction.js";
-import { productsSelector } from "../redux/slices/productsSlice.js";
+} from "../redux/actions/productAction.js";
+import { productSelector } from "../redux/slices/productSlice.js";
 import Button from "./Button.jsx";
 import Loading from "./Loading.jsx";
 import Pagination from "./Pagination.jsx";
@@ -24,9 +24,8 @@ import TableHead from "./table/TableHead.jsx";
 const ProductsTable = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { products, pagination, productsLoading } =
-    useSelector(productsSelector);
-    
+  const { products, pagination, productLoading } = useSelector(productSelector);
+
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
   const [productSelectedIndex, setProductSelectedIndex] = useState(-1);
@@ -37,7 +36,7 @@ const ProductsTable = () => {
 
   return (
     <>
-      {productsLoading ? (
+      {productLoading ? (
         <Loading />
       ) : (
         <Table>

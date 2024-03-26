@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import { createOrder } from "../redux/actions/ordersAction.js";
+import { createOrder } from "../redux/actions/orderAction.js";
 import AddressForm from "./AddressForm.jsx";
 import Button from "./Button.jsx";
 import Checkbox from "./Checkbox.jsx";

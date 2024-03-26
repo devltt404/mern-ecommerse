@@ -6,8 +6,8 @@ import {
   deleteUser,
   getUsers,
   updateUserAvatar,
-} from "../redux/actions/usersAction.js";
-import { usersSelector } from "../redux/slices/usersSlice.js";
+} from "../redux/actions/userAction.js";
+import { userSelector } from "../redux/slices/userSlice.js";
 import Button from "./Button.jsx";
 import Loading from "./Loading.jsx";
 import Pagination from "./Pagination.jsx";
@@ -23,7 +23,7 @@ import TableHeadItem from "./table/TableHeadItem.jsx";
 
 const UsersTable = () => {
   const dispatch = useDispatch();
-  const { users, usersLoading, pagination } = useSelector(usersSelector);
+  const { users, userLoading, pagination } = useSelector(userSelector);
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
   const [userSelectedIndex, setUserSelectedIndex] = useState(-1);
@@ -32,7 +32,7 @@ const UsersTable = () => {
     dispatch(getUsers({ page: 1, limit: 5 }));
   }, []);
 
-  return usersLoading ? (
+  return userLoading ? (
     <Loading />
   ) : (
     <>

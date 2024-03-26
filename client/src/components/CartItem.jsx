@@ -10,7 +10,6 @@ import IconOutlineButton from "./IconOutlineButton.jsx";
 import QuantityInput from "./QuantityInput.jsx";
 
 const CartItem = ({ product, quantity }) => {
-  //TODO: HANDLE quantity min and max
   const dispatch = useDispatch();
 
   const [inputQuantity, setInputQuantity] = useState(quantity);

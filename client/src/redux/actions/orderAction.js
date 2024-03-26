@@ -4,16 +4,16 @@ import { handleActionError } from "../../utils/handleActionError.js";
 import { setCart } from "../slices/cartSlice.js";
 import {
   setOrder,
+  setOrderError,
+  setOrderLoading,
   setOrders,
-  setOrdersError,
-  setOrdersLoading,
-} from "../slices/ordersSlice.js";
+} from "../slices/orderSlice.js";
 
 export const createOrder =
   ({ ...orderData }) =>
   async (dispatch, getState) => {
     try {
-      dispatch(setOrdersLoading());
+      dispatch(setOrderLoading());
 
       const { data } = await orderAxios.post("/", {
         ...orderData,
@@ -27,7 +27,7 @@ export const createOrder =
 
       return data._id;
     } catch (error) {
-      handleActionError(dispatch, error, setOrdersError, true);
+      handleActionError(dispatch, error, setOrderError, true);
     }
   };
 
@@ -35,34 +35,34 @@ export const getOrders =
   ({ ...options }) =>
   async (dispatch) => {
     try {
-      dispatch(setOrdersLoading());
+      dispatch(setOrderLoading());
 
       const { data } = await orderAxios.get("/", { params: options });
       dispatch(setOrders(data));
     } catch (error) {
-      handleActionError(dispatch, error, setOrdersError, true);
+      handleActionError(dispatch, error, setOrderError, true);
     }
   };
 
 export const getUserOrders = () => async (dispatch) => {
   try {
-    dispatch(setOrdersLoading());
+    dispatch(setOrderLoading());
 
     const { data } = await orderAxios.get("/user");
 
     dispatch(setOrders({ orders: data }));
   } catch (error) {
-    handleActionError(dispatch, error, setOrdersError, true);
+    handleActionError(dispatch, error, setOrderError, true);
   }
 };
 
 export const getOrder = (orderId) => async (dispatch) => {
   try {
-    dispatch(setOrdersLoading());
+    dispatch(setOrderLoading());
 
     const { data } = await orderAxios.get("/" + orderId);
     dispatch(setOrder(data));
   } catch (error) {
-    handleActionError(dispatch, error, setOrdersError, true);
+    handleActionError(dispatch, error, setOrderError, true);
   }
 };

@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { categoriesSelector } from "../redux/slices/categoriesSlice.js";
+import { categorySelector } from "../redux/slices/categorySlice.js";
 
 const CategoryBar = () => {
-  const { categories } = useSelector(categoriesSelector);
+  const { categories } = useSelector(categorySelector);
 
   return (
     categories && (

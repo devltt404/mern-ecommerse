@@ -4,19 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import CheckoutItem from "../components/CheckoutItem.jsx";
 import Loading from "../components/Loading.jsx";
-import { getOrder } from "../redux/actions/ordersAction.js";
-import { ordersSelector } from "../redux/slices/ordersSlice.js";
+import { getOrder } from "../redux/actions/orderAction.js";
+import { orderSelector } from "../redux/slices/orderSlice.js";
 
 const OrderDetailPage = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { order, ordersLoading } = useSelector(ordersSelector);
+  const { order, orderLoading } = useSelector(orderSelector);
 
   useEffect(() => {
     dispatch(getOrder(id));
   }, []);
 
-  return ordersLoading ? (
+  return orderLoading ? (
     <Loading />
   ) : (
     <div className="container py-4">

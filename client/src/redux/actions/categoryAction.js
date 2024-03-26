@@ -4,7 +4,7 @@ import {
   setCategories,
   setCategoriesError,
   setCategoriesLoading,
-} from "../slices/categoriesSlice.js";
+} from "../slices/categorySlice.js";
 
 export const getCategories = () => async (dispatch) => {
   try {

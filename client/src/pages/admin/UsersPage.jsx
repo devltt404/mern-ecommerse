@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
 import UsersTable from "../../components/UsersTable.jsx";
-import { usersSelector } from "../../redux/slices/usersSlice.js";
+import { userSelector } from "../../redux/slices/userSlice.js";
 
 const UsersPage = () => {
-  const { totalUsers } = useSelector(usersSelector);
+  const { totalUsers } = useSelector(userSelector);
 
   return (
     <div>

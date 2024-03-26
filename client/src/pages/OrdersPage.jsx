@@ -9,19 +9,19 @@ import TableBodyItem from "../components/table/TableBodyItem.jsx";
 import TableBodyRow from "../components/table/TableBodyRow.jsx";
 import TableHead from "../components/table/TableHead.jsx";
 import TableHeadItem from "../components/table/TableHeadItem.jsx";
-import { getUserOrders } from "../redux/actions/ordersAction.js";
-import { ordersSelector } from "../redux/slices/ordersSlice.js";
+import { getUserOrders } from "../redux/actions/orderAction.js";
+import { orderSelector } from "../redux/slices/orderSlice.js";
 
 const OrdersPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { orders, ordersLoading } = useSelector(ordersSelector);
+  const { orders, orderLoading } = useSelector(orderSelector);
 
   useEffect(() => {
     dispatch(getUserOrders());
   }, []);
 
-  return ordersLoading ? (
+  return orderLoading ? (
     <Loading />
   ) : (
     <div className="container py-4">

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
 import { useDispatch, useSelector } from "react-redux";
-import { getCategories } from "../redux/actions/categoriesAction.js";
-import { categoriesSelector } from "../redux/slices/categoriesSlice.js";
+import { getCategories } from "../redux/actions/categoryAction.js";
+import { categorySelector } from "../redux/slices/categorySlice.js";
 import Loading from "./Loading.jsx";
 import Table from "./table/Table.jsx";
 import TableBody from "./table/TableBody.jsx";
@@ -13,7 +13,7 @@ import TableHeadItem from "./table/TableHeadItem.jsx";
 
 const CategoriesTable = () => {
   const dispatch = useDispatch();
-  const { categories, categoriesLoading } = useSelector(categoriesSelector);
+  const { categories, categoriesLoading } = useSelector(categorySelector);
 
   useEffect(() => {
     dispatch(getCategories());

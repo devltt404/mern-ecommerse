@@ -1,10 +1,10 @@
 import { Form, Formik } from "formik";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addReview } from "../redux/actions/productAction.js";
 import Button from "./Button.jsx";
 import FormInput from "./FormInput.jsx";
 import RatingFormInput from "./RatingFormInput.jsx";
-import { useDispatch } from "react-redux";
-import { addReview } from "../redux/actions/productAction.js";
 
 const AddReview = () => {
   const dispatch = useDispatch();
@@ -29,8 +29,8 @@ const AddReview = () => {
         }
         return errors;
       }}
-      onSubmit={({title, content, rating}) => {
-        dispatch(addReview({title, content, rating}))
+      onSubmit={({ title, content, rating }) => {
+        dispatch(addReview({ title, content, rating }));
       }}
     >
       {(formik) => (

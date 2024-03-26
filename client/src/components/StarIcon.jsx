@@ -1,6 +1,6 @@
 import { TbStarFilled } from "react-icons/tb";
 
-const StarIcon = ({ starIndex, rating, size=15, ...props }) => {
+const StarIcon = ({ starIndex, rating, size = 15, ...props }) => {
   return (
     <div {...props}>
       {starIndex > rating ? (

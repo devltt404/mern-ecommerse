@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button.jsx";
 import ProductsTable from "../../components/ProductsTable.jsx";
-import { productsSelector } from "../../redux/slices/productsSlice.js";
+import { productSelector } from "../../redux/slices/productSlice.js";
 
 const ProductsPage = () => {
   const navigate = useNavigate();
-  const { totalProducts } = useSelector(productsSelector);
+  const { totalProducts } = useSelector(productSelector);
 
   return (
     <div>

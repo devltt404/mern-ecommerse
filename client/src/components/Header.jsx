@@ -1,8 +1,6 @@
 import {
   IoBagHandle,
   IoBagHandleOutline,
-  IoHeart,
-  IoHeartOutline,
   IoPerson,
   IoPersonOutline,
 } from "react-icons/io5";
@@ -35,7 +33,6 @@ const Header = () => {
 
         {/* Buttons */}
         <div className="flex items-center gap-4">
-          <IconOutlineButton Icon={IoHeartOutline} HoverIcon={IoHeart} />
           <IconOutlineButton
             Icon={IoBagHandleOutline}
             HoverIcon={IoBagHandle}

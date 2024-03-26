@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header.jsx";
 import Loading from "../components/Loading.jsx";
-import { getCategories } from "../redux/actions/categoriesAction.js";
+import { getCategories } from "../redux/actions/categoryAction.js";
 import { getUser } from "../redux/actions/userAction.js";
 
 const ShopContainer = () => {
