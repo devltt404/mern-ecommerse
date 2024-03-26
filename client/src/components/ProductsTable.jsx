@@ -11,7 +11,6 @@ import {
 import { productSelector } from "../redux/slices/productSlice.js";
 import Button from "./Button.jsx";
 import Loading from "./Loading.jsx";
-import Pagination from "./Pagination.jsx";
 import Modal from "./modal/Modal.jsx";
 import ModalBody from "./modal/ModalBody.jsx";
 import ModalHeader from "./modal/ModalHeader.jsx";
@@ -24,7 +23,7 @@ import TableHead from "./table/TableHead.jsx";
 const ProductsTable = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { products, pagination, productLoading } = useSelector(productSelector);
+  const { products, productLoading } = useSelector(productSelector);
 
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
@@ -112,22 +111,11 @@ const ProductsTable = () => {
         </Table>
       )}
 
-      <div className="p-4 flex justify-center">
-        <Pagination
-          handlePageSelected={(page) => {
-            dispatch(getProducts({ page, limit: 5 }));
-          }}
-          page={pagination.page}
-          totalPages={pagination.totalPages}
-        />
-      </div>
-
       {showModal && (
         <Modal setShow={setShowModal}>
           <ModalHeader title="Upload Image" />
           <ModalBody>
             <form
-              action=""
               className="text-right"
               onSubmit={(e) => {
                 e.preventDefault();

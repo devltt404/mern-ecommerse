@@ -10,7 +10,6 @@ import {
 import { userSelector } from "../redux/slices/userSlice.js";
 import Button from "./Button.jsx";
 import Loading from "./Loading.jsx";
-import Pagination from "./Pagination.jsx";
 import Modal from "./modal/Modal.jsx";
 import ModalBody from "./modal/ModalBody.jsx";
 import ModalHeader from "./modal/ModalHeader.jsx";
@@ -23,7 +22,7 @@ import TableHeadItem from "./table/TableHeadItem.jsx";
 
 const UsersTable = () => {
   const dispatch = useDispatch();
-  const { users, userLoading, pagination } = useSelector(userSelector);
+  const { users, userLoading } = useSelector(userSelector);
   const [showModal, setShowModal] = useState(false);
   const [image, setImage] = useState("");
   const [userSelectedIndex, setUserSelectedIndex] = useState(-1);
@@ -97,16 +96,6 @@ const UsersTable = () => {
           })}
         </TableBody>
       </Table>
-
-      <div className="p-4 flex justify-center">
-        <Pagination
-          handlePageSelected={(page) => {
-            dispatch(getUsers({ page, limit: 5 }));
-          }}
-          page={pagination.page}
-          totalPages={pagination.totalPages}
-        />
-      </div>
 
       {showModal && (
         <Modal setShow={setShowModal}>

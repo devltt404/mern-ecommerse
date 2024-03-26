@@ -112,7 +112,9 @@ export const getUserOrders = async (req, res, next) => {
 
 export const getOrders = async (req, res, next) => {
   try {
-    const { page = 1, limit = 5 } = req.query;
+    let { page = 1, limit = 5 } = req.query;
+    page = Number(page);
+
     const orders = await Order.find()
       .limit(limit)
       .skip(limit * (page - 1))

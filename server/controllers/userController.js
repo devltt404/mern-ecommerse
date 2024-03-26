@@ -104,12 +104,15 @@ export const deleteUser = async (req, res, next) => {
 
 export const getUsers = async (req, res, next) => {
   try {
-    const { page, limit } = req.query;
+    let { page, limit } = req.query;
+    page = Number(page);
+
     const users = await User.find()
       .limit(limit * 1)
       .skip((page - 1) * limit)
       .lean();
     const totalUsers = await User.countDocuments();
+    
     res.status(200).json({
       users,
       pagination: { totalPages: Math.ceil(totalUsers / limit), page },
