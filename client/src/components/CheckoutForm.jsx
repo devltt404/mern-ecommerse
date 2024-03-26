@@ -65,8 +65,11 @@ const CheckoutForm = () => {
         }),
       })}
       onSubmit={async (values) => {
-        const orderId = await dispatch(createOrder(values));
-        navigate("/orders/" + orderId);
+        try {
+          const orderId = await dispatch(createOrder(values));
+          navigate("/orders/" + orderId);
+        } catch (error) {
+        }
       }}
     >
       {(formik) => (

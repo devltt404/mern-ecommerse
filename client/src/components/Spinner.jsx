@@ -1,6 +1,6 @@
 const Spinner = ({ borderWidth = "normal" }) => {
   const borderWidthClasses = {
-    thin: "border-[2.5px]",
+    thin: "border-[3px]",
     normal: "border-[6px]",
     thick: "border-[8px]",
   };

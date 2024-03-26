@@ -56,9 +56,12 @@ export const createOrder = async (req, res, next) => {
       total: subtotal >= 35 ? subtotal : subtotal + 10,
       shippingAddress,
       customer,
+      payment: {},
     };
 
-    order.paymentId = await chargeOrder({
+    order.payment.detail = card.number.slice(-4);
+
+    order.payment.id = await chargeOrder({
       totalCharge: subtotal,
       card,
       billingAddress: useSameAddress ? shippingAddress : billingAddress,
@@ -150,10 +153,14 @@ export const getOrderById = async (req, res, next) => {
 
     res.status(200).json({
       _id: order._id,
-      total: order.total,
       createdAt: order.createdAt,
       shippingAddress: order.shippingAddress,
       orderProducts: order.orderProducts,
+      customer: order.customer,
+      subtotal: order.subtotal,
+      shipping: order.shipping,
+      total: order.total,
+      payment: order.payment,
     });
   } catch (error) {
     next(error);

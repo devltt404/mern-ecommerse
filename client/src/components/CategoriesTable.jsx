@@ -13,13 +13,13 @@ import TableHeadItem from "./table/TableHeadItem.jsx";
 
 const CategoriesTable = () => {
   const dispatch = useDispatch();
-  const { categories, categoriesLoading } = useSelector(categorySelector);
+  const { categories, categoryLoading } = useSelector(categorySelector);
 
   useEffect(() => {
     dispatch(getCategories());
   }, []);
 
-  return categoriesLoading ? (
+  return categoryLoading ? (
     <Loading />
   ) : (
     <div>

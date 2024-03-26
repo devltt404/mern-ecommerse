@@ -28,6 +28,7 @@ export const createOrder =
       return data._id;
     } catch (error) {
       handleActionError(dispatch, error, setOrderError, true);
+      throw new Error();
     }
   };
 

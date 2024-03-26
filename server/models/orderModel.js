@@ -78,9 +78,21 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    paymentId: {
-      type: String,
-      required: true,
+
+    payment: {
+      id: {
+        type: String,
+        required: true,
+        select: false,
+      },
+      method: {
+        type: String,
+        enum: ["card", "paypal"],
+        default: "card",
+      },
+      detail: {
+        type: String,
+      },
     },
   },
   {
