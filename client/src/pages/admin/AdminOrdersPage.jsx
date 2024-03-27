@@ -11,7 +11,7 @@ const AdminOrdersPage = () => {
 
   return (
     <div>
-      <h1 className="mb-4 text-2xl font-semibold">
+      <h1 className="mb-6 text-2xl font-semibold">
         Orders <span className="font-normal">({totalOrders})</span>
       </h1>
 

@@ -72,7 +72,7 @@ export const createOrder = async (req, res, next) => {
     const dbPromises = [];
 
     if (req.user) {
-      req.user.orders.push(createdOrder._id);
+      req.user.orders.unshift(createdOrder._id);
       req.user.cart = [];
       dbPromises.push(req.user.save());
     }

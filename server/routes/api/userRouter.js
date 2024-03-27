@@ -1,5 +1,6 @@
 import express from "express";
 import {
+  authGoogle,
   deleteUser,
   getAdmin,
   getUser,
@@ -17,6 +18,7 @@ import {
 } from "../../middlewares/authToken.js";
 const userRouter = express.Router();
 
+userRouter.post("/google", authGoogle);
 userRouter.post("/register", registerUser);
 userRouter.post("/login", loginUser);
 userRouter.post("/logout", logoutUser);

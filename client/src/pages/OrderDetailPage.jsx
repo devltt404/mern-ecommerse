@@ -24,7 +24,9 @@ const OrderDetailPage = () => {
         <h1 className="font-semibold text-3xl mb-2">Order Detail</h1>
 
         <div className="text-gray-500 flex items-center gap-2 mb-4 text-sm">
-          <span>Ordered on {moment(order.createdAt).format("MM/DD/YYYY")}</span>
+          <span>
+            Ordered on {moment(order.createdAt).format("MM/DD/YYYY - hh:mm A")}
+          </span>
           <div className="bg-gray-400 w-[1px] h-[15px]"></div>
           <span>Order #{order._id}</span>
         </div>

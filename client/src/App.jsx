@@ -26,6 +26,7 @@ import ProductsPage from "./pages/admin/ProductsPage.jsx";
 import UsersPage from "./pages/admin/UsersPage.jsx";
 import { axiosInstances } from "./utils/axiosInstances.js";
 import setupInterceptor from "./utils/setupInterceptor.js";
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ function App() {
 
   return (
     isAxiosSetupped && (
-      <>
+      <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
         <Routes>
           <Route element={<ShopContainer />}>
             <Route path="/" element={<IndexPage />} />
@@ -74,7 +75,7 @@ function App() {
           </Route>
         </Routes>
         <Toaster />
-      </>
+      </GoogleOAuthProvider>
     )
   );
 }

@@ -29,7 +29,7 @@ const AdminContainer = () => {
       <AdminSidebar />
       <div className="flex-1 h-screen overflow-y-scroll">
         <AdminHeader />
-        <div className="p-6 ">
+        <div className="px-14 py-10">
           <Outlet />
         </div>
       </div>

@@ -5,6 +5,9 @@ const initialState = {
   productError: null,
   product: null,
   products: [],
+  bestSelling: [],
+  topRated: [],
+  latestProducts: [],
   totalProducts: 0,
   pagination: {
     page: 1,
@@ -31,6 +34,13 @@ const productSlice = createSlice({
       state.pagination = action.payload.pagination;
       state.totalProducts = action.payload.totalProducts;
     },
+    setIndexProducts: (state, action) => {
+      state.productLoading = false;
+      state.productError = null;
+      state.bestSelling = action.payload.bestSelling;
+      state.topRated = action.payload.topRated;
+      state.latestProducts = action.payload.latestProducts;
+    },
     setProductImage: (state, action) => {
       state.productLoading = false;
       state.productError = null;
@@ -54,7 +64,7 @@ export const {
   setProductError,
   addProductReview,
   setProductImage,
-  setProducts,
+  setProducts,setIndexProducts
 } = productSlice.actions;
 export const productSelector = (state) => state.product;
 export default productSlice.reducer;

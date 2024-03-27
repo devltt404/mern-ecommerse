@@ -4,12 +4,14 @@ import {
   deleteProduct,
   getProductById,
   getProducts,
+  getProductsForIndexPage,
   updateProduct,
   updateProductImage,
 } from "../../controllers/productController.js";
 import { decodeToken, isAdmin } from "../../middlewares/authToken.js";
 const productRouter = express.Router();
 
+productRouter.get("/index", getProductsForIndexPage);
 productRouter.get("/:id", getProductById);
 productRouter.get("/", getProducts);
 productRouter.post("/", addProduct);

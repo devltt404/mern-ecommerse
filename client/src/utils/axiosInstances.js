@@ -26,6 +26,10 @@ export const orderAxios = axios.create({
   baseURL: baseURL + "/order",
   withCredentials: true,
 });
+export const adminAxios = axios.create({
+  baseURL: baseURL + "/admin",
+  withCredentials: true,
+});
 
 export const axiosInstances = [
   userAxios,
@@ -34,4 +38,5 @@ export const axiosInstances = [
   cartAxios,
   reviewAxios,
   orderAxios,
+  adminAxios,
 ];

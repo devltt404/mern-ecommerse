@@ -1,5 +1,39 @@
+import axios from "axios";
 import User from "../models/userModel.js";
 import respondWithToken from "../utils/respondWithToken.js";
+
+export const authGoogle = async (req, res, next) => {
+  try {
+    const { accessToken } = req.body;
+    const { data } = await axios.get(
+      `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${accessToken}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          Accept: "application/json",
+        },
+      }
+    );
+
+    const existedUser = await User.findOne({ email: data.email });
+    if (existedUser) {
+      respondWithToken({
+        user: existedUser,
+        successMsg: "Login successful",
+        res,
+      });
+    } else {
+      const user = await User.create({
+        name: data.name,
+        email: data.email,
+        avatar: data.picture,
+      });
+      respondWithToken({ user, res });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
 
 export const loginUser = async (req, res, next) => {
   try {
@@ -13,7 +47,7 @@ export const loginUser = async (req, res, next) => {
     const user = await User.findOne({ email }).select("+password");
 
     if (user && (await user.matchPassword(password))) {
-      respondWithToken({ user, successMsg: "Login successful", res });
+      respondWithToken({ user, res });
     } else {
       res.status(400);
       throw new Error("Invalid email or password");
@@ -39,7 +73,7 @@ export const registerUser = async (req, res, next) => {
     }
 
     const user = await User.create({ name, email, password });
-    respondWithToken({ user, successMsg: "User created successfully", res });
+    respondWithToken({ user, res });
   } catch (error) {
     next(error);
   }
@@ -112,7 +146,7 @@ export const getUsers = async (req, res, next) => {
       .skip((page - 1) * limit)
       .lean();
     const totalUsers = await User.countDocuments();
-    
+
     res.status(200).json({
       users,
       pagination: { totalPages: Math.ceil(totalUsers / limit), page },

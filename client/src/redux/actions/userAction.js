@@ -15,6 +15,7 @@ export const authUser =
   async (dispatch) => {
     try {
       dispatch(setUserLoading());
+      console.log(userData);
       const { data } = await userAxios.post(endpoint, userData);
       dispatch(setUser(data.user));
 
@@ -33,7 +34,7 @@ export const authUser =
         dispatch(setCart(data.cart));
       }
 
-      toast.success("User authenticated successfully");
+      toast.success("Welcome " + data.user.name);
     } catch (error) {
       handleActionError(dispatch, error, setUserError, true);
     }

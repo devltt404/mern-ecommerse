@@ -25,7 +25,7 @@ export const addReview = async (req, res, next) => {
       rating,
       content,
     });
-    product.reviews.push(review);
+    product.reviews.unshift(review);
     product.numOfReviews = product.reviews.length;
     product.rating = Number(
       (

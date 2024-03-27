@@ -1,10 +1,10 @@
 const CheckoutItem = ({ product, quantity }) => {
   return (
-    <div className="grid grid-cols-[6rem,1fr,auto] gap-4">
+    <div className="grid grid-cols-[6rem,1fr,auto] gap-2">
       <img
         src={(product.images && product.images[0]) || product.image}
         alt="product"
-        className="w-24 h-24 object-cover rounded-md"
+        className="w-20 h-20 object-cover rounded-md"
       />
       <div>
         <h2 className="font-medium text-lg">{product.name}</h2>

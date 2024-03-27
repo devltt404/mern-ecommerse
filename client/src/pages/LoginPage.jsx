@@ -1,10 +1,10 @@
 import { Form, Formik } from "formik";
-import { IoLogoGoogle } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Button from "../components/Button.jsx";
 import FormInput from "../components/FormInput.jsx";
 import FormPasswordInput from "../components/FormPasswordInput.jsx";
+import GoogleLoginButton from "../components/GoogleLoginButton.jsx";
 import { authUser } from "../redux/actions/userAction.js";
 
 const LoginPage = () => {
@@ -78,12 +78,7 @@ const LoginPage = () => {
               <p className="text-center text-gray-500">Or continue with</p>
               <div className="border flex-1"></div>
             </div>
-            <Button variant="outline">
-              <div className="flex items-center justify-center gap-2">
-                <IoLogoGoogle size={20} />
-                <span>Google</span>
-              </div>
-            </Button>
+            <GoogleLoginButton />
           </div>
         </Form>
       )}

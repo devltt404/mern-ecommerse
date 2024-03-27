@@ -3,6 +3,7 @@ import { productAxios, reviewAxios } from "../../utils/axiosInstances.js";
 import { handleActionError } from "../../utils/handleActionError.js";
 import {
   addProductReview,
+  setIndexProducts,
   setProduct,
   setProductError,
   setProductImage,
@@ -99,6 +100,16 @@ export const deleteProduct = (productId) => async (dispatch) => {
     const { data } = await productAxios.delete(`/${productId}`);
     await dispatch(getProducts({ page: 1, limit: 5 }));
     toast.success(data.message);
+  } catch (error) {
+    handleActionError(dispatch, error, setProductError, true);
+  }
+};
+
+export const getIndexProducts = () => async (dispatch) => {
+  try {
+    dispatch(setProductLoading());
+    const { data } = await productAxios.get("/index");
+    dispatch(setIndexProducts(data));
   } catch (error) {
     handleActionError(dispatch, error, setProductError, true);
   }

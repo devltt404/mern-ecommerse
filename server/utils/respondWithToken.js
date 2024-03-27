@@ -1,4 +1,4 @@
-export default ({ user, successMsg, res }) => {
+export default ({ user,  res }) => {
   const token = user.generateToken();
   res
     .cookie("token", token, {

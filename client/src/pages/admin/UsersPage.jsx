@@ -10,10 +10,10 @@ const UsersPage = () => {
 
   return (
     <div>
-      <h1 className="mb-4 text-2xl font-semibold">
+      <h1 className="mb-6 text-2xl font-semibold">
         Users <span className="font-normal">({totalUsers})</span>
       </h1>
-      
+
       <TableWithPagination
         Table={UsersTable}
         page={pagination.page}

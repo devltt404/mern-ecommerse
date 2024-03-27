@@ -82,7 +82,7 @@ const ProductsTable = () => {
                     ${product.price}
                   </TableBodyItem>
                   <TableBodyItem className="text-center">
-                    {product.numSold}
+                    {product.numSold || 0}
                   </TableBodyItem>
                   <TableBodyItem className="text-center">
                     {product.stock}

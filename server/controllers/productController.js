@@ -84,7 +84,7 @@ export const getProductById = async (req, res, next) => {
       throw new Error("Product not found");
     }
   } catch (error) {
-    if(error.name === "CastError") {
+    if (error.name === "CastError") {
       res.status(404);
       error.message = "Product not found";
     }
@@ -164,6 +164,76 @@ export const deleteProduct = async (req, res, next) => {
       res.status(404);
       throw new Error("Product not found");
     }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getProductsForIndexPage = async (req, res, next) => {
+  try {
+    const getProductsPromises = [];
+    const selectedFields = {
+      name: 1,
+      numSold: 1,
+      images: 1,
+      category: 1,
+      rating: 1,
+      price: 1,
+    };
+    getProductsPromises.push(
+      Product.aggregate([
+        {
+          $sort: { numSold: -1 },
+        },
+        {
+          $limit: 3,
+        },
+        {
+          $project: selectedFields,
+        },
+      ])
+    );
+
+    getProductsPromises.push(
+      Product.aggregate([
+        {
+          $sort: { rating: -1 },
+        },
+        {
+          $limit: 3,
+        },
+        {
+          $project: selectedFields,
+        },
+      ])
+    );
+
+    getProductsPromises.push(
+      Product.aggregate([
+        {
+          $sort: { createdAt: -1 },
+        },
+        {
+          $limit: 5,
+        },
+        {
+          $project: selectedFields,
+        },
+      ])
+    );
+
+    const products = await Promise.all(getProductsPromises);
+    const populatePromises = products.map((product) => {
+      return Product.populate(product, { path: "category" });
+    });
+
+    const detailedProducts = await Promise.all(populatePromises);
+
+    res.status(200).json({
+      bestSelling: detailedProducts[0],
+      topRated: detailedProducts[1],
+      latestProducts: detailedProducts[2],
+    });
   } catch (error) {
     next(error);
   }
