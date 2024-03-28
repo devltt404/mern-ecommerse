@@ -17,9 +17,14 @@ export const authGoogle = async (req, res, next) => {
 
     const existedUser = await User.findOne({ email: data.email });
     if (existedUser) {
+      if (existedUser.provider !== "google") {
+        res.status(400);
+        throw new Error(
+          "Email has been registered with another provider. Please login with email and password"
+        );
+      }
       respondWithToken({
         user: existedUser,
-        successMsg: "Login successful",
         res,
       });
     } else {
@@ -27,6 +32,7 @@ export const authGoogle = async (req, res, next) => {
         name: data.name,
         email: data.email,
         avatar: data.picture,
+        provider: "google",
       });
       respondWithToken({ user, res });
     }
@@ -46,12 +52,19 @@ export const loginUser = async (req, res, next) => {
 
     const user = await User.findOne({ email }).select("+password");
 
-    if (user && (await user.matchPassword(password))) {
-      respondWithToken({ user, res });
-    } else {
-      res.status(400);
-      throw new Error("Invalid email or password");
+    if (user) {
+      if (user.provider !== "email") {
+        res.status(400);
+        throw new Error(
+          "Email has been registered with another provider. Please login with Google"
+        );
+      } else if (await user.matchPassword(password)) {
+        return respondWithToken({ user, res });
+      }
     }
+
+    res.status(400);
+    throw new Error("Invalid email or password");
   } catch (error) {
     next(error);
   }
@@ -72,7 +85,12 @@ export const registerUser = async (req, res, next) => {
       throw new Error("Email has been already used");
     }
 
-    const user = await User.create({ name, email, password });
+    const user = await User.create({
+      name,
+      email,
+      password,
+      provider: "email",
+    });
     respondWithToken({ user, res });
   } catch (error) {
     next(error);
@@ -90,7 +108,7 @@ export const logoutUser = async (req, res, next) => {
 export const getUser = async (req, res, next) => {
   try {
     res.status(200).json({
-      user: { id: req.user._id, name: req.user.name, role: req.user.role },
+      user: { _id: req.user._id, name: req.user.name, role: req.user.role },
       cart: req.user.cart,
     });
   } catch (error) {
@@ -171,6 +189,28 @@ export const updateAvatar = async (req, res, next) => {
     await user.save();
 
     res.status(200).json({ message: "User avatar updated successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const setRole = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    if (!user) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+
+    if (user.role === "admin") {
+      user.role = "user";
+    } else {
+      user.role = "admin";
+    }
+    await user.save();
+
+    res.status(200).json({ message: "User role updated successfully" });
   } catch (error) {
     next(error);
   }

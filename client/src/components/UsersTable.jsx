@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
+import {
+  HiOutlineTrash,
+  HiOutlineUserMinus,
+  HiOutlineUserPlus,
+} from "react-icons/hi2";
 import { TbUpload } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteUser,
   getUsers,
+  setRole,
   updateUserAvatar,
 } from "../redux/actions/userAction.js";
 import { userSelector } from "../redux/slices/userSlice.js";
+import Badge from "./Badge.jsx";
 import Button from "./Button.jsx";
 import Loading from "./Loading.jsx";
 import Modal from "./modal/Modal.jsx";
@@ -47,10 +53,10 @@ const UsersTable = () => {
             return (
               <TableBodyRow key={user._id}>
                 <TableBodyItem className="flex items-center gap-4">
-                  <div className="relative overflow-hidden rounded-md group">
+                  <div className="relative overflow-hidden  group">
                     <img
                       src={user.avatar}
-                      className="w-10 h-10 object-cover rounded-full inline-block"
+                      className="w-10 h-10 object-contain rounded-full inline-block"
                     />
                     <div
                       className="w-full h-full absolute z-10 top-0 left-0 opacity-0 transition group-hover:opacity-100 group-hover:cursor-pointer"
@@ -77,11 +83,23 @@ const UsersTable = () => {
                   {user.orders.length}
                 </TableBodyItem>
                 <TableBodyItem className="text-center">
-                  {user.role}
+                  <Badge color={user.role === "admin" ? "red" : "blue"}>
+                    {user.role}
+                  </Badge>
                 </TableBodyItem>
                 <TableBodyItem>
                   <div className="flex items-center gap-2 justify-end">
-                    <HiOutlinePencilSquare size={20} />
+                    <button
+                      type="button"
+                      onClick={() => dispatch(setRole(user._id))}
+                    >
+                      {user.role === "admin" ? (
+                        <HiOutlineUserMinus size={20} />
+                      ) : (
+                        <HiOutlineUserPlus size={20} />
+                      )}
+                    </button>
+
                     <button
                       onClick={() => {
                         dispatch(deleteUser(user._id));

@@ -2,7 +2,7 @@ import { Children, cloneElement, useEffect, useRef, useState } from "react";
 import DropdownMenu from "./DropdownMenu.jsx";
 import DropdownToggler from "./DropdownToggler.jsx";
 
-const Dropdown = ({ children, className }) => {
+const Dropdown = ({ children, className = "" }) => {
   const ref = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const toggleDropdown = () => {

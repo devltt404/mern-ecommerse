@@ -6,7 +6,7 @@ const SidebarItem = ({ title, Icon, to }) => {
   return (
     <Link to={to}>
       <li
-        className={`flex items-center font-semibold gap-4 ps-3 py-3 rounded-md transition ${
+        className={`flex items-center font-semibold gap-4 ps-3 py-3  transition ${
           isSelected ? "bg-neutral-700" : "hover:bg-neutral-800"
         }`}
       >

@@ -4,7 +4,7 @@ const CheckoutItem = ({ product, quantity }) => {
       <img
         src={(product.images && product.images[0]) || product.image}
         alt="product"
-        className="w-20 h-20 object-cover rounded-md"
+        className="w-20 h-20 object-contain "
       />
       <div>
         <h2 className="font-medium text-lg">{product.name}</h2>

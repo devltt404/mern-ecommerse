@@ -16,16 +16,16 @@ const Pagination = ({ handlePageSelected, totalPages, page }) => {
   };
 
   return (
-    <div className="flex items-center gap-1 text-sm">
+    <div className="flex items-center gap-1 text-sm justify-center mt-4">
       <button
-        className="w-8 h-8 flex items-center justify-center rounded-md py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         onClick={() => onPageSelected(1)}
         disabled={inputPage === 1}
       >
         <RxDoubleArrowLeft size={18} />
       </button>
       <button
-        className="w-8 h-8 flex items-center justify-center rounded-md py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         onClick={() => onPageSelected(inputPage - 1)}
         disabled={inputPage === 1}
       >
@@ -57,14 +57,14 @@ const Pagination = ({ handlePageSelected, totalPages, page }) => {
 
       <span>of {totalPages}</span>
       <button
-        className="w-8 h-8 flex items-center justify-center rounded-md py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         onClick={() => onPageSelected(inputPage + 1)}
         disabled={inputPage === totalPages}
       >
         <GoChevronRight size={18} />
       </button>
       <button
-        className="w-8 h-8 flex items-center justify-center rounded-md py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         disabled={inputPage === totalPages}
         onClick={() => onPageSelected(totalPages)}
       >

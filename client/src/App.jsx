@@ -1,3 +1,4 @@
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -6,6 +7,7 @@ import SearchPage from "./components/SearchPage.jsx";
 import AdminContainer from "./containers/AdminContainer.jsx";
 import NoUserOnlyContainer from "./containers/NoUserOnlyContainer.jsx";
 import ShopContainer from "./containers/ShopContainer.jsx";
+import UserOnlyContainer from "./containers/UserOnlyContainer.jsx";
 import CartPage from "./pages/CartPage.jsx";
 import CategoryProductsPage from "./pages/CategoryProductsPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
@@ -26,7 +28,6 @@ import ProductsPage from "./pages/admin/ProductsPage.jsx";
 import UsersPage from "./pages/admin/UsersPage.jsx";
 import { axiosInstances } from "./utils/axiosInstances.js";
 import setupInterceptor from "./utils/setupInterceptor.js";
-import { GoogleOAuthProvider } from '@react-oauth/google';
 
 function App() {
   const navigate = useNavigate();
@@ -50,8 +51,10 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/orders/success" element={<OrderSuccessPage />} />
-            <Route path="/orders" element={<OrdersPage />} />
-            <Route path="/orders/:id" element={<OrderDetailPage />} />
+            <Route path="/orders" element={<UserOnlyContainer />}>
+              <Route path="" element={<OrdersPage />} />
+              <Route path=":id" element={<OrderDetailPage />} />
+            </Route>
             <Route
               path="/category/:category"
               element={<CategoryProductsPage />}

@@ -1,0 +1,1162 @@
+[
+    {
+        "_id": {
+            "$oid": "65f733e0170cb72c38338701"
+        },
+        "name": "Samsung Galaxy S21 Ultra",
+        "description": "Samsung's top-tier smartphone featuring a 6.8-inch Dynamic AMOLED 2X display, Exynos 2100/Snapdragon 888 chipset, 108MP Quad Camera, and S Pen support.",
+        "price": 1199.99,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ed"
+        },
+        "stock": 9,
+        "images": [
+            "https://m.media-amazon.com/images/I/61tefwMCDxL.jpg"
+        ],
+        "rating": 4,
+        "reviews": [
+            {
+                "$oid": "66022c712070b38aef4e7e32"
+            }
+        ],
+        "numOfReviews": 1,
+        "updatedAt": {
+            "$date": "2024-03-26T02:01:21.623Z"
+        },
+        "numSold": 11,
+        "__v": 1
+    },
+    {
+        "_id": {
+            "$oid": "65f7227e170cb72c383386f7"
+        },
+        "name": "MacBook Air",
+        "description": "Apple's thinnest and lightest notebook, now with the powerful Apple M1 chip for a giant leap in CPU, GPU, and machine learning performance.",
+        "price": 999,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 5,
+        "images": [
+            "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mba13-midnight-select-202402?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1708367688034"
+        ],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-27T11:14:40.554Z"
+        },
+        "numSold": 7
+    },
+    {
+        "_id": {
+            "$oid": "65f733e0170cb72c38338703"
+        },
+        "name": "OnePlus 10 Pro",
+        "description": "OnePlus' latest flagship offering with a 6.7-inch Fluid AMOLED display, Snapdragon 8 Gen 2 chipset, Hasselblad quad-camera setup, and Warp Charge 65T.",
+        "price": 899,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ed"
+        },
+        "stock": 11,
+        "images": [
+            "https://m.media-amazon.com/images/I/81qOD8EZTjL.jpg"
+        ],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-27T20:38:22.536Z"
+        },
+        "numSold": 11
+    },
+    {
+        "_id": {
+            "$oid": "65f7227e170cb72c383386f4"
+        },
+        "name": "Aspire 5 Slim Laptop",
+        "description": "A versatile laptop with a 15.6-inch FHD display, AMD Ryzen 3 3200U, 4GB DDR4, 128GB SSD, Backlit Keyboard, Windows 10 in S Mode.",
+        "price": 359.99,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 0,
+        "images": [
+            "https://m.media-amazon.com/images/I/61HGNTwSQBL.jpg"
+        ],
+        "rating": 3.5,
+        "reviews": [
+            {
+                "$oid": "65f8edf0a7c5926c8b2880b6"
+            },
+            {
+                "$oid": "65f8f8dffe7fc871f60b6cc7"
+            },
+            {
+                "$oid": "65f8fa3f1e8f93a78e13406c"
+            }
+        ],
+        "numOfReviews": 2,
+        "updatedAt": {
+            "$date": "2024-03-25T01:45:48.401Z"
+        },
+        "__v": 3,
+        "numSold": 10
+    },
+    {
+        "_id": {
+            "$oid": "65f7227e170cb72c383386f6"
+        },
+        "name": "HP Pavilion 14",
+        "description": "A stylish and portable laptop with a 14-inch FHD display, 11th Gen Intel Core i5, 8GB RAM, 512GB SSD, and includes a backlit keyboard.",
+        "price": 709.99,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 7,
+        "images": [
+            "https://i5.walmartimages.com/asr/66ce087a-2623-49eb-8ad4-9a13d45a4832.8f06c7af5ba1c01358d624eb04a49edd.jpeg?odnHeight=768&odnWidth=768&odnBg=FFFFFF"
+        ],
+        "rating": 5,
+        "reviews": [
+            {
+                "$oid": "660418e43a4796966253c4f4"
+            }
+        ],
+        "numOfReviews": 1,
+        "updatedAt": {
+            "$date": "2024-03-27T13:02:28.700Z"
+        },
+        "numSold": 1,
+        "__v": 1
+    },
+    {
+        "_id": {
+            "$oid": "65f7341c170cb72c3833870c"
+        },
+        "name": "Amazon Fire HD 10",
+        "description": "Amazon's affordable 10.1-inch tablet with a Full HD display, octa-core processor, 32GB/64GB storage options, and hands-free Alexa.",
+        "price": 149.99,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ee"
+        },
+        "stock": 19,
+        "images": [
+            "https://target.scene7.com/is/image/Target/GUEST_ded37186-4918-4509-b469-8551991ad267?wid=488&hei=488&fmt=pjpeg"
+        ],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-27T11:14:40.554Z"
+        },
+        "numSold": 1
+    },
+    {
+        "_id": {
+            "$oid": "65f7227e170cb72c383386f5"
+        },
+        "name": "Dell Inspiron 15",
+        "description": "A solid mid-range laptop featuring an Intel Core i5-1035G1, 8GB RAM, 256GB SSD, and a 15.6-inch FHD touchscreen.",
+        "price": 649.99,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 5,
+        "images": [],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-18T22:52:20.943Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "65f733e0170cb72c38338702"
+        },
+        "name": "Google Pixel 6 Pro",
+        "description": "Google's flagship phone with a 6.7-inch QHD+ LTPO OLED display, Tensor chip, Dual rear cameras (50MP+12MP), and a large 5000mAh battery.",
+        "price": 899,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ed"
+        },
+        "stock": 18,
+        "images": [],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-18T22:52:20.943Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "65f7341c170cb72c3833870a"
+        },
+        "name": "Samsung Galaxy Tab S8+",
+        "description": "Samsung's premium Android tablet featuring an 11-inch Super AMOLED display, Snapdragon 8 Gen 1 chipset, S Pen support, and AKG-tuned quad speakers.",
+        "price": 899.99,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ee"
+        },
+        "stock": 15,
+        "images": [],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-18T22:52:20.943Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "65f7341c170cb72c38338709"
+        },
+        "name": "iPad Air (2022)",
+        "description": "Apple's mid-range tablet with a 10.9-inch Liquid Retina display, A15 Bionic chip, Touch ID, and support for Apple Pencil (2nd generation) and Magic Keyboard.",
+        "price": 599,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ee"
+        },
+        "stock": 10,
+        "images": [],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-18T22:52:20.943Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "65f733e0170cb72c38338700"
+        },
+        "name": "iPhone 13 Pro",
+        "description": "Apple's flagship phone with a Super Retina XDR display, A15 Bionic chip, Pro camera system with 12MP Ultra Wide, Wide, and Telephoto cameras, and Ceramic Shield front cover.",
+        "price": 999,
+        "category": {
+            "$oid": "65f71d74170cb72c383386ed"
+        },
+        "stock": 15,
+        "images": [],
+        "rating": 0,
+        "reviews": [],
+        "numOfReviews": 0,
+        "updatedAt": {
+            "$date": "2024-03-18T22:52:20.943Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "6604c79cb52e0d599f1394b2"
+        },
+        "name": "Dell™ Inspiron 15 3520 Laptop, 15.6\" Screen, Intel® Core™ i5, 16GB Memory, 256GB Solid State Drive, Wi-Fi 6, Windows® 11 Home",
+        "description": "Choose this Dell Inspiron 15 3520 laptop to get things done. The 15.6\" laptop screen provides FHD resolution and helps prevent glare. The Windows 11 laptop comes with a helpful operating system, offering fun features right away.",
+        "price": 599.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/3497373/3497373_o01_101422/3497373"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 49,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c79cb52e0d599f1394b3"
+        },
+        "name": "HP 15-dy5035od Laptop, 15.6\" Screen, Intel® Core™ i5, 8GB Memory, 512GB Solid State Drive, Windows® 11 Home",
+        "description": "Enjoy the user-friendly features of this Windows 11 laptop. The HP laptop offers a powerful and reliable Intel Core processor for generous speeds. Its wireless connectivity makes it easy to join available networks.",
+        "price": 529.99,
+        "images": [
+            "https://media.officedepot.com/image/upload/f_auto,q_auto/gtools/images/od/new/overlay-new"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 35,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c79cb52e0d599f1394b4"
+        },
+        "name": "HP Pavilion Plus Laptop, 14\" OLED Screen, Intel® Core™ i7, 16GB Memory, 512GB Solid State Drive, Windows® 11, 643X6UA#ABA",
+        "description": "Work from virtually anywhere thanks to the HP Pavilion Plus Laptop. The built-in True Vision webcam makes it a breeze to chat with coworkers, professors and friends face to face. Windows 11 boasts integrated widgets to help improve productivity.",
+        "price": 989.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/4372691/4372691_o01_102722/4372691"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 49,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c79cb52e0d599f1394b5"
+        },
+        "name": "Dell Education Chromebook 3000 3110 11.6\" Touchscreen 2 in 1 Chromebook - HD366 x 768 - Intel Celeron N4500 Dual-core (2 Core) 1.10 GHz - 8 GB Total RAM - 32 GB Flash Memory - Chrome OS - English (US) Keyboard",
+        "description": "",
+        "price": 510.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/6627931/6627931_o51_et_8800119/6627931"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 54,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c79cb52e0d599f1394b6"
+        },
+        "name": "Lenovo® IdeaPad Flex 5i 2-in-1 Touch Laptop, 16\" Screen, Intel® Core™ i5, 16GB Memory, 512GB Solid State Drive, Wi-Fi 6. Windows® 11 Home",
+        "description": "Make the most of your time with this Lenovo IdeadPad laptop. The Windows 11 laptop offers plenty of helpful features, including a built-in webcam and built-in WiFi 6. The Lenovo convertible laptop easily rotates to become a tablet, adding versatility to its arsenal.",
+        "price": 579.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7317994/7317994_o01_090323/7317994"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 53,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c79cb52e0d599f1394b7"
+        },
+        "name": "ASUS® Vivobook 17 F1704VA-OS54 Laptop, 17.3\" Screen, Intel® Core™ i5, 16GB Memory, 512GB Solid State Drive, Wi-Fi 6E, Windows® 11 Home",
+        "description": "With a powerful Intel Core processor and a reliable SSD, this ASUS laptop is ready for whatever your day throws at you. The 17.3\" laptop screen offers IPS technology to provide crystal clear picture, and the built-in camera helps you chit with friends and family. The Windows 11 laptop is ready right out of the box with helpful tools and exciting apps built in.",
+        "price": 699.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7589321/7589321_o01_asus_vivobook_17_f1704va_os54_laptop_062223/7589321"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 47,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c7edb52e0d599f1394b9"
+        },
+        "name": "ASUS® B1500CEA Expertbook Laptop, 15.6\" Screen, Intel® Core™ i5, 16GB Memory, 256GB Solid State Drive, Wi-Fi 6, Windows® 10, B1500CEA-XS53",
+        "description": "Stay connected to work, friends and family on the go with an ASUS 15.6\" laptop. Wireless-AX provides a high-performance, cable-free connection to your home or office network, while the powerful Intel Core i5 processor allows you to keep multiple programs open at once for efficient multitasking. With the 180° hinge, the NVME laptop can open fully, so you can collaborate with coworkers and team members easily.",
+        "price": 699.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7607564/7607564_o01/7607564"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 32,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c876b52e0d599f1394bb"
+        },
+        "name": "ASUS® Vivobook Flip TP3402ZA-OS34T Laptop, 14\" Touch Screen, Intel® Core™ i3, 8GB Memory, 256GB Solid State Drive, Wi-Fi 6, Windows® 11 Home",
+        "description": "Grab this ASUS laptop and enjoy the Internet, your favorite games or get some work done. The 14\" laptop offers a touch screen with crystal-clear, WUXGA resolution. The Windows 11 laptop features a user-friendly interface to help you get started.",
+        "price": 519.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7843832/7843832_o01_asus_vivobook_flip_tp3402za_os34t_laptop_062223/7843832"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 39,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c88ab52e0d599f1394bd"
+        },
+        "name": "Acer® Swift 3 Laptop, 14\" Screen, Intel® Core™ i7, 8GB Memory, 256GB Solid State Drive, Wi-Fi 6, Windows® 10, NX.A5UAA.006",
+        "description": "Stay on top of school and work with the powerful Acer Swift 3 Laptop. Its Intel Core i7 processor makes it easy to work within multiple programs at once, helping you stay on track. A built-in webcam and stereo speakers allow seamless video chatting with coworkers, friends and family.",
+        "price": 549.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7075698/7075698_o01_acer_swift_3_laptop_112321/7075698"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 33,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c89db52e0d599f1394bf"
+        },
+        "name": "Dell Precision 7000 7680 16\" Mobile Workstation - Intel Core i7 13th Gen i7-13850HX Icosa-core (20 Core) - 32 GB Total RAM - 512 GB SSD - Gray - Windows 11 Pro - NVIDIA RTX 3500 Ada with 12 GB - PremierColor Technology",
+        "description": "",
+        "price": 4274.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7068908/7068908_o51_et_10427120/7068908"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 50,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c8acb52e0d599f1394c1"
+        },
+        "name": "Lenovo ThinkBook 16 G6 ABP 21KK0009US 16\" Touchscreen Notebook - WUXGA - 1920 x 1200 - AMD Ryzen 5 7530U Hexa-core (6 Core) 2 GHz - 16 GB Total RAM - 512 GB SSD - Arctic Gray - AMD Chip - Windows 11 Pro - AMD Radeon Graphics",
+        "description": "",
+        "price": 784.71,
+        "images": [
+            "https://media.officedepot.com/image/upload/f_auto,q_auto/gtools/images/od/new/overlay-new"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 46,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c90fb52e0d599f1394c3"
+        },
+        "name": "Lenovo® X1 CARBON Refurbished Laptop, 14\" Screen, Intel® Core™ i7, 16GB Memory, 512GB Solid State Drive, Windows® 10, OD5-1681",
+        "description": "Accomplish all of your daily tasks with help from the Lenovo X1 CARBON Refurbished Laptop. A powerful Intel Core i7 processor makes it simple to multitask and boot up high-powered programs. The integrated speakers are ideal for listening to music, watching videos and chatting with friends and coworkers.",
+        "price": 636.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8439425/8439425_o01/8439425"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 40,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c90fb52e0d599f1394c4"
+        },
+        "name": "TUF Gaming A15 FA507 Gaming Laptop, 15.6\" Screen, AMD Ryzen 7, 16GB Memory, 1TB Solid State Drive, Windows 11 Home, WiFi 6",
+        "description": "",
+        "price": 1314.19,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/4155568/4155568_o51_et_10453624/4155568"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 47,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c965b52e0d599f1394c6"
+        },
+        "name": "Dell Precision 7000 7780 17.3\" Mobile Workstation - Intel Core i7 - 32 GB Total RAM - 1 TB SSD - Gray- Windows 11 Pro - NVIDIA RTX 3500 Ada with 12 GB",
+        "description": "",
+        "price": 4411.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/1651390/1651390_o51_et_10481653/1651390"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 58,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c965b52e0d599f1394c7"
+        },
+        "name": "MSI Raider GE77 HX Raider GE77HX 12UHS-074 17.3\" Gaming Notebook - Intel Core i7 i7-12800HX Hexadeca-core (16 Core) 1.50 GHz - 16 GB RAM - 1 TB SSD - Dark Gray - Intel HM670 Chip - Windows 11 Home - NVIDIA GeForce RTX 3080 Ti with 16 GB",
+        "description": "",
+        "price": 2599,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8225455/8225455_o01/8225455"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 44,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c965b52e0d599f1394c8"
+        },
+        "name": "Dell Latitude E5570 Ultrabook Laptop, 15.6\" Touchscreen, Intel® Core™ i5, 16GB Memory, 512GB Solid State Drive, Windows® 10 Pro",
+        "description": "Experience a remarkable boost to your everyday productivity with the easy-to-use and cost-effective Dell Latitude E5570 Refurbished Laptop PC. It is powered by the 6th generation Intel Core i5-6440HQ 2.6GHz processor and runs on Windows 10 for a smooth execution of tasks.",
+        "price": 409.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7234960/7234960_o01_dell_latitude_e5570/7234960"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 34,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c965b52e0d599f1394c9"
+        },
+        "name": "Dell Latitude E5470 Ultrabook Laptop, 14\" Screen, Intel® Core™ i5, 8GB Memory, 240GB Solid State Drive, Windows 10 Pro",
+        "description": "Experience a remarkable boost to your everyday productivity with the easy-to-use and cost-effective Dell Latitude E5470 Refurbished Laptop PC. It is powered by the Intel 5th generation Core i5-6200U 2.3GHz processor and runs on Windows 10 Professional 64bit for a smooth execution of tasks.",
+        "price": 250.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/6504970/6504970_o01_dell_latitude_e5470/6504970"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 48,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c965b52e0d599f1394ca"
+        },
+        "name": "Lenovo ThinkPad T15 Gen 1 20S60029US 15.6\" Notebook - Full HD - Intel Core i5 10th Gen i5-10210U 1.60 GHz - 8 GB RAM - 256 GB SSD - Black - Windows 10 Pro - Intel UHD Graphics",
+        "description": "",
+        "price": 1449.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/6788835/6788835_o51_et_7726281/6788835"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 31,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c965b52e0d599f1394cb"
+        },
+        "name": "Dell Precision 3000 3480 14\" Mobile Workstation - Intel Core i7 13th Gen i7-1360P Dodeca-core (12 Core) 2.20 GHz - 16 GB Total RAM - 512 GB SSD - Titan Gray- Windows 11 Pro - NVIDIA RTX A500 with 4 GB",
+        "description": "",
+        "price": 2125.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/2138651/2138651_o51_et_10426165/2138651"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 49,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604c965b52e0d599f1394cc"
+        },
+        "name": "Lenovo® ThinkBook 15 IML Refurbished Laptop, 15.6\" Screen, Intel® Core™ i5, 16GB Memory, 512GB Solid State Drive, Windows® 11 Pro",
+        "description": "Look to the Lenovo ThinkBook if you want to enjoy the fun apps and programs of Windows 11 Pro. The 15.6\" laptop display helps you get a clear view, and wireless technology makes it easy to connect. The refurbished laptop offers a high-speed Intel Core i5 processor for reliable performance.",
+        "price": 659.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7836641/7836641_o01/7836641"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ec"
+        },
+        "stock": 38,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cb0ab52e0d599f1394d2"
+        },
+        "name": "Lenovo® IdeaCentre 5i Desktop PC",
+        "description": "Designed to help you stay connected, the Lenovo IdeaCentre 5i Desktop PC offers wireless-AX and Bluetooth® 5.2 technologies. The computer sports a 512GB solid state drive to help you save important files. Multiple video connections and USB ports allow you to add peripherals.",
+        "price": 679.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7812249/7812249_o01_101322/7812249"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 45,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cb3fb52e0d599f1394d4"
+        },
+        "name": "HP 27-cr0016 All-in-One Desktop PC",
+        "description": "Stay connected to what matters most with the HP All-in-One Desktop PC. A powerful AMD Ryzen 5 processor allows you to multitask with confidence to stay productive throughout the day. Utilize the integrated HD webcam to check in with coworkers, chat with friends and visit with family.",
+        "price": 659.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/6659790/6659790_o01_101223/6659790"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 35,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cb80b52e0d599f1394d7"
+        },
+        "name": "Dell™ Inspiron 3020S Small Desktop PC",
+        "description": "Make sure you have the functions and features you love by choosing this Dell Inspiron PC. The small desktop offers a 5-in-1 card reader, plenty of USB ports and built-in wireless and Bluetooth® technologies to make connections simple and easy. The Windows 11 desktop comes with exciting apps and programs to help you get started.",
+        "price": 349.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8855222/8855222_o01_dell_inspiron_3020s_small_desktop_pc_082923/8855222"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 33,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394d9"
+        },
+        "name": "CLX SET Gaming Desktop PC",
+        "description": "",
+        "price": 4681.29,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8755834/8755834_o51_et_10414427/8755834"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 40,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394da"
+        },
+        "name": "Dell OptiPlex 7000 7410 Plus All-in-One Desktop PC",
+        "description": "",
+        "price": 1509.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/5821040/5821040_o51_et_10409991/5821040"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 56,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394db"
+        },
+        "name": "HP ENVY Desktop PC",
+        "description": "Whether you're gaming, working or shopping online, the HP ENVY Desktop PC gives you the power and speed you need. The desktop computer offers wired and wireless connectivity along with Bluetooth® technology. The computer provides a wide selection of USB ports to help you connect your devices.",
+        "price": 779.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7167493/7167493_o01_hp_envy_desktop_pc_101223/7167493"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 31,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394dc"
+        },
+        "name": "Dell™ Inspiron 24 5400 All-In-One Desktop",
+        "description": "Stay ahead of the curve with the Dell Inspiron 24 5400 All-In-One Desktop. An Intel Core i3 processor makes it possible to multitask for maximum productivity. The Windows 11 operating system includes built-in features to help boost productivity.",
+        "price": 499.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/7190932/7190932_o01/7190932"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 58,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394dd"
+        },
+        "name": "Dell™ Inspiron 24 5420 All-In-One Desktop PC",
+        "description": "Get the most out of your PC when you choose this Dell all-in-one. The Dell Inspiron desktop comes with a 23.8\" display that provides crystal-clear FHD resolution. Its 512GB SSD and high-speed, 13th Gen Intel Core i3 processor help ensure the Windows 11 desktop is ready to perform.",
+        "price": 649.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8855387/8855387_o01/8855387"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 46,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394de"
+        },
+        "name": "Lenovo ThinkCentre M70a 11CK002RUS All-in-One Computer - Intel Core i5-10400 2.90 GHz - 8 GB RAM - 256 GB SSD - 21.5\" Full HD 1920 x 1080 Touchscreen Display - Desktop - Windows 10 Pro 64-bit - Intel UHD Graphics 63",
+        "description": "",
+        "price": 1230.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/9224717/9224717_o51_et_7724451/9224717"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 59,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394df"
+        },
+        "name": "Lenovo® IdeaCentre AIO 3i 22 Desktop PC",
+        "description": "Create your home office space with help from the Lenovo IdeaCentre AIO 3i 22 Desktop PC. The computer comes with a large, 21.5\" monitor and a 256GB solid state drive to offer ample storage space. The Bluetooth® 5.0 technology and wireless-AX help you connect to devices and the Internet without cables or cords.",
+        "price": 499.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/9132376/9132376_o01_lenovo_ideacentre_aio_3i_22_desktop_pc/9132376"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 59,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "6604cbd5b52e0d599f1394e0"
+        },
+        "name": "Dell OptiPlex 7000 7410 All-in-One Desktop PC",
+        "description": "",
+        "price": 1026.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/1463109/1463109_o51_et_10409532/1463109"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386eb"
+        },
+        "stock": 58,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054038f0f418371649e875"
+        },
+        "name": "Mad Catz T.E.3 Arcade Fight Stic",
+        "description": "Use a Mad Catz controller arcade fighting stick to play your favorite games. The Genuine Arcade Layout provides a Vewlix-style design with 8 action buttons for accurate performance. The Sanwa Denshi parts support fighters to drain every drop of hit points from the enemy.",
+        "price": 298.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8917455/8917455_o01/8917455"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f0"
+        },
+        "stock": 51,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054038f0f418371649e876"
+        },
+        "name": "Qanba N3 Drone 2 Wired Joystick For PlayStation 4/5 And P",
+        "description": "Upgrade your gaming capabilities with a Qanba N3 Drone 2 Wired Joystick For PlayStation 4/5 And PC. This dynamic controller boasts full-size buttons and a stick for a real arcade feel.",
+        "price": 135,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/9157350/9157350_o01/9157350"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f0"
+        },
+        "stock": 30,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054038f0f418371649e877"
+        },
+        "name": "Mad Catz C.A.T. 9 Bluetooth® Wireless Game Controlle",
+        "description": "Grab this gaming controller and show the world your skills. The PC controller even works with Nintendo Switch models and iOS and Android operating systems for a versatile design.",
+        "price": 50.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8830128/8830128_o01/8830128"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f0"
+        },
+        "stock": 35,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054038f0f418371649e878"
+        },
+        "name": "Qanba Q7 Obsidian 2 Wired Joystick For PlayStation® 4/5 And ",
+        "description": "Let your skills show with help from this PC and PlayStation controller. The gaming controller features a tournament-grade joystick and buttons to help you play your best, and it comes with ball and bat joystick tops.",
+        "price": 320,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/9157128/9157128_o01/9157128"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f0"
+        },
+        "stock": 37,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054038f0f418371649e879"
+        },
+        "name": "Qanba B1 Titan Wired Joystick For PlayStation® 4/5 And ",
+        "description": "Make sure you can showcase your skills by using this PC and PlayStation controller. The gaming controller offers a full control panel and Sanwa OBSF buttons and a Sanwa JLT joystick to help you maneuver your way through even the most difficult levels.",
+        "price": 235,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/9157214/9157214_o01/9157214"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f0"
+        },
+        "stock": 43,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054038f0f418371649e87a"
+        },
+        "name": "Nyko Armor Case For Steam Dec",
+        "description": "Protect your stream deck while playing thanks to the Nyko Armor Case For Steam Deck. An integrated collapsible kickstand allows the deck to lean back at a 54° angle for optimal viewing.",
+        "price": 15.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8763627/8763627_o01/8763627"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f0"
+        },
+        "stock": 32,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "660541e7f0f418371649e882"
+        },
+        "name": "Canon EOS 5D Mark IV 30.4 Megapixel Digital SLR Camera Body Only",
+        "description": "",
+        "price": 2699,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/5952189/5952189_o51_et_8509580/5952189"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ef"
+        },
+        "stock": 50,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "660541e7f0f418371649e883"
+        },
+        "name": "Canon PowerShot G7 X Mark III 20.1 Megapixel Compact Camera",
+        "description": "",
+        "price": 749.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/4720558/4720558_o51_et_8509631/4720558"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ef"
+        },
+        "stock": 31,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "660541e7f0f418371649e884"
+        },
+        "name": "Olympus O",
+        "description": "",
+        "price": 699.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8884169/8884169_o51_et_8291247/8884169"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ef"
+        },
+        "stock": 38,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "660541e7f0f418371649e885"
+        },
+        "name": "Canon PowerShot G7 X Mark II 20.1 Megapixel Compact Camera",
+        "description": "",
+        "price": 708.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/8199292/8199292_o51_et_8509624/8199292"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ef"
+        },
+        "stock": 43,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "660541e7f0f418371649e886"
+        },
+        "name": "Canon EOS Rebel T7 24.1 Megapixel Digital SLR Camera with Lens",
+        "description": "",
+        "price": 599.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/5201797/5201797_o51_et_8509590/5201797"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ef"
+        },
+        "stock": 31,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "660541e7f0f418371649e887"
+        },
+        "name": "Minolta 4K Ultra HD MND50 4",
+        "description": "Look to the Minolta 4K Ultra HD MND50 48-Megapixel Digital Camera With 16x Zoom Lens if you want high-quality images and 4K video. The camera offers a 3\" LCD to let you view and review your shots. Its 16x digital zoom function makes it easy to get an up-close view of faraway objects.",
+        "price": 132.99,
+        "images": [
+            "https://media.officedepot.com/image/upload/f_auto,q_auto/gtools/images/od/new/overlay-new"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386ef"
+        },
+        "stock": 42,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054312f0f418371649e891"
+        },
+        "name": "Logitech® MK550 Wireless Contoured Keyboard & Ambidextrous Mouse",
+        "description": "Upgrade your computing configuration with this Logitech MK550 wireless keyboard and mouse combo. The keyboard has a familiar layout and a cushioned, contoured palm rest for comfortable typing. A full-size, ambidextrous mouse allows easy use whether you are right or left-handed. This Logitech MK550 wireless keyboard and mouse combo comes with a Logitech Unifying receiver for pairing both peripherals with your PC.",
+        "price": 59.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/478284/478284_o01_logitech_wireless_keyboard__mouse_022423/478284"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f1"
+        },
+        "stock": 55,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054312f0f418371649e892"
+        },
+        "name": "Logitech® 4K Pro Webcam with HDR and Noise-Canceling Mics",
+        "description": "Logitech 4K Pro Webcam supports enhanced video collaboration from any personal workspace at home or in the office. Ultra 4K HD renders video in outstanding resolution, color, and detail. RightLight 3 and High Dynamic Range (HDR) technologies auto-adjust to help you look your best in any lighting environment, from low light to direct sunlight. Integrated dual mics with noise-canceling technology that capture audio clearly from up to one meter away and make conversation natural and clear. The free Logi Tune desktop app simplifies webcam control, customization, firmware updates, and access to multiple diagonal-field-of-view presets to perfectly frame your video.",
+        "price": 169.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/6854675/6854675_o01_112921/6854675"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f1"
+        },
+        "stock": 39,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054312f0f418371649e893"
+        },
+        "name": "Logitech® MK850 Wireless Keyboard & Mouse",
+        "description": "Stay in control without wires with this Logitech MK850 Wireless Keyboard and Laser Mouse combination. With an impressive 30 ft range and customizable functionality, both mouse and keyboard make everything from high powered presentations to simple web surfing as easy as clicking a button.",
+        "price": 79.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/632588/632588_o01_011822/632588"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f1"
+        },
+        "stock": 41,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054312f0f418371649e894"
+        },
+        "name": "Logitech H390 On-Ear USB Headset with Noise-Cancelling Mic",
+        "description": "Experience clear internet calls a with simple plug-and-play USB connection and a noise-canceling mic. Rigid left-sided mic boom is moveable and can be tucked out of the way when you're not using it. In-line controls let you control volume or mute without interrupting calls. Laser-tuned drivers deliver enhanced digital audio from your favorite music and games.",
+        "price": 24.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/607890/607890_o01/607890"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f1"
+        },
+        "stock": 49,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    },
+    {
+        "_id": {
+            "$oid": "66054312f0f418371649e895"
+        },
+        "name": "Logitech® C270 HD Webcam with Noise-Reducing Mics for Video Call",
+        "description": "With the Logitech C270 Webcam, you can confidently join any video meeting knowing you’ll always have quality audio and video. Our most affordable camera, the C270 Webcam is an upgrade for your laptop or desktop with practical features that outperform most built-in laptop cameras. It supports crisp HD 720p/30 fps video calls with diagonal 55° field of view. Logitech’s RightLight technology adjusts to your lighting conditions, producing brighter images to help you look good even in low-light and backlit situations. And the noise-reducing mic makes sure your voice comes across clearly, even in busy environments.",
+        "price": 29.99,
+        "images": [
+            "https://media.officedepot.com/images/f_auto,q_auto,e_sharpen,h_450/products/708646/708646_o01_122021/708646"
+        ],
+        "category": {
+            "$oid": "65f71d74170cb72c383386f1"
+        },
+        "stock": 35,
+        "rating": 0,
+        "numOfReviews": 0,
+        "numSold": 0,
+        "reviews": []
+    }
+]

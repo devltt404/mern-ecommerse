@@ -6,7 +6,7 @@ const AdminHeader = () => {
         <img
           src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png"
           alt=""
-          className="w-10 h-10 rounded-full object-cover"
+          className="w-10 h-10 rounded-full object-contain"
         />
       </div>
     </div>

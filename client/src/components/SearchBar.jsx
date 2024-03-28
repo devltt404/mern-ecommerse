@@ -7,12 +7,12 @@ const SearchBar = () => {
   const [keyword, setKeyword] = useState("");
 
   return (
-    <div className="flex items-center gap-4 w-[400px] rounded-3xl px-4 py-2 border border-gray-300">
-      <IoSearch size={20} className="text-gray-400" />
+    <div className="flex items-center gap-4 w-[400px] px-4 py-2 border-[1.5px] border-gray-300 text-gray-400 focus-within:text-black focus-within:border-black transition">
+      <IoSearch size={20} className="" />
       <input
         type="text"
         placeholder="Search for products..."
-        className="w-full text-sm outline-none"
+        className="w-full text-sm outline-none peer"
         value={keyword}
         onChange={(e) => {
           setKeyword(e.target.value);

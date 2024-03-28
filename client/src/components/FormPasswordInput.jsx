@@ -16,7 +16,7 @@ const FormPasswordInput = ({ label, name, placeholder }) => {
           id={name}
           name={name}
           type={showPassword ? "text" : "password"}
-          className={`mt-2 w-full border-[1.8px] rounded-lg py-2 pl-4 pr-12 mb-1 transition outline-none ${
+          className={`mt-2 w-full border-[1.8px]  py-2 pl-4 pr-12 mb-1 transition outline-none ${
             meta.touched && meta.error
               ? "border-red-500"
               : "border-gray-300 focus:border-black"

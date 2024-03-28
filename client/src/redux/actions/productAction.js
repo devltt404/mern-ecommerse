@@ -59,7 +59,7 @@ export const updateProductImage =
   async (dispatch, getState) => {
     try {
       dispatch(setProductLoading());
-      const { products } = getState().products;
+      const { products } = getState().product;
       const { data } = await productAxios.put(`/image/${products[index]._id}`, {
         image,
       });

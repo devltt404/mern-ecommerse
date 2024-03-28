@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { LuMinus } from "react-icons/lu";
 import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 import { getProducts } from "../redux/actions/productAction.js";
 import Button from "./Button.jsx";
 import Checkbox from "./Checkbox.jsx";
@@ -9,33 +10,41 @@ import RatingRow from "./RatingRow.jsx";
 
 const FilterBar = ({ categoryId }) => {
   const dispatch = useDispatch();
+  const [searchParams] = useSearchParams();
+
+  const filterOptions = { page: 1, limit: 5 };
+  if (categoryId) filterOptions.category = categoryId;
+  if (searchParams.get("keyword"))
+    filterOptions.keyword = searchParams.get("keyword");
+
   const [minPrice, setMinPrice] = useState(-1);
   const [maxPrice, setMaxPrice] = useState(-1);
   const [minRating, setMinRating] = useState(0);
 
-  const handleApplyFilter = () => {
-    const filterOptions = {};
-    if (minPrice >= 0) filterOptions.minPrice = minPrice;
-    if (maxPrice >= 0) filterOptions.maxPrice = maxPrice;
-    if (minRating > 0) filterOptions.minRating = minRating;
-    if (categoryId) filterOptions.category = categoryId;
-    dispatch(getProducts(filterOptions));
-  };
+  const handleApplyFilter = useCallback(() => {
+    const tempOptions = { ...filterOptions };
+    if (minPrice >= 0) tempOptions.minPrice = minPrice;
+    if (maxPrice >= 0) tempOptions.maxPrice = maxPrice;
+    if (minRating > 0) tempOptions.minRating = minRating;
+    if (categoryId) tempOptions.category = categoryId;
+    dispatch(getProducts(tempOptions));
+  });
 
   const handleClearFilter = () => {
     setMinPrice(-1);
     setMaxPrice(-1);
     setMinRating(0);
-    dispatch(getProducts(categoryId ? { category: categoryId } : {}));
+    dispatch(getProducts(filterOptions));
   };
 
   return (
-    <div className="py-4 px-3 h-fit rounded-lg border border-gray-300">
-      <h2 className="font-semibold text-lg text-center">Filter</h2>
+    <div className="py-4 px-3 h-fit  ">
+      <h2 className="font-semibold text-2xl mb-4">Filters</h2>
+
       <FilterItem title="Price">
         <div className="flex items-center gap-2">
           <input
-            className="p-2 border border-gray-300 rounded-lg w-24"
+            className="py-2 text-sm px-3 border border-gray-300 w-24"
             type="number"
             placeholder="Min"
             value={minPrice < 0 ? "" : minPrice}
@@ -43,7 +52,7 @@ const FilterBar = ({ categoryId }) => {
           />
           <LuMinus size={12} />
           <input
-            className="p-2 border border-gray-300 rounded-lg w-24"
+            className="py-2 text-sm px-3 border border-gray-300 w-24"
             type="number"
             placeholder="Max"
             value={maxPrice < 0 ? "" : maxPrice}
@@ -64,13 +73,13 @@ const FilterBar = ({ categoryId }) => {
                 else setMinRating(rating);
               }}
             >
-              <RatingRow rating={rating} />
+              <RatingRow rating={rating} size={15} />
             </Checkbox>
           );
         })}
       </FilterItem>
 
-      <div className="flex gap-2 mt-4 mb-1">
+      <div className="flex gap-3 mt-4 mb-1">
         <Button
           variant="fill"
           size="xs"

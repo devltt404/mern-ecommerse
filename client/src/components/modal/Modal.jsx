@@ -38,7 +38,7 @@ const Modal = ({ children, setShow }) => {
       ></div>
 
       <div className="fixed inset-0 z-50 flex items-center justify-center min-h-screen">
-        <div className="bg-white rounded-md w-full max-w-md" ref={modalContent}>
+        <div className="bg-white  w-full max-w-md" ref={modalContent}>
           {Children.map(children, (child) => {
             return cloneElement(child, { setShow });
           })}

@@ -1,5 +1,6 @@
 import Order from "../models/orderModel.js";
 import Product from "../models/productModel.js";
+import fillSalesData from "../utils/fillSalesData.js";
 import { chargeOrder } from "../utils/paypal.js";
 
 export const createOrder = async (req, res, next) => {
@@ -153,6 +154,16 @@ export const getOrderById = async (req, res, next) => {
       throw new Error("Order not found.");
     }
 
+    if (
+      (!req.user && order.userId) ||
+      (req.user &&
+        req.user.role !== "admin" &&
+        req.user._id.toString() !== order.userId.toString())
+    ) {
+      res.status(403);
+      throw new Error("You are not authorized to view this order.");
+    }
+
     res.status(200).json({
       _id: order._id,
       createdAt: order.createdAt,
@@ -164,6 +175,41 @@ export const getOrderById = async (req, res, next) => {
       total: order.total,
       payment: order.payment,
     });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getSalesData = async (req, res, next) => {
+  try {
+    let { duration } = req.query;
+
+    const time = (duration === "week" ? 7 : 365) * 86400000;
+
+    const salesData = await Order.aggregate([
+      {
+        $match: {
+          createdAt: {
+            $gte: new Date(new Date() - time),
+          },
+        },
+      },
+      {
+        $group: {
+          _id: {
+            $dateToString: {
+              format: duration === "week" ? "%b %d" : "%b",
+              date: "$createdAt",
+            },
+          },
+          totalSales: { $sum: "$total" },
+        },
+      },
+      { $set: { totalSales: { $round: ["$totalSales", 2] } } },
+      { $sort: { _id: 1 } },
+    ]);
+
+    res.status(200).json(fillSalesData(salesData, duration));
   } catch (error) {
     next(error);
   }

@@ -1,7 +1,7 @@
 const FilterItem = ({ children, title }) => {
   return (
-    <div className="mb-2">
-      <h3 className="mb-1 font-medium">{title}</h3>
+    <div className="mb-4">
+      <h3 className="text-lg mb-2 font-medium">{title}</h3>
 
       {children}
     </div>

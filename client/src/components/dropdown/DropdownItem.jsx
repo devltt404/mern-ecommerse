@@ -1,10 +1,13 @@
-const DropdownItem = ({ children, onClick, className }) => {
+const DropdownItem = ({ children, onClick, className = "" }) => {
   return (
     <li
-      className={"transition hover:bg-gray-50 cursor-pointer " + className}
+      className={
+        "transition hover:bg-gray-50 cursor-pointer py-[0.6rem] ps-8 pe-3  " +
+        className
+      }
       onClick={onClick}
     >
-      <div className="py-2 px-3 ">{children}</div>
+      {children}
     </li>
   );
 };

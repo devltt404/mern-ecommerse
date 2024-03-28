@@ -35,7 +35,7 @@ const Button = ({
     <button
       type={type}
       disabled={disabled}
-      className={`relative disabled:opacity-70 font-medium rounded-md transition ${sizeClasses[size]} ${variantClasses[variant]} ${widthClasses[width]}`}
+      className={`relative disabled:opacity-70 font-medium  transition ${sizeClasses[size]} ${variantClasses[variant]} ${widthClasses[width]}`}
       {...props}
     >
       {isLoading && (

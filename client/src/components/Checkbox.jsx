@@ -6,7 +6,7 @@ const Checkbox = ({ children, checked, onChange, value }) => {
         value={value}
         checked={checked}
         onChange={onChange}
-        className="accent-black w-3 h-3 me-2 cursor-pointer"
+        className="accent-black w-[0.85rem] h-[0.85rem] me-2 cursor-pointer"
       />
       {children}
     </label>

@@ -14,38 +14,46 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <div className="container py-8">
-      <div className="flex gap-8 mb-8">
-        <h1 className="font-semibold text-2xl mb-4">Best selling</h1>
-        <div className="flex-1">
+    <>
+      <img
+        src="https://casegear.in/cdn/shop/collections/BANNER_1600x483_4619e0a8-a847-4f88-a0d3-6c757f997faf.jpg?v=1686443967&width=2048"
+        alt=""
+      />
+      <div className="container py-8">
+        <div className="mb-10">
+          <h1 className="font-semibold text-4xl mb-6 text-center">
+            Best selling
+          </h1>
+          <div className="flex-1">
+            <ProductsList
+              products={bestSelling}
+              isLoading={productLoading}
+              size="lg"
+            />
+          </div>
+        </div>
+        <div className="mb-8">
+          <h1 className="font-semibold text-4xl mb-6 text-center">Top Rated</h1>
+          <div className="flex-1">
+            <ProductsList
+              products={topRated}
+              isLoading={productLoading}
+              size="lg"
+            />
+          </div>
+        </div>
+        <div>
+          <h1 className="font-semibold text-4xl mb-6 text-center">
+            Latest Arrivals
+          </h1>
           <ProductsList
-            products={bestSelling}
+            products={latestProducts}
             isLoading={productLoading}
-            size="md"
+            size="lg"
           />
         </div>
       </div>
-
-      <div className="flex gap-8 mb-8">
-        <h1 className="font-semibold text-2xl mb-4">Top Rated</h1>
-        <div className="flex-1">
-          <ProductsList
-            products={topRated}
-            isLoading={productLoading}
-            size="md"
-          />
-        </div>
-      </div>
-
-      <div>
-        <h1 className="font-semibold text-2xl mb-4">Latest releases</h1>
-        <ProductsList
-          products={latestProducts}
-          isLoading={productLoading}
-          size="lg"
-        />
-      </div>
-    </div>
+    </>
   );
 };
 

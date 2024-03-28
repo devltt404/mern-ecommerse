@@ -8,7 +8,7 @@ const CartSummary = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="p-6 bg-black text-white rounded-md">
+    <div className="p-6 bg-black text-white ">
       <h1 className="font-medium text-2xl">Cart Summary</h1>
       <div className="flex justify-between py-6 font-medium text-lg border-b border-b-gray-500">
         <h2 className="text-gray-200">Subtotal</h2>

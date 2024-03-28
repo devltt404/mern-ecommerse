@@ -6,7 +6,7 @@ const ReviewItem = ({ review }) => {
     <div className="py-6 border-b">
       <div className="flex gap-4 mb-2">
         <img
-          className="w-12 h-12 rounded-full object-cover"
+          className="w-12 h-12 rounded-full object-contain"
           src={review.userId?.avatar || "https://i.pravatar.cc/150"}
         />
         <div>

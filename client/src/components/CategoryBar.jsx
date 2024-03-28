@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { categorySelector } from "../redux/slices/categorySlice.js";
 
 const CategoryBar = () => {
@@ -7,17 +7,17 @@ const CategoryBar = () => {
 
   return (
     categories && (
-      <nav className="bg-gray-100 py-3">
-        <ul className="container flex item-center justify-between">
+      <nav className="bg-black ">
+        <ul className="container flex items-center justify-between">
           {categories.map((category) => (
-            <li
+            <Link
               key={category._id}
-              className="font-semibold text-gray-700 hover:text-black transition cursor-pointer"
+              to={"/category/" + category.hyphenSeparated}
             >
-              <Link to={"/category/" + category.hyphenSeparated}>
+              <li className="text-gray-200 font-medium hover:text-white transition cursor-pointer py-3">
                 {category.name.toUpperCase()}
-              </Link>
-            </li>
+              </li>
+            </Link>
           ))}
         </ul>
       </nav>

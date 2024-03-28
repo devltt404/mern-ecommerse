@@ -64,6 +64,6 @@ export const getOrder = (orderId) => async (dispatch) => {
     const { data } = await orderAxios.get("/" + orderId);
     dispatch(setOrder(data));
   } catch (error) {
-    handleActionError(dispatch, error, setOrderError, true);
+    handleActionError(dispatch, error, setOrderError);
   }
 };

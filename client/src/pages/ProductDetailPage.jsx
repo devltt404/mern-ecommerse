@@ -71,16 +71,15 @@ const ProductDetailPage = () => {
                 max={product.stock}
               />
             </div>
-            <div className="grid grid-cols-2 gap-4">
-              <Button
-                variant="fill"
-                onClick={() => dispatch(addCartItem(id, Number(quantity)))}
-                isLoading={cartLoading}
-              >
-                Add to Cart
-              </Button>
-              <Button variant="outline">Buy Now</Button>
-            </div>
+            
+            <Button
+              variant="fill"
+              onClick={() => dispatch(addCartItem(id, Number(quantity)))}
+              isLoading={cartLoading}
+              width="full"
+            >
+              Add to Cart
+            </Button>
           </div>
         </div>
         <ReviewArea />

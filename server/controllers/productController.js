@@ -186,7 +186,7 @@ export const getProductsForIndexPage = async (req, res, next) => {
           $sort: { numSold: -1 },
         },
         {
-          $limit: 3,
+          $limit: 4,
         },
         {
           $project: selectedFields,
@@ -200,7 +200,7 @@ export const getProductsForIndexPage = async (req, res, next) => {
           $sort: { rating: -1 },
         },
         {
-          $limit: 3,
+          $limit: 4,
         },
         {
           $project: selectedFields,
@@ -214,7 +214,7 @@ export const getProductsForIndexPage = async (req, res, next) => {
           $sort: { createdAt: -1 },
         },
         {
-          $limit: 5,
+          $limit: 8,
         },
         {
           $project: selectedFields,

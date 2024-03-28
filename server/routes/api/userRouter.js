@@ -8,6 +8,7 @@ import {
   loginUser,
   logoutUser,
   registerUser,
+  setRole,
   updateUser,
 } from "../../controllers/userController.js";
 import {
@@ -28,7 +29,8 @@ userRouter.get("/auth-admin", decodeToken, isAdmin, getAdmin);
 
 userRouter.get("/", decodeToken, isAdmin, getUsers);
 userRouter.put("/avatar/:id", decodeToken, isUserPermitted, deleteUser);
-userRouter.delete("/:id", decodeToken, isAdmin, deleteUser);
+userRouter.put("/role/:id", decodeToken, isAdmin, setRole);
 userRouter.put("/:id", decodeToken, isAdmin, updateUser);
+userRouter.delete("/:id", decodeToken, isAdmin, deleteUser);
 
 export default userRouter;

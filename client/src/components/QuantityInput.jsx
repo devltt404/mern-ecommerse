@@ -10,13 +10,13 @@ const QuantityInput = ({
   onQuantityInputBlur = () => {},
 }) => {
   return (
-    <div className="flex items-center rounded-3xl border-[1.5px] border-gray-300 px-2 py-2 h-fit">
+    <div className="flex items-center border-[1.5px] border-gray-200 px-2 py-2 h-fit">
       <button
-        className="text-gray-400 hover:text-black hover:bg-gray-50 rounded-full transition"
+        className="text-gray-400 hover:text-black rounded-full transition"
         onClick={onMinus}
         disabled={quantity === min}
       >
-        <LuMinus size={20} />
+        <LuMinus size={18} />
       </button>
       <input
         type="number"
@@ -26,11 +26,11 @@ const QuantityInput = ({
         onBlur={onQuantityInputBlur}
       />
       <button
-        className="text-gray-400 hover:text-black hover:bg-gray-50 transition"
+        className="text-gray-400 hover:text-black transition"
         onClick={onPlus}
         disabled={quantity === max}
       >
-        <LuPlus size={20} />
+        <LuPlus size={18} />
       </button>
     </div>
   );

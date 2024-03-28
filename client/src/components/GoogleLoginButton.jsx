@@ -21,7 +21,7 @@ const GoogleLoginButton = () => {
   return (
     <Button variant="outline" onClick={login}>
       <div className="flex items-center justify-center gap-2">
-        <IoLogoGoogle size={20} />
+        <IoLogoGoogle size={18} />
         <span>Google</span>
       </div>
     </Button>

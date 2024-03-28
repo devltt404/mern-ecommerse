@@ -19,6 +19,9 @@ const setupInterceptor = (dispatch, navigate, axiosInstances) => {
               },
             });
           }
+        } else if (error.response.status === 403) {
+          toast.error("You are not authorized to access this resource.");
+          navigate("/");
         }
         return Promise.reject(error);
       }

@@ -47,6 +47,7 @@ const Header = () => {
             <DropdownToggler>
               <IconOutlineButton Icon={IoPersonOutline} HoverIcon={IoPerson} />
             </DropdownToggler>
+
             <DropdownMenu position="right">
               {user ? (
                 <>

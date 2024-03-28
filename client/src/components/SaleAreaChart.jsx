@@ -1,38 +1,69 @@
 import { ResponsiveLine } from "@nivo/line";
+import { useCallback, useEffect, useState } from "react";
+import { fakeSalesData } from "../fakedata/index.js";
+import { orderAxios } from "../utils/axiosInstances.js";
+import MultipleToggleRadio from "./MultipleToggleRadio.jsx";
 import SkeletonWrapper from "./SkeletonWrapper.jsx";
 
-const SaleAreaChart = ({ salesData, isLoading }) => {
-  let maxSales = 0,
-    formattedData,
-    pow,
-    step,
-    tickValues;
+const SaleAreaChart = ({}) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [selected, setSelected] = useState("Demo");
+  const [formmatedData, setFormmatedData] = useState([]);
+  const [tickValues, setTickValues] = useState([]);
 
-  if (salesData) {
-    formattedData = salesData.map((sale) => {
-      if (sale.totalSales > maxSales) {
-        maxSales = sale.totalSales;
-      }
-      return {
-        x: sale.date,
-        y: sale.totalSales,
-      };
-    });
+  const getSalesData = useCallback(async () => {
+    setIsLoading(true);
 
-    pow = Math.pow(10, String(parseInt(maxSales)).length - 1);
+    const { data } =
+      selected !== "Demo"
+        ? await orderAxios.get("/sales", {
+            params: {
+              duration: selected.toLowerCase(),
+            },
+          })
+        : {
+            data: fakeSalesData,
+          };
+
+    let maxSales = 0;
+    setFormmatedData(
+      data.map((sale) => {
+        maxSales = Math.max(maxSales, sale.totalSales);
+        return {
+          x: sale.date,
+          y: sale.totalSales,
+        };
+      })
+    );
+
+    const pow = Math.pow(10, String(parseInt(maxSales)).length - 1);
     maxSales = Math.floor(maxSales / pow) * pow;
-    step = maxSales / 4;
-    tickValues = [step, step * 2, step * 3, step * 4];
-  }
+    const step = maxSales / 4;
+    setTickValues([step, step * 2, step * 3, step * 4]);
+
+    setIsLoading(false);
+  });
+
+  useEffect(() => {
+    getSalesData();
+  }, [selected]);
 
   return (
     <SkeletonWrapper isLoading={isLoading}>
       <div className="py-6 bg-white shadow-lg px-8 h-[25rem]">
-        <h2 className="text-xl font-semibold">Sales Analytics</h2>
-        {salesData.length > 0 && (
+        <div className="flex justify-between items-center">
+          <h2 className="text-xl font-semibold">Sales Analytics</h2>
+          <MultipleToggleRadio
+            values={["Demo", "Week", "Year"]}
+            selected={selected}
+            setSelected={setSelected}
+            name="chart-options"
+          />
+        </div>
+        {formmatedData.length > 0 && (
           <ResponsiveLine
             margin={{ top: 30, right: 30, bottom: 60, left: 70 }}
-            data={[{ id: "sale", data: formattedData }]}
+            data={[{ id: "sale", data: formmatedData }]}
             xScale={{ type: "point" }}
             yScale={{ type: "linear" }}
             axisLeft={{ format: (v) => `$${v}`, tickValues }}
@@ -62,6 +93,12 @@ const SaleAreaChart = ({ salesData, isLoading }) => {
             pointBorderColor="#171717"
             useMesh={true}
             pointSize={8}
+            tooltip={({ point }) => (
+              <div className="bg-white p-4 shadow-lg ">
+                <h3 className="text-lg font-semibold">{point.data.x}</h3>
+                <p className="text-gray-500">Sales: ${point.data.y}</p>
+              </div>
+            )}
           />
         )}
       </div>

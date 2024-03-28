@@ -1,3 +1,4 @@
+import { googleLogout } from "@react-oauth/google";
 import toast from "react-hot-toast";
 import { cartAxios, userAxios } from "../../utils/axiosInstances.js";
 import { handleActionError } from "../../utils/handleActionError.js";
@@ -15,7 +16,7 @@ export const authUser =
   async (dispatch) => {
     try {
       dispatch(setUserLoading());
-      console.log(userData);
+
       const { data } = await userAxios.post(endpoint, userData);
       dispatch(setUser(data.user));
 
@@ -46,7 +47,6 @@ export const getUser = () => async (dispatch) => {
     const { data } = await userAxios.get("/auth");
     dispatch(setUser(data.user));
     dispatch(setCart(data.cart));
-    toast.success("Welcome back " + data.user.name);
   } catch (error) {
     handleActionError(dispatch, error, setUserError);
   }
@@ -57,7 +57,6 @@ export const getAdmin = () => async (dispatch) => {
     dispatch(setUserLoading());
     const { data } = await userAxios.get("/auth-admin");
     dispatch(setUser(data.user));
-    toast.success("Welcome back " + data.user.name);
   } catch (error) {
     handleActionError(dispatch, error, setUserError);
   }
@@ -69,6 +68,7 @@ export const logoutUser =
     try {
       dispatch(setUserLoading());
       await userAxios.post("/logout");
+      googleLogout();
 
       dispatch(setUser(null));
       dispatch(setCart([]));
@@ -117,3 +117,24 @@ export const updateUserAvatar =
       handleActionError(dispatch, error, setUserError, true);
     }
   };
+
+export const setRole = (userId) => async (dispatch, getState) => {
+  try {
+    dispatch(setUserLoading());
+    const { data } = await userAxios.put("/role/" + userId);
+    dispatch(
+      setUsers({
+        users: getState().user.users.map((user) => {
+          if (user._id === userId)
+            return { ...user, role: user.role === "admin" ? "user" : "admin" };
+          return user;
+        }),
+        pagination: getState().user.pagination,
+        totalUsers: getState().user.totalUsers,
+      })
+    );
+    toast.success(data.message);
+  } catch (error) {
+    handleActionError(dispatch, error, setUserError, true);
+  }
+};

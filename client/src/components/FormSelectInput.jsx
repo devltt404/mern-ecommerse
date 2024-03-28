@@ -13,7 +13,7 @@ const FormSelectInput = ({ label = "", name, children }) => {
       <Field
         name={name}
         as="select"
-        className={`mt-2 w-full border-[1.8px] rounded-lg py-2 px-4 mb-1 transition outline-none ${
+        className={`mt-2 w-full border-[1.8px]  py-2 px-4 mb-1 transition outline-none ${
           meta.touched && meta.error
             ? "border-red-500"
             : "border-gray-300 focus:border-black"

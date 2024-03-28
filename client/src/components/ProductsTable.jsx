@@ -51,10 +51,10 @@ const ProductsTable = () => {
               products.map((product, index) => (
                 <TableBodyRow key={product._id}>
                   <TableBodyItem className="flex items-center gap-3">
-                    <div className="relative overflow-hidden rounded-md group">
+                    <div className="relative overflow-hidden  group">
                       <img
                         src={product.images[0]}
-                        className="w-20 h-20 object-cover inline-block"
+                        className="w-20 h-20 object-contain inline-block"
                       />
                       <div
                         className="w-full h-full absolute z-10 top-0 left-0 opacity-0 transition group-hover:opacity-100 group-hover:cursor-pointer"

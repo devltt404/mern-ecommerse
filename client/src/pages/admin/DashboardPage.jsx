@@ -19,7 +19,7 @@ const DashboardPage = () => {
     totalProducts: 0,
     totalUsers: 0,
     salesInPastWeek: [],
-    bestSellingProducts: []
+    bestSellingProducts: [],
   });
 
   const getStats = async () => {
@@ -63,14 +63,14 @@ const DashboardPage = () => {
 
       <div className="grid grid-cols-12 gap-8">
         <div className="col-span-8">
-          <SaleAreaChart
-            isLoading={statsLoading}
-            salesData={stats.salesInPastWeek}
-          />
+          <SaleAreaChart />
         </div>
 
         <div className="col-span-4">
-          <BestSellingProducts isLoading={statsLoading} products={stats.bestSellingProducts} />
+          <BestSellingProducts
+            isLoading={statsLoading}
+            products={stats.bestSellingProducts}
+          />
         </div>
       </div>
     </div>

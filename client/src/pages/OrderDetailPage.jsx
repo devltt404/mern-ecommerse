@@ -67,9 +67,9 @@ const OrderDetailPage = () => {
                 width="30px"
                 height="30px"
                 viewBox="0 -140 780 780"
-                enable-background="new 0 0 780 500"
+                enableBackground="new 0 0 780 500"
                 version="1.1"
-                xml:space="preserve"
+                xmlSpace="preserve"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <rect width="780" height="500" fill="#0E4595" />

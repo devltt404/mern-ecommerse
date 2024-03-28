@@ -44,7 +44,7 @@ const productSlice = createSlice({
     setProductImage: (state, action) => {
       state.productLoading = false;
       state.productError = null;
-      state.product[action.payload.index].images[0] = action.payload.image;
+      state.products[action.payload.index].images[0] = action.payload.image;
     },
     addProductReview: (state, action) => {
       state.productLoading = false;

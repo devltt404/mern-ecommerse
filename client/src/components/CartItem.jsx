@@ -53,7 +53,7 @@ const CartItem = ({ product, quantity }) => {
       <img
         src={product.images[0]}
         alt="product"
-        className="w-24 h-24 object-cover rounded-md"
+        className="w-24 h-24 object-contain "
       />
       <div className="px-4 w-72">
         <h3 className="font-bold text-lg">{product.name}</h3>

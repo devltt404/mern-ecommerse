@@ -6,7 +6,7 @@ const StarIcon = ({ starIndex, rating, size = 15, ...props }) => {
       {starIndex > rating ? (
         0 <= starIndex - rating && starIndex - rating <= 0.5 ? (
           <div className="relative">
-            <TbStarFilled size={size} className=" text-yellow-400" />
+            <TbStarFilled size={size} className=" text-black" />
             <TbStarFilled
               size={size}
               className="text-gray-300 absolute top-0"
@@ -17,7 +17,7 @@ const StarIcon = ({ starIndex, rating, size = 15, ...props }) => {
           <TbStarFilled size={size} className="text-gray-300" />
         )
       ) : (
-        <TbStarFilled size={size} className="text-yellow-400" />
+        <TbStarFilled size={size} className="text-black" />
       )}
     </div>
   );

@@ -1,7 +1,6 @@
 import Order from "../models/orderModel.js";
 import Product from "../models/productModel.js";
 import User from "../models/userModel.js";
-import getDailySales from "../utils/getDailySales.js";
 
 export const getStats = async (req, res, next) => {
   try {
@@ -57,7 +56,7 @@ export const getStats = async (req, res, next) => {
       totalProducts: stats[1],
       totalOrders: stats[2],
       totalSales: stats[3][0].total,
-      salesInPastWeek: getDailySales(stats[4]),
+      salesInPastWeek: stats[4],
       bestSellingProducts: stats[5],
     });
   } catch (error) {
