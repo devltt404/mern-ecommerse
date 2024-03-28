@@ -17,7 +17,7 @@ const CartPage = () => {
   }, []);
 
   return (
-    <div className="container py-4">
+    <div className="container py-8">
       <h1 className="font-semibold text-3xl mb-2">My Cart</h1>
       <p className="mb-4">You have {cart.length} items in your cart</p>
 

@@ -38,10 +38,11 @@ const ProductDetailPage = () => {
   ) : (
     product && (
       <div className="container py-8">
-        <div className="grid gap-8 grid-cols-2 mb-4">
+        <div className="grid gap-14 grid-cols-2 mb-4">
           <div>
             <img src={product.images[0]} alt="Product" />
           </div>
+
           <div>
             <p className="text-gray-700">{product.category.name}</p>
             <h2 className="text-3xl mb-2 font-semibold">{product.name}</h2>
@@ -71,7 +72,7 @@ const ProductDetailPage = () => {
                 max={product.stock}
               />
             </div>
-            
+
             <Button
               variant="fill"
               onClick={() => dispatch(addCartItem(id, Number(quantity)))}

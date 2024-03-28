@@ -3,7 +3,7 @@ import RatingRow from "./RatingRow.jsx";
 
 const ReviewItem = ({ review }) => {
   return (
-    <div className="py-6 border-b">
+    <div className="py-6 [&:not(:last-child)]:border-b">
       <div className="flex gap-4 mb-2">
         <img
           className="w-12 h-12 rounded-full object-contain"

@@ -22,7 +22,7 @@ const DropdownMenu = ({
         e.stopPropagation();
         toggleDropdown();
       }}
-      className={`absolute flex-col bg-white border border-gray-300 shadow-md mt-1 overflow-hidden z-10 ${
+      className={`min-w-max absolute flex-col bg-white border border-gray-300 shadow-md mt-1 overflow-hidden z-10 ${
         widthClasses[width]
       } ${positionClasses[position]} ${
         isOpen

@@ -2,7 +2,7 @@ import { GoogleOAuthProvider } from "@react-oauth/google";
 import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import SearchPage from "./components/SearchPage.jsx";
 import AdminContainer from "./containers/AdminContainer.jsx";
 import NoUserOnlyContainer from "./containers/NoUserOnlyContainer.jsx";
@@ -30,6 +30,7 @@ import { axiosInstances } from "./utils/axiosInstances.js";
 import setupInterceptor from "./utils/setupInterceptor.js";
 
 function App() {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isAxiosSetupped, setIsAxiosSetupped] = useState(false);
@@ -40,6 +41,10 @@ function App() {
       setIsAxiosSetupped(true);
     }
   }, []);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [pathname]);
 
   return (
     isAxiosSetupped && (

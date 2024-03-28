@@ -25,7 +25,7 @@ const Button = ({
   };
 
   const variantClasses = {
-    outline: "border-[2px] border-gray-300 text-gray-700 hover:bg-gray-50",
+    outline: "border-[1.5px] border-black hover:bg-gray-50",
     fill: "bg-black text-white hover:shadow-lg disabled:hover:shadow-none",
     "inverse-fill":
       "bg-white text-black border-[2px] border-black hover:bg-gray-100",

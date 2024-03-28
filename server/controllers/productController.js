@@ -2,8 +2,16 @@ import Product from "../models/productModel.js";
 
 export const getProducts = async (req, res, next) => {
   try {
-    const { category, minPrice, maxPrice, minRating, keyword, page, limit } =
-      req.query;
+    const {
+      category,
+      minPrice,
+      maxPrice,
+      minRating,
+      keyword,
+      page,
+      limit,
+      sortBy,
+    } = req.query;
     if (!page || !limit) {
       res.status(400);
       throw new Error("Please provide page and limit parameters");
@@ -26,10 +34,19 @@ export const getProducts = async (req, res, next) => {
       filterOptions.name = { $regex: keyword, $options: "i" };
     }
 
+    const sortOptions = {
+      latest: { createdAt: -1 },
+      priceAsc: { price: 1 },
+      priceDesc: { price: -1 },
+      topRated: { rating: -1 },
+      bestSelling: { numSold: -1 },
+    };
+
     const products = await Product.find(filterOptions)
       .populate("category")
       .skip((page - 1) * limit)
       .limit(limit)
+      .sort(sortOptions[sortBy] || {})
       .lean();
 
     const numProducts = await Product.countDocuments(filterOptions);

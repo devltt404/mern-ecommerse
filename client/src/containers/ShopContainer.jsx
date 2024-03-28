@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer.jsx";
 import Header from "../components/Header.jsx";
 import Loading from "../components/Loading.jsx";
 import { getCategories } from "../redux/actions/categoryAction.js";
@@ -26,6 +27,7 @@ const ShopContainer = () => {
     <>
       <Header />
       <Outlet />
+      <Footer />
     </>
   );
 };

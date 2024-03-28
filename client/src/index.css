@@ -45,3 +45,10 @@ body{
   @apply w-[1000px] mx-auto;
 }
 
+.footer-text{
+  @apply text-gray-300 transition hover:text-white;
+}
+
+.footer ul>li{
+  @apply footer-text;
+}

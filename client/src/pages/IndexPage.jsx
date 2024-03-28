@@ -18,10 +18,11 @@ const IndexPage = () => {
       <img
         src="https://casegear.in/cdn/shop/collections/BANNER_1600x483_4619e0a8-a847-4f88-a0d3-6c757f997faf.jpg?v=1686443967&width=2048"
         alt=""
+        className="mx-auto"
       />
-      <div className="container py-8">
-        <div className="mb-10">
-          <h1 className="font-semibold text-4xl mb-6 text-center">
+      <div className="container py-14">
+        <div className="mb-8">
+          <h1 className="font-semibold text-3xl mb-6 text-center">
             Best selling
           </h1>
           <div className="flex-1">
@@ -32,8 +33,9 @@ const IndexPage = () => {
             />
           </div>
         </div>
+
         <div className="mb-8">
-          <h1 className="font-semibold text-4xl mb-6 text-center">Top Rated</h1>
+          <h1 className="font-semibold text-3xl mb-6 text-center">Top Rated</h1>
           <div className="flex-1">
             <ProductsList
               products={topRated}
@@ -42,8 +44,9 @@ const IndexPage = () => {
             />
           </div>
         </div>
+
         <div>
-          <h1 className="font-semibold text-4xl mb-6 text-center">
+          <h1 className="font-semibold text-3xl mb-6 text-center">
             Latest Arrivals
           </h1>
           <ProductsList

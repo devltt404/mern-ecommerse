@@ -19,20 +19,27 @@ const CategoryProductsPage = () => {
   const { products, productLoading, pagination } = useSelector(productSelector);
   const { categories } = useSelector(categorySelector);
 
-  const sortByOptions = [
-    ["Relevance", "relevance"],
-    ["Price: Low to High", "priceLowToHigh"],
-    ["Price: High to Low", "priceHighToLow"],
-  ];
+  const sortByOptions = {
+    "Best Rated": "topRated",
+    "Price: Low to High": "priceAsc",
+    "Price: High to Low": "priceDesc",
+  };
 
   const [categoryId, setCategoryId] = useState(null);
-  const [sortBy, setSortBy] = useState("Relevance");
+  const [sortBy, setSortBy] = useState("Best Rated");
 
   useEffect(() => {
     const res = categories.find((c) => c.hyphenSeparated === category)._id;
     setCategoryId(res);
-    dispatch(getProducts({ category: res, page: 1, limit: 5 }));
-  }, [category]);
+    dispatch(
+      getProducts({
+        category: res,
+        page: 1,
+        limit: 5,
+        sortBy: sortByOptions[sortBy],
+      })
+    );
+  }, [category, sortBy]);
 
   return (
     categoryId && (
@@ -53,15 +60,15 @@ const CategoryProductsPage = () => {
               </DropdownToggler>
 
               <DropdownMenu position="right" width="full">
-                {sortByOptions.map((item) => (
+                {Object.keys(sortByOptions).map((key) => (
                   <DropdownItem
                     className="text-sm"
-                    key={item[1]}
+                    key={sortByOptions[key]}
                     onClick={() => {
-                      setSortBy(item[0]);
+                      setSortBy(key);
                     }}
                   >
-                    {item[0]}
+                    {key}
                   </DropdownItem>
                 ))}
               </DropdownMenu>
@@ -75,7 +82,14 @@ const CategoryProductsPage = () => {
               page={pagination.page}
               totalPages={pagination.totalPages}
               handlePageSelected={(page) => {
-                dispatch(getProducts({ category: categoryId, page, limit: 5 }));
+                dispatch(
+                  getProducts({
+                    category: categoryId,
+                    page,
+                    limit: 5,
+                    sortBy: sortByOptions[sortBy],
+                  })
+                );
               }}
             />
           )}
