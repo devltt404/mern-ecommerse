@@ -21,18 +21,20 @@ const OrderDetailPage = () => {
   ) : (
     order && (
       <div className="container py-4">
-        <h1 className="font-semibold text-3xl mb-2">Order Detail</h1>
+        <h1 className="mb-2 text-3xl font-semibold">Order Detail</h1>
 
-        <div className="text-gray-500 flex items-center gap-2 mb-4 text-sm">
+        <div className="flex gap-2 mb-4 text-sm text-gray-500 min-sm:items-center sm:flex-col">
           <span>
             Ordered on {moment(order.createdAt).format("MM/DD/YYYY - hh:mm A")}
           </span>
-          <div className="bg-gray-400 w-[1px] h-[15px]"></div>
+
+          <div className="sm:hidden bg-gray-400 w-[1px] h-[15px]"></div>
+
           <span>Order #{order._id}</span>
         </div>
 
-        <div className="grid grid-cols-3 mb-6">
-          <div>
+        <div className="grid grid-cols-3 gap-6 mb-6 lg:grid-cols-2 sm:grid-cols-1">
+          <div className="flex flex-col gap-1">
             <h2 className="text-lg font-medium">Customer Info</h2>
             <p>
               <span className="text-gray-500">Name: </span>
@@ -48,7 +50,7 @@ const OrderDetailPage = () => {
             </p>
           </div>
 
-          <div>
+          <div className="flex flex-col gap-1">
             <h2 className="text-lg font-medium">Shipping Address</h2>
             <p>
               <span className="text-gray-500">Address: </span>
@@ -60,9 +62,9 @@ const OrderDetailPage = () => {
             </p>
           </div>
 
-          <div>
+          <div className="flex flex-col gap-1">
             <h2 className="text-lg font-medium">Payment Method</h2>
-            <p className="flex gap-2 items-center">
+            <p className="flex items-center gap-2">
               <svg
                 width="30px"
                 height="30px"
@@ -87,9 +89,9 @@ const OrderDetailPage = () => {
           </div>
         </div>
 
-        <h2 className="text-lg font-medium mb-2">Order Items</h2>
+        <h2 className="mb-3 text-xl font-medium">Order Items</h2>
 
-        <div className="flex flex-col gap-2 mb-4">
+        <div className="flex flex-col gap-4 mb-4">
           {order.orderProducts.map((product) => (
             <CheckoutItem
               key={product._id}

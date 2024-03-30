@@ -14,7 +14,7 @@ const ProductsPage = () => {
 
   return (
     <div>
-      <div className="text-right mb-6">
+      <div className="mb-6 text-right">
         <Button
           variant="fill"
           size="sm"

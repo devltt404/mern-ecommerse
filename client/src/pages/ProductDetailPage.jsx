@@ -38,16 +38,18 @@ const ProductDetailPage = () => {
   ) : (
     product && (
       <div className="container py-8">
-        <div className="grid gap-14 grid-cols-2 mb-4">
-          <div>
-            <img src={product.images[0]} alt="Product" />
-          </div>
+        <div className="grid grid-cols-2 mb-8 md:grid-cols-1 gap-14">
+          <img
+            src={product.images[0]}
+            alt="Product"
+            className="mx-auto max-h-[450px]"
+          />
 
           <div>
             <p className="text-gray-700">{product.category.name}</p>
-            <h2 className="text-3xl mb-2 font-semibold">{product.name}</h2>
+            <h2 className="mb-2 text-3xl font-semibold">{product.name}</h2>
 
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 my-4">
               <RatingRow rating={product.rating} />
               <span>
                 {product.rating} ({product.numOfReviews})
@@ -58,10 +60,11 @@ const ProductDetailPage = () => {
               <span>{product.numSold} sold</span>
             </div>
 
-            <h3 className="text-2xl mb-2 font-medium">${product.price}</h3>
-            <h3 className="font-medium">Description</h3>
-            <p className="text-gray-600 mb-4">{product.description}</p>
-            <div className="flex items-center mb-6">
+            <h3 className="mb-4 text-2xl font-medium">${product.price}</h3>
+            <h3 className="mb-1 text-lg font-medium">Description</h3>
+            <p className="leading-6 text-gray-600">{product.description}</p>
+
+            <div className="flex items-center my-6">
               <span className="font-medium me-4">Quantity</span>
               <QuantityInput
                 quantity={quantity}

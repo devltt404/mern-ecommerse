@@ -4,16 +4,15 @@ import RatingRow from "./RatingRow.jsx";
 const ProductCard = ({ product }) => {
   return (
     <Link to={`/product/${product._id}`}>
-      <div className="bg-white hover:scale-105 transition cursor-pointer">
+      <div className="transition bg-white cursor-pointer hover:scale-105">
         <img
           src={product.images[0]}
           alt="product"
-          className="w-full aspect-square object-contain"
+          className="object-contain w-full aspect-square"
         />
-
-        <div className="p-3">
-          <p className="text-gray-500 text-sm">{product.category.name}</p>
-          <h3 className="text-lg font-semibold truncate -mt-1 ">
+        <div className="p-2">
+          <p className="text-sm text-gray-500">{product.category.name}</p>
+          <h3 className="-mt-1 text-lg font-semibold truncate ">
             {product.name}
           </h3>
           <RatingRow rating={product.rating} />

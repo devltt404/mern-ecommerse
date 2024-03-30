@@ -3,8 +3,8 @@ import SkeletonWrapper from "./SkeletonWrapper.jsx";
 const BestSellingProducts = ({ products, isLoading }) => {
   return (
     <SkeletonWrapper className="h-full" isLoading={isLoading}>
-      <div className="bg-white h-full pt-6 px-6 shadow-lg">
-        <h2 className="text-xl font-semibold mb-2">Best selling</h2>
+      <div className="h-full px-6 pt-6 bg-white shadow-lg">
+        <h2 className="mb-2 text-xl font-semibold">Best selling</h2>
         <ul>
           {products.map((product) => (
             <li
@@ -15,10 +15,10 @@ const BestSellingProducts = ({ products, isLoading }) => {
                 <img
                   src={product.images[0]}
                   alt="product"
-                  className="w-12 h-12 object-contain rounded"
+                  className="object-contain w-12 h-12 rounded"
                 />
-                <div className="ml-4 min-w-0">
-                  <h3 className="font-semibold truncate">{product.name}</h3>
+                <div className="min-w-0 ml-4">
+                  <h3 className="font-medium truncate">{product.name}</h3>
                 </div>
               </div>
 

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import SearchPage from "./components/SearchPage.jsx";
 import AdminContainer from "./containers/AdminContainer.jsx";
 import NoUserOnlyContainer from "./containers/NoUserOnlyContainer.jsx";

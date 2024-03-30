@@ -1,3 +1,5 @@
+import { Children, cloneElement } from "react";
+
 const DropdownMenu = ({
   children,
   isOpen,
@@ -30,7 +32,9 @@ const DropdownMenu = ({
           : "invisible opacity-0 -translate-y-3"
       } transition-all duration-200`}
     >
-      {children}
+      {Children.map(children, (child) => {
+        return cloneElement(child, { position });
+      })}
     </ul>
   );
 };

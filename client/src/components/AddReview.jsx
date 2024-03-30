@@ -34,8 +34,8 @@ const AddReview = () => {
       }}
     >
       {(formik) => (
-        <Form className="my-2 flex flex-col gap-2">
-          <RatingFormInput name="rating" />
+        <Form className="flex flex-col gap-2 my-2">
+          <RatingFormInput  name="rating" />
           <FormInput
             name="title"
             label="Title"

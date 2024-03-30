@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { IoTrashOutline, IoTrashSharp } from "react-icons/io5";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   deleteCartItem,
   updateItemQuantity,
@@ -14,8 +15,14 @@ const CartItem = ({ product, quantity }) => {
 
   const [inputQuantity, setInputQuantity] = useState(quantity);
 
+  useEffect(() => {
+    setInputQuantity(quantity);
+  }, [quantity]);
+
   const onQuantityInputBlur = () => {
-    if (inputQuantity < 1) {
+    if (inputQuantity == 0) {
+      dispatch(deleteCartItem(product._id));
+    } else if (inputQuantity < 0) {
       toast.error("Quantity cannot be less than 0");
       setInputQuantity(1);
       dispatch(updateItemQuantity({ id: product._id, quantity: 1 }));
@@ -49,42 +56,49 @@ const CartItem = ({ product, quantity }) => {
   };
 
   return (
-    <div className="grid grid-cols-[6rem,1fr,auto,5rem] border-gray-300">
-      <img
-        src={product.images[0]}
-        alt="product"
-        className="w-24 h-24 object-contain "
-      />
-      <div className="px-4 w-72">
-        <h3 className="font-bold text-lg">{product.name}</h3>
-        <p className="text-gray-500">{product.category.name}</p>
-      </div>
-      <div className="me-10">
-        <QuantityInput
-          quantity={inputQuantity}
-          setQuantity={setInputQuantity}
-          onPlus={handlePlus}
-          onMinus={handleMinus}
-          min={0}
-          max={product.stock}
-          onQuantityInputBlur={onQuantityInputBlur}
+    <Link to={`/product/${product._id}`}>
+      <div className="w-full grid grid-cols-[6rem,1fr,5rem]">
+        <img
+          src={product.images[0]}
+          alt="product"
+          className="self-center object-contain w-24 h-24"
         />
-      </div>
-      <div className="flex flex-col justify-between text-right text-lg">
-        <p className="font-semibold">
-          ${(product.price * quantity).toFixed(2)}
-        </p>
-        <div>
-          <IconOutlineButton
-            Icon={IoTrashOutline}
-            HoverIcon={IoTrashSharp}
-            onClick={() => {
-              dispatch(deleteCartItem(product._id));
-            }}
-          />
+
+        <div className="flex justify-between gap-6 px-4 xl:flex-col me-10 xl:me-4">
+          <div>
+            <p className="text-sm text-gray-500">{product.category.name}</p>
+            <h3 className="text-lg font-medium">{product.name}</h3>
+          </div>
+
+          <div>
+            <QuantityInput
+              quantity={inputQuantity}
+              setQuantity={setInputQuantity}
+              onPlus={handlePlus}
+              onMinus={handleMinus}
+              min={0}
+              max={product.stock}
+              onQuantityInputBlur={onQuantityInputBlur}
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-between text-lg text-right">
+          <p className="font-semibold">
+            ${(product.price * quantity).toFixed(2)}
+          </p>
+          <div>
+            <IconOutlineButton
+              Icon={IoTrashOutline}
+              HoverIcon={IoTrashSharp}
+              onClick={() => {
+                dispatch(deleteCartItem(product._id));
+              }}
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

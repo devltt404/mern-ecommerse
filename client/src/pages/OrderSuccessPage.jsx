@@ -1,9 +1,5 @@
-
-
 const OrderSuccessPage = () => {
-  return (
-    <div>OrderSuccessPage</div>
-  );
+  return <div>OrderSuccessPage</div>;
 };
 
 export default OrderSuccessPage;

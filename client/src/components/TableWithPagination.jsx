@@ -7,9 +7,9 @@ const TableWithPagination = ({
   totalPages,
 }) => {
   return (
-    <div>
+    <div >
       <Table />
-      
+
       <Pagination
         handlePageSelected={handlePageSelected}
         page={page}

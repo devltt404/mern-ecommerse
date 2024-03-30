@@ -96,6 +96,7 @@ export const createOrder = async (req, res, next) => {
 export const getUserOrders = async (req, res, next) => {
   try {
     await req.user.populate("orders");
+    
     res.status(200).json(
       req.user.orders.map((order) => {
         return {
@@ -103,6 +104,8 @@ export const getUserOrders = async (req, res, next) => {
           total: order.total,
           createdAt: order.createdAt,
           shippingAddress: order.shippingAddress,
+          orderProducts: order.orderProducts,
+          
         };
       })
     );

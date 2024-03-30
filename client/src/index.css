@@ -14,9 +14,17 @@ input[type=number] {
 }
 
 
+/* fix Tailwind CSS’s h-screen on iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
+}
+
 /* Webkit Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -42,7 +50,7 @@ body{
 }
 
 .container{
-  @apply w-[1000px] mx-auto;
+  @apply sm:px-4 md:px-8 lg:px-14 xl:px-20 mx-auto max-w-[1200px];
 }
 
 .footer-text{
@@ -52,3 +60,4 @@ body{
 .footer ul>li{
   @apply footer-text;
 }
+

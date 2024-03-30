@@ -50,27 +50,29 @@ const ProductsTable = () => {
             {products.length > 0 &&
               products.map((product, index) => (
                 <TableBodyRow key={product._id}>
-                  <TableBodyItem className="flex items-center gap-3">
-                    <div className="relative overflow-hidden  group">
+                  <TableBodyItem className="flex md:flex-col min-md:items-center min-w-60 gap-3">
+                    <div className="relative overflow-hidden group shrink-0">
                       <img
                         src={product.images[0]}
-                        className="w-20 h-20 object-contain inline-block"
+                        className="inline-block object-contain w-20 h-20"
                       />
+
                       <div
-                        className="w-full h-full absolute z-10 top-0 left-0 opacity-0 transition group-hover:opacity-100 group-hover:cursor-pointer"
+                        className="absolute top-0 left-0 z-10 w-20 h-20 transition opacity-0 group-hover:opacity-100 group-hover:cursor-pointer"
                         onClick={() => {
                           setProductSelectedIndex(index);
                           setShowModal(true);
                         }}
                       >
-                        <div className="bg-black bg-opacity-50 w-full h-full">
+                        <div className="w-full h-full bg-black bg-opacity-50">
                           <TbUpload
                             size="35"
-                            className="mx-auto translate-y-1/2 text-white"
+                            className="mx-auto text-white translate-y-1/2"
                           />
                         </div>
                       </div>
                     </div>
+
                     <div>
                       <p className="text-sm text-gray-600">
                         {product.category.name}
@@ -78,7 +80,7 @@ const ProductsTable = () => {
                       <p className="font-semibold">{product.name}</p>
                     </div>
                   </TableBodyItem>
-                  <TableBodyItem className="text-center font-medium">
+                  <TableBodyItem className="font-medium text-center">
                     ${product.price}
                   </TableBodyItem>
                   <TableBodyItem className="text-center">
@@ -88,20 +90,20 @@ const ProductsTable = () => {
                     {product.stock}
                   </TableBodyItem>
                   <TableBodyItem className="text-center">
-                    <div className="flex items-center gap-2 justify-end">
+                    <div className="flex items-center justify-end gap-3">
                       <button
                         type="button"
                         onClick={() => {
                           navigate("/admin/products/edit");
                         }}
                       >
-                        <HiOutlinePencilSquare size={20} />
+                        <HiOutlinePencilSquare size={22} />
                       </button>
                       <button
                         type="button"
                         onClick={() => dispatch(deleteProduct(product._id))}
                       >
-                        <HiOutlineTrash size={20} />
+                        <HiOutlineTrash size={22} />
                       </button>
                     </div>
                   </TableBodyItem>
@@ -128,7 +130,7 @@ const ProductsTable = () => {
               <input
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-                className="w-full py-2 outline-none border-b border-b-gray-300 focus:border-b-gray-500 mb-6"
+                className="w-full py-2 mb-6 border-b outline-none border-b-gray-300 focus:border-b-gray-500"
                 type="text"
                 placeholder="Enter image URL"
                 autoFocus

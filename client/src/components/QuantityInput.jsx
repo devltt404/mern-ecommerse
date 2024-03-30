@@ -1,4 +1,4 @@
-import { LuMinus, LuPlus } from "react-icons/lu";
+import { HiMiniMinus, HiMiniPlus } from "react-icons/hi2";
 
 const QuantityInput = ({
   quantity,
@@ -10,27 +10,27 @@ const QuantityInput = ({
   onQuantityInputBlur = () => {},
 }) => {
   return (
-    <div className="flex items-center border-[1.5px] border-gray-200 px-2 py-2 h-fit">
+    <div className="flex items-center border-[1.5px] border-gray-200 px-2 py-2 h-fit w-fit">
       <button
-        className="text-gray-400 hover:text-black rounded-full transition"
+        className="text-gray-400 transition hover:text-black"
         onClick={onMinus}
         disabled={quantity === min}
       >
-        <LuMinus size={18} />
+        <HiMiniMinus size={20} />
       </button>
       <input
         type="number"
-        className="w-8 bg-transparent text-center outline-none"
+        className="w-6 text-center bg-transparent outline-none"
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}
         onBlur={onQuantityInputBlur}
       />
       <button
-        className="text-gray-400 hover:text-black transition"
+        className="text-gray-400 transition hover:text-black"
         onClick={onPlus}
         disabled={quantity === max}
       >
-        <LuPlus size={18} />
+        <HiMiniPlus size={20} />
       </button>
     </div>
   );

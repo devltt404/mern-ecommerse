@@ -23,10 +23,8 @@ const CheckoutPage = () => {
     </>
   ) : (
     cart[0]?.productDetail && (
-      <div className="container flex py-4">
-        <div className="flex-1">
-          <CheckoutForm />
-        </div>
+      <div className="container grid py-8 grid-cols-[55%_45%] lg:grid-cols-1 gap-y-12 gap-x-8">
+        <CheckoutForm />
         <CheckoutSummary />
       </div>
     )

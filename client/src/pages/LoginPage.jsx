@@ -35,8 +35,8 @@ const LoginPage = () => {
       }}
     >
       {(formik) => (
-        <Form className="w-[500px] mx-auto my-8 flex flex-col">
-          <h1 className="text-center text-3xl mb-4 font-semibold">
+        <Form className="flex flex-col max-w-lg px-4 mx-auto my-8 ">
+          <h1 className="mb-3 text-3xl font-semibold text-center">
             Welcome back!
           </h1>
           <div>
@@ -44,13 +44,13 @@ const LoginPage = () => {
               Don't have an account?{" "}
               <Link
                 to="/register"
-                className="font-medium text-black hover:underline transition"
+                className="font-medium text-black transition hover:underline"
               >
                 Register
               </Link>
             </p>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 mb-1">
             <FormInput
               label="Email"
               type="text"
@@ -63,23 +63,27 @@ const LoginPage = () => {
               name="password"
               placeholder="Enter your password"
             />
-            <div>
-              <p className="text-right text-gray-600">Forgot your password?</p>
-            </div>
-            <Button
-              type="submit"
-              variant="fill"
-              disabled={!formik.dirty || !formik.isValid}
-            >
-              Login
-            </Button>
-            <div className="flex items-center gap-6">
-              <div className="border flex-1"></div>
-              <p className="text-center text-gray-500">Or continue with</p>
-              <div className="border flex-1"></div>
-            </div>
-            <GoogleLoginButton />
           </div>
+
+          <div className="mb-4">
+            <p className="text-right text-gray-600">Forgot your password?</p>
+          </div>
+
+          <Button
+            type="submit"
+            variant="fill"
+            disabled={!formik.dirty || !formik.isValid}
+          >
+            Login
+          </Button>
+
+          <div className="flex items-center gap-6 my-3">
+            <div className="flex-1 border"></div>
+            <p className="text-center text-gray-500">Or continue with</p>
+            <div className="flex-1 border"></div>
+          </div>
+
+          <GoogleLoginButton />
         </Form>
       )}
     </Formik>

@@ -52,23 +52,23 @@ const UsersTable = () => {
           {users.map((user, index) => {
             return (
               <TableBodyRow key={user._id}>
-                <TableBodyItem className="flex items-center gap-4">
-                  <div className="relative overflow-hidden  group">
+                <TableBodyItem className="flex md:flex-col min-md:items-center gap-4">
+                  <div className="shrink-0 relative overflow-hidden group">
                     <img
                       src={user.avatar}
-                      className="w-10 h-10 object-contain rounded-full inline-block"
+                      className="inline-block object-contain w-12 h-12 rounded-full"
                     />
                     <div
-                      className="w-full h-full absolute z-10 top-0 left-0 opacity-0 transition group-hover:opacity-100 group-hover:cursor-pointer"
+                      className="absolute top-0 left-0 z-10 w-12 h-12 rounded-full overflow-hidden transition opacity-0 group-hover:opacity-100 group-hover:cursor-pointer"
                       onClick={() => {
                         setUserSelectedIndex(index);
                         setShowModal(true);
                       }}
                     >
-                      <div className="bg-black bg-opacity-50 w-full h-full">
+                      <div className="w-full h-full bg-black bg-opacity-50">
                         <TbUpload
                           size="20"
-                          className="mx-auto translate-y-1/2 text-white"
+                          className="mx-auto text-white translate-y-1/2"
                         />
                       </div>
                     </div>
@@ -88,15 +88,15 @@ const UsersTable = () => {
                   </Badge>
                 </TableBodyItem>
                 <TableBodyItem>
-                  <div className="flex items-center gap-2 justify-end">
+                  <div className="flex items-center justify-end gap-3">
                     <button
                       type="button"
                       onClick={() => dispatch(setRole(user._id))}
                     >
                       {user.role === "admin" ? (
-                        <HiOutlineUserMinus size={20} />
+                        <HiOutlineUserMinus size={22} />
                       ) : (
-                        <HiOutlineUserPlus size={20} />
+                        <HiOutlineUserPlus size={22} />
                       )}
                     </button>
 
@@ -105,7 +105,7 @@ const UsersTable = () => {
                         dispatch(deleteUser(user._id));
                       }}
                     >
-                      <HiOutlineTrash size={20} />
+                      <HiOutlineTrash size={22} />
                     </button>
                   </div>
                 </TableBodyItem>
@@ -130,7 +130,7 @@ const UsersTable = () => {
               <input
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
-                className="w-full py-2 outline-none border-b border-b-gray-300 focus:border-b-gray-500 mb-6"
+                className="w-full py-2 mb-6 border-b outline-none border-b-gray-300 focus:border-b-gray-500"
                 type="text"
                 placeholder="Enter image URL"
                 autoFocus

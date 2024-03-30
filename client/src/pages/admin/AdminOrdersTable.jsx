@@ -40,7 +40,7 @@ const AdminOrdersTable = () => {
             <TableBodyItem className="text-center">
               {order.shippingAddress.address}
             </TableBodyItem>
-            <TableBodyItem className="text-right">{order.total}</TableBodyItem>
+            <TableBodyItem className="text-right">${order.total}</TableBodyItem>
           </TableBodyRow>
         ))}
       </TableBody>

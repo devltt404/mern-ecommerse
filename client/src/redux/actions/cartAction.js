@@ -120,7 +120,7 @@ export const deleteCartItem = (productId) => async (dispatch, getState) => {
     if (getState().user.user) {
       await cartAxios.delete("/item/" + productId);
     } else {
-      localStorage.setItem("cart", newCart);
+      localStorage.setItem("cart", JSON.stringify(newCart));
     }
 
     dispatch(setCart(newCart));

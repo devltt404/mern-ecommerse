@@ -63,24 +63,35 @@ const CheckoutForm = () => {
               postalCode: Yup.string().required("Postal Code is required"),
             }),
         }),
+        card: Yup.object().shape({
+          number: Yup.string().required("Card number is required"),
+          expiry: Yup.string().required("Expiry is required"),
+          cvc: Yup.string().required("CVC is required"),
+        }),
       })}
       onSubmit={async (values) => {
         try {
           const orderId = await dispatch(createOrder(values));
           navigate("/orders/" + orderId);
-        } catch (error) {
-        }
+        } catch (error) {}
       }}
     >
       {(formik) => (
-        <form onSubmit={formik.handleSubmit} className="pr-8">
-          <h2 className="font-semibold text-2xl">CUSTOMER INFO</h2>
-          <div className="grid grid-cols-2 gap-4">
-            <FormInput placeholder="First Name" name={`customer.firstName`} />
-            <FormInput placeholder="Last Name" name={`customer.lastName`} />
+        <form onSubmit={formik.handleSubmit} className="lg:order-1">
+          <h2 className="mb-1 text-2xl font-semibold">Customer Info</h2>
+
+          <div className="flex flex-col gap-2">
+            <div className="grid grid-cols-2 gap-4">
+              <FormInput placeholder="First Name" name={`customer.firstName`} />
+              <FormInput placeholder="Last Name" name={`customer.lastName`} />
+            </div>
+            <FormInput
+              placeholder="Email"
+              name={`customer.email`}
+              type="email"
+            />
+            <FormInput name={`customer.phone`} placeholder="Phone Number" />
           </div>
-          <FormInput placeholder="Email" name={`customer.email`} type="email" />
-          <FormInput name={`customer.phone`} placeholder="Phone Number" />
 
           <AddressForm name="shippingAddress" />
 
@@ -95,13 +106,15 @@ const CheckoutForm = () => {
           >
             Use the same address for billing
           </Checkbox>
+
           {!formik.values.useSameAddress && (
             <AddressForm name="billingAddress" />
           )}
 
-          <h2 className="font-semibold text-2xl mt-2">PAYMENT</h2>
+          <h2 className="mt-4 text-2xl font-semibold">Payment</h2>
+
           <FormInput name="card.number" placeholder="Card number" />
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-2 gap-4 mt-2 mb-6">
             <FormInput name="card.expiry" placeholder="2024/12" />
             <FormInput name="card.cvc" placeholder="CVC" type="password" />
           </div>

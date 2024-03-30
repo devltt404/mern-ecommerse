@@ -9,7 +9,7 @@ const EditProductPage = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-4">Edit Product</h1>
+      <h1 className="mb-4 text-2xl font-semibold">Edit Product</h1>
       <ProductForm
         onSubmit={async (values) => {
           await dispatch(editProduct(values));

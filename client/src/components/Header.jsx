@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { CgMenu } from "react-icons/cg";
 import {
   IoBagHandle,
   IoBagHandleOutline,
@@ -5,14 +7,16 @@ import {
   IoPersonOutline,
 } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { logoutUser } from "../redux/actions/userAction.js";
 import { cartSelector } from "../redux/slices/cartSlice.js";
+import { categorySelector } from "../redux/slices/categorySlice.js";
 import { userSelector } from "../redux/slices/userSlice.js";
 import CategoryBar from "./CategoryBar.jsx";
 import IconOutlineButton from "./IconOutlineButton.jsx";
 import Logo from "./Logo.jsx";
 import SearchBar from "./SearchBar.jsx";
+import Sidebar from "./Sidebar.jsx";
 import Dropdown from "./dropdown/Dropdown.jsx";
 import DropdownItem from "./dropdown/DropdownItem.jsx";
 import DropdownMenu from "./dropdown/DropdownMenu.jsx";
@@ -24,24 +28,57 @@ const Header = () => {
   const dispatch = useDispatch();
   const { user } = useSelector(userSelector);
   const { cart } = useSelector(cartSelector);
+  const { categories } = useSelector(categorySelector);
+
+  const [showSidebar, setShowSidebar] = useState(false);
 
   return (
-    <div>
-      <div className="container py-8 flex items-center justify-between">
+    <div className="lg:border-b lg:shadow-md">
+      <div className="container flex flex-wrap items-center justify-between py-8 md:py-6 gap-y-4">
         <Logo />
+
         <SearchBar />
 
         {/* Buttons */}
         <div className="flex items-center gap-4">
+          {/* Menu for Small Device */}
+          <div className="min-lg:hidden">
+            <Sidebar
+              showSidebar={showSidebar}
+              setShowSidebar={setShowSidebar}
+              ToggleButton={
+                <button type="button" className="mt-2">
+                  <CgMenu size={20} />
+                </button>
+              }
+            >
+              <ul>
+                <h2 className="px-6 py-4 text-2xl font-semibold">Categories</h2>
+                {categories.map((category) => (
+                  <li key={category._id}>
+                    <Link
+                      to={`/category/${category.hyphenSeparated}`}
+                      onClick={() => setShowSidebar(false)}
+                      className="block w-full h-full px-6 py-4 transition hover:bg-gray-100 hover:font-medium"
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </Sidebar>
+          </div>
+
           <IconOutlineButton
             Icon={IoBagHandleOutline}
             HoverIcon={IoBagHandle}
             onClick={() => navigate("/cart")}
           >
-            <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-medium h-4 aspect-square rounded-full">
+            <span className="absolute h-4 text-xs font-medium text-white bg-red-600 rounded-full -top-2 -right-2 aspect-square">
               {cart.length}
             </span>
           </IconOutlineButton>
+
           {/* User Icon */}
           <Dropdown className="h-[20px]">
             <DropdownToggler>
@@ -51,19 +88,19 @@ const Header = () => {
             <DropdownMenu position="right">
               {user ? (
                 <>
-                  <DropdownItem className="text-black font-medium border-b">
+                  <DropdownItem className="font-medium text-black border-b">
                     {user.name}
                   </DropdownItem>
                   {user.role === "admin" && (
                     <DropdownItem
-                      className="text-gray-600 hover:text-black border-b font-medium"
+                      className="font-medium text-gray-600 border-b hover:text-black"
                       onClick={() => navigate("/admin/dashboard")}
                     >
                       Admin Dashboard
                     </DropdownItem>
                   )}
                   <DropdownItem
-                    className="text-gray-600 hover:text-black border-b"
+                    className="text-gray-600 border-b hover:text-black"
                     onClick={() => navigate("/orders")}
                   >
                     My Orders

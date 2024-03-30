@@ -2,22 +2,20 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      colors: {
-        brown: {
-          50: "#F6ECE9",
-          100: "#ECD6D0",
-          200: "#DAB1A4",
-          300: "#C78875",
-          400: "#B26148",
-          500: "#854836",
-          600: "#69392B",
-          700: "#502B20",
-          800: "#361E16",
-          900: "#190E0A",
-          950: "#0F0806",
-        },
-      },
+    extend: {},
+    screens: {
+      "2xl": { max: "1535px" },
+      xl: { max: "1279px" },
+      lg: { max: "1024px" },
+      md: { max: "768px" },
+      sm: { max: "639px" },
+      xs: { max: "360px" },
+      "min-2xl": { min: "1536px" },
+      "min-xl": { min: "1280px" },
+      "min-lg": { min: "1025px" },
+      "min-md": { min: "769px" },
+      "min-sm": { min: "640px" },
+      "min-xs": { min: "361px" },
     },
   },
   plugins: [],

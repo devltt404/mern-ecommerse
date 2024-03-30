@@ -2,9 +2,9 @@ import FormInput from "./FormInput.jsx";
 
 const AddressForm = ({ name }) => {
   return (
-    <div className="mt-2">
-      <h2 className="font-semibold text-2xl">
-        {name === "shippingAddress" ? "SHIPPING " : "BILLING "} ADDRESS
+    <div className="mt-4 mb-2">
+      <h2 className="mb-1 text-2xl font-semibold">
+        {name === "shippingAddress" ? "Shipping " : "Billing "} Address
       </h2>
 
       <div className="flex flex-col gap-2">

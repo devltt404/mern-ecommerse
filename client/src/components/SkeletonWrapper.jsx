@@ -2,7 +2,7 @@ const SkeletonWrapper = ({ isLoading, children, className = "" }) => {
   return (
     <div
       className={`${
-        isLoading ? "bg-gray-200 animate-pulse *:invisible" : ""
+        isLoading ? "bg-gray-300 animate-pulse *:invisible" : ""
       } ${className}`}
     >
       {children}

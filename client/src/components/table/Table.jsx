@@ -1,5 +1,9 @@
 const Table = ({ children }) => {
-  return <table className={`w-full shadow-sm `}>{children}</table>;
+  return (
+    <div className="overflow-x-auto">
+      <table className={`shadow-sm w-full`}>{children}</table>
+    </div>
+  );
 };
 
 export default Table;

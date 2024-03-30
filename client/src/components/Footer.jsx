@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-black text-white mt-8">
+    <div className="mt-8 text-white bg-black">
       <div
-        className="footer container py-8 grid grid-cols-12 gap-12 
+        className="footer container py-8 grid grid-cols-12 gap-12 xl:gap-8 sm:gap-x-0 sm:gap-y-6
       [&>div>ul]:flex [&>div>ul]:flex-col [&>div>ul]:gap-4 [&>div>ul]:text-gray-300 [&>div>ul]:text-sm
-      [&_h3]:text-lg [&_h3]:font-semibold [&_h3]:mb-2 
+      [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:mb-3 [&_h3]:md:mb-2  
       "
       >
-        <div className="col-span-4">
+        <div className="col-span-4 lg:col-span-12 md:col-span-12">
           <h3>About us</h3>
-          <p className="footer-text text-sm leading-6">
+          <p className="text-sm leading-6 footer-text">
             My Shop is a demo e-commerce website built with React, Redux, and
             Tailwind CSS. This project is for educational purposes only.
           </p>
         </div>
 
-        <div className="col-span-2">
+        <div className="col-span-2 lg:col-span-4 sm:col-span-6">
           <h3>Service</h3>
 
           <ul>
@@ -34,7 +34,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="col-span-3">
+        <div className="col-span-3 lg:col-span-4 sm:col-span-6">
           <h3>Contact</h3>
 
           <ul>
@@ -54,24 +54,24 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="col-span-3">
+        <div className="col-span-2 lg:col-span-4 sm:col-span-12">
           <h3>Get in touch</h3>
 
           <div className="flex gap-4">
             <Link to="/" className="footer-text">
-              <FaGithub size={22} />
+              <FaGithub size={24} />
             </Link>
             <Link to="/" className="footer-text">
-              <FaFacebook size={22} />
+              <FaFacebook size={24} />
             </Link>
             <Link to="/" className="footer-text">
-              <FaInstagram size={22} />
+              <FaInstagram size={24} />
             </Link>
           </div>
         </div>
       </div>
 
-      <p className="text-center py-4 footer-text text-sm">
+      <p className="py-4 text-sm text-center footer-text">
         &copy; 2024 My Shop. All rights reserved | Made by devltt404
       </p>
     </div>

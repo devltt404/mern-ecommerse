@@ -4,13 +4,13 @@ const CheckoutItem = ({ product, quantity }) => {
       <img
         src={(product.images && product.images[0]) || product.image}
         alt="product"
-        className="w-20 h-20 object-contain "
+        className="object-contain w-20 h-20 "
       />
       <div>
-        <h2 className="font-medium text-lg">{product.name}</h2>
+        <h2 className="text-lg font-medium">{product.name}</h2>
         <p className="text-gray-500">Quantity: {quantity}</p>
       </div>
-      <div>${product.price * quantity}</div>
+      <div>${(product.price * quantity).toFixed(2)}</div>
     </div>
   );
 };

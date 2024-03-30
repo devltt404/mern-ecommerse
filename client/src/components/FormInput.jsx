@@ -6,7 +6,7 @@ const FormInput = ({ label = "", type = "text", name, placeholder = "" }) => {
   return (
     <div>
       {label != "" && (
-        <label htmlFor={name} className="text-gray-700 font-medium">
+        <label htmlFor={name} className="font-medium text-gray-700">
           {label}
         </label>
       )}
@@ -22,7 +22,11 @@ const FormInput = ({ label = "", type = "text", name, placeholder = "" }) => {
         placeholder={placeholder}
         autoComplete="on"
       />
-      <ErrorMessage name={name} component="div" className="text-red-500" />
+      <ErrorMessage
+        name={name}
+        component="div"
+        className="text-sm text-red-500"
+      />
     </div>
   );
 };

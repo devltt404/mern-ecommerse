@@ -6,7 +6,7 @@ const FormSelectInput = ({ label = "", name, children }) => {
   return (
     <div>
       {label != "" && (
-        <label htmlFor={name} className="text-gray-700 font-medium">
+        <label htmlFor={name} className="font-medium text-gray-700">
           {label}
         </label>
       )}
@@ -21,7 +21,7 @@ const FormSelectInput = ({ label = "", name, children }) => {
       >
         {children}
       </Field>
-      <ErrorMessage name={name} component="div" className="text-red-500" />
+      <ErrorMessage name={name} component="div" className="text-sm text-red-500" />
     </div>
   );
 };

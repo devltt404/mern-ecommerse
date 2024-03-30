@@ -50,8 +50,8 @@ const SaleAreaChart = ({}) => {
 
   return (
     <SkeletonWrapper isLoading={isLoading}>
-      <div className="py-6 bg-white shadow-lg px-8 h-[25rem]">
-        <div className="flex justify-between items-center">
+      <div className="pt-6 bg-white shadow-lg pb-6">
+        <div className="flex mb-4 items-center justify-between px-6">
           <h2 className="text-xl font-semibold">Sales Analytics</h2>
           <MultipleToggleRadio
             values={["Demo", "Week", "Year"]}
@@ -60,47 +60,50 @@ const SaleAreaChart = ({}) => {
             name="chart-options"
           />
         </div>
-        {formmatedData.length > 0 && (
-          <ResponsiveLine
-            margin={{ top: 30, right: 30, bottom: 60, left: 70 }}
-            data={[{ id: "sale", data: formmatedData }]}
-            xScale={{ type: "point" }}
-            yScale={{ type: "linear" }}
-            axisLeft={{ format: (v) => `$${v}`, tickValues }}
-            lineWidth={3}
-            enableArea={true}
-            enableGridX={false}
-            gridYValues={tickValues}
-            enableGridY={true}
-            theme={{
-              axis: {
-                ticks: {
-                  line: {
-                    strokeWidth: 0,
-                  },
-                  text: {
-                    fontSize: 15,
-                    fontFamily: "Satoshi",
-                    fill: "gray",
+
+        <div className="h-[20rem] md:h-[18rem] sm:h-[15rem]">
+          {formmatedData.length > 0 && (
+            <ResponsiveLine
+              margin={{ top: 30, right: 40, bottom: 40, left: 70 }}
+              data={[{ id: "sale", data: formmatedData }]}
+              xScale={{ type: "point" }}
+              yScale={{ type: "linear" }}
+              axisLeft={{ format: (v) => `$${v}`, tickValues }}
+              lineWidth={3}
+              enableArea={true}
+              enableGridX={false}
+              gridYValues={tickValues}
+              enableGridY={true}
+              theme={{
+                axis: {
+                  ticks: {
+                    line: {
+                      strokeWidth: 0,
+                    },
+                    text: {
+                      fontSize: 12,
+                      fontFamily: "Satoshi",
+                      fill: "gray",
+                    },
                   },
                 },
-              },
-            }}
-            colors={["#171717"]}
-            curve="monotoneX"
-            pointColor="white"
-            pointBorderWidth={2}
-            pointBorderColor="#171717"
-            useMesh={true}
-            pointSize={8}
-            tooltip={({ point }) => (
-              <div className="bg-white p-4 shadow-lg ">
-                <h3 className="text-lg font-semibold">{point.data.x}</h3>
-                <p className="text-gray-500">Sales: ${point.data.y}</p>
-              </div>
-            )}
-          />
-        )}
+              }}
+              colors={["#171717"]}
+              curve="monotoneX"
+              pointColor="white"
+              pointBorderWidth={2}
+              pointBorderColor="#171717"
+              useMesh={true}
+              pointSize={8}
+              tooltip={({ point }) => (
+                <div className="p-4 bg-white shadow-lg ">
+                  <h3 className="text-lg font-semibold">{point.data.x}</h3>
+                  <p className="text-gray-500">Sales: ${point.data.y}</p>
+                </div>
+              )}
+            />
+          )}
+        </div>
       </div>
     </SkeletonWrapper>
   );

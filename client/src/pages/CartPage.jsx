@@ -18,16 +18,16 @@ const CartPage = () => {
 
   return (
     <div className="container py-8">
-      <h1 className="font-semibold text-3xl mb-2">My Cart</h1>
-      <p className="mb-4">You have {cart.length} items in your cart</p>
+      <h1 className="mb-2 text-3xl font-semibold">My Cart</h1>
+      <p className="mb-8">You have {cart.length} items in your cart</p>
 
       {cartLoading ? (
         <Loading />
       ) : (
-        <div className="flex gap-12">
+        <div className="flex gap-16 xl:gap-8 lg:flex-col lg:gap-12">
           {cart[0]?.productDetail?.name && (
             <>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col flex-1 gap-8">
                 {cart.map((item) => {
                   return (
                     <CartItem
@@ -38,9 +38,8 @@ const CartPage = () => {
                   );
                 })}
               </div>
-              <div className="flex-1">
-                <CartSummary />
-              </div>
+
+              <CartSummary />
             </>
           )}
         </div>

@@ -14,12 +14,12 @@ const ReviewArea = () => {
 
   return (
     <div>
-      <h2 className="text-2xl font-medium mb-2">
-        Reviews ({product.reviews.length})
+      <h2 className="mb-4 text-2xl font-semibold">
+        Reviews <span className="font-medium">({product.reviews.length})</span>
       </h2>
 
       {user && (
-        <>
+        <div className="mb-4">
           <Button
             size="sm"
             variant="fill"
@@ -34,13 +34,13 @@ const ReviewArea = () => {
           </Button>
 
           <div
-            className={`transition-all ease-in-out duration-500 overflow-hidden mb-2 ${
-              showAddReview ? "max-h-[1000px]" : "max-h-0 "
+            className={`transition-all duration-500 overflow-hidden mb-2 ${
+              showAddReview ? "max-h-[1000px] opacity-1" : "max-h-0 opacity-0"
             }`}
           >
             <AddReview />
           </div>
-        </>
+        </div>
       )}
 
       {product.reviews.length > 0 ? (

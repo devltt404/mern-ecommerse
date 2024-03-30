@@ -9,7 +9,6 @@ export const decodeToken = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    req.user = null;
     next();
   }
 };

@@ -16,16 +16,16 @@ const Pagination = ({ handlePageSelected, totalPages, page }) => {
   };
 
   return (
-    <div className="flex items-center gap-1 text-sm justify-center mt-4">
+    <div className="flex items-center justify-center gap-1 mt-4 text-sm">
       <button
-        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="flex items-center justify-center w-8 h-8 py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         onClick={() => onPageSelected(1)}
         disabled={inputPage === 1}
       >
         <RxDoubleArrowLeft size={18} />
       </button>
       <button
-        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="flex items-center justify-center w-8 h-8 py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         onClick={() => onPageSelected(inputPage - 1)}
         disabled={inputPage === 1}
       >
@@ -33,7 +33,7 @@ const Pagination = ({ handlePageSelected, totalPages, page }) => {
       </button>
       <input
         type="number"
-        className="p-1 w-8 h-8 border border-gray-300 outline-none text-center me-1 focus:border-black disabled:hover:bg-transparent disabled:opacity-50"
+        className="w-8 h-8 p-1 text-center border border-gray-300 outline-none me-1 focus:border-black disabled:hover:bg-transparent disabled:opacity-50"
         value={inputPage}
         onChange={(e) => setInputPage(e.target.value)}
         onKeyDown={(e) => {
@@ -57,14 +57,14 @@ const Pagination = ({ handlePageSelected, totalPages, page }) => {
 
       <span>of {totalPages}</span>
       <button
-        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="flex items-center justify-center w-8 h-8 py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         onClick={() => onPageSelected(inputPage + 1)}
         disabled={inputPage === totalPages}
       >
         <GoChevronRight size={18} />
       </button>
       <button
-        className="w-8 h-8 flex items-center justify-center  py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
+        className="flex items-center justify-center w-8 h-8 py-1 transition hover:bg-gray-200 disabled:hover:bg-transparent disabled:opacity-50"
         disabled={inputPage === totalPages}
         onClick={() => onPageSelected(totalPages)}
       >

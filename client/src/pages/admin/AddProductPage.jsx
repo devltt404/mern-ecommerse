@@ -9,7 +9,7 @@ const AddProductPage = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold mb-4">Add Product</h1>
+      <h1 className="mb-4 text-2xl font-semibold">Add Product</h1>
       <ProductForm
         onSubmit={async (values) => {
           await dispatch(addProduct(values));

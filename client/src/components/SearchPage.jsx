@@ -34,10 +34,11 @@ const SearchPage = () => {
 
   return (
     <div className="container py-8">
-      <p className="mb-3 text-lg italic">
+      <p className="mb-4 text-lg italic">
         Search results for <span className="font-bold">"{keyword}"</span>
       </p>
-      <div className=" flex gap-4">
+
+      <div className="flex gap-16 xl:gap-4 lg:gap-0">
         <FilterBar />
         <div className="flex-1 ms-4">
           <div className="flex justify-end mb-6">
@@ -45,7 +46,7 @@ const SearchPage = () => {
               <DropdownToggler>
                 <button
                   type="button"
-                  className="border border-gray-300 px-4 py-2 text-sm flex items-center gap-2"
+                  className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-300"
                 >
                   <span className="text-gray-400">Sort By</span>
                   <span className="font-bold">{sortBy}</span>

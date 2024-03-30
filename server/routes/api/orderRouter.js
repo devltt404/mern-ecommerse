@@ -10,7 +10,8 @@ import { decodeToken, isAdmin, isUser } from "../../middlewares/authToken.js";
 const orderRouter = express.Router();
 
 orderRouter.post("/", decodeToken, createOrder);
-orderRouter.get("/", decodeToken, getOrders);
+orderRouter.get("/", decodeToken, isUser, getOrders);
+
 orderRouter.get("/user", decodeToken, isUser, getUserOrders);
 orderRouter.get("/sales", decodeToken, isAdmin, getSalesData);
 

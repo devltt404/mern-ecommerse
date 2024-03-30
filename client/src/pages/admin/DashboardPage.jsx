@@ -34,7 +34,7 @@ const DashboardPage = () => {
 
   return (
     <div>
-      <div className="grid grid-cols-4 gap-8 mb-10">
+      <div className="grid grid-cols-4 mb-8 gap-8 lg:gap-6 2xl:gap-4 md:grid-cols-1 xl:grid-cols-2">
         <ReportCard
           isLoading={statsLoading}
           Icon={FaMoneyBill1Wave}
@@ -62,11 +62,11 @@ const DashboardPage = () => {
       </div>
 
       <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-8">
+        <div className="col-span-8 2xl:col-span-12">
           <SaleAreaChart />
         </div>
 
-        <div className="col-span-4">
+        <div className="col-span-4 2xl:col-span-12">
           <BestSellingProducts
             isLoading={statsLoading}
             products={stats.bestSellingProducts}

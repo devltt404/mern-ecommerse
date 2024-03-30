@@ -6,8 +6,8 @@ const RatingFormInput = ({ name }) => {
 
   return (
     <div>
-      <p className="text-gray-700 font-medium">Rating</p>
-      <div className="flex">
+      <p className="font-medium text-gray-700">Rating</p>
+      <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map((starIndex) => (
           <StarIcon
             key={starIndex}
@@ -19,7 +19,11 @@ const RatingFormInput = ({ name }) => {
           />
         ))}
       </div>
-      <ErrorMessage name={name} component="div" className="text-red-500" />
+      <ErrorMessage
+        name={name}
+        component="div"
+        className="text-sm text-red-500"
+      />
     </div>
   );
 };

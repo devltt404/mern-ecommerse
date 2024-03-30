@@ -43,7 +43,7 @@ const CategoryProductsPage = () => {
 
   return (
     categoryId && (
-      <div className="container py-8 flex gap-12">
+      <div className="container flex gap-16 py-8 xl:gap-4 lg:gap-0">
         <FilterBar categoryId={categoryId} />
         <div className="flex-1">
           <div className="flex justify-end mb-6">
@@ -51,7 +51,7 @@ const CategoryProductsPage = () => {
               <DropdownToggler>
                 <button
                   type="button"
-                  className="border border-gray-300 px-4 py-2 text-sm flex items-center gap-2"
+                  className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-300"
                 >
                   <span className="text-gray-400">Sort By</span>
                   <span className="font-bold">{sortBy}</span>
