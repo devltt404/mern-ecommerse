@@ -5,42 +5,46 @@ import { useDispatch } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import SearchPage from "./components/SearchPage.jsx";
-import AdminContainer from "./containers/AdminContainer.jsx";
-import NoUserOnlyContainer from "./containers/NoUserOnlyContainer.jsx";
-import ShopContainer from "./containers/ShopContainer.jsx";
-import UserOnlyContainer from "./containers/UserOnlyContainer.jsx";
-import CartPage from "./pages/CartPage.jsx";
-import CategoryProductsPage from "./pages/CategoryProductsPage.jsx";
-import CheckoutPage from "./pages/CheckoutPage.jsx";
-import IndexPage from "./pages/IndexPage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
-import OrderDetailPage from "./pages/OrderDetailPage.jsx";
-import OrderSuccessPage from "./pages/OrderSuccessPage.jsx";
-import OrdersPage from "./pages/OrdersPage.jsx";
-import ProductDetailPage from "./pages/ProductDetailPage.jsx";
-import RegisterPage from "./pages/RegisterPage.jsx";
-import AddProductPage from "./pages/admin/AddProductPage.jsx";
-import AdminOrdersPage from "./pages/admin/AdminOrdersPage.jsx";
-import CategoriesPage from "./pages/admin/CategoriesPage.jsx";
-import DashboardPage from "./pages/admin/DashboardPage.jsx";
-import EditProductPage from "./pages/admin/EditProductPage.jsx";
-import ProductsPage from "./pages/admin/ProductsPage.jsx";
-import UsersPage from "./pages/admin/UsersPage.jsx";
-import { axiosInstances } from "./utils/axiosInstances.js";
-import setupInterceptor from "./utils/setupInterceptor.js";
+import { axiosInstances } from "./helpers/axiosInstances.js";
+import setupInterceptor from "./helpers/setupInterceptor.js";
+
+import {
+  AdminContainer,
+  NoUserOnlyContainer,
+  ShopContainer,
+  UserOnlyContainer,
+} from "./components";
+import {
+  AddProductPage,
+  AdminOrdersPage,
+  CartPage,
+  CategoriesPage,
+  CheckoutPage,
+  DashboardPage,
+  EditProductPage,
+  IndexPage,
+  LoginPage,
+  NotFoundPage,
+  OrderDetailPage,
+  OrdersPage,
+  ProductDetailPage,
+  ProductsByCategoryPage,
+  ProductsBySearchPage,
+  ProductsPage,
+  RegisterPage,
+  UsersPage,
+} from "./pages";
 
 function App() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [isAxiosSetupped, setIsAxiosSetupped] = useState(false);
+  const [isAxiosSetup, setIsAxiosSetup] = useState(false);
 
   useEffect(() => {
-    if (!isAxiosSetupped) {
+    if (!isAxiosSetup) {
       setupInterceptor(dispatch, navigate, axiosInstances);
-      setIsAxiosSetupped(true);
+      setIsAxiosSetup(true);
     }
   }, []);
 
@@ -49,7 +53,7 @@ function App() {
   }, [pathname]);
 
   return (
-    isAxiosSetupped && (
+    isAxiosSetup && (
       <GoogleOAuthProvider clientId={import.meta.env.VITE_GOOGLE_CLIENT_ID}>
         <Routes>
           <Route element={<ShopContainer />}>
@@ -57,16 +61,15 @@ function App() {
             <Route path="/product/:id" element={<ProductDetailPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/orders/success" element={<OrderSuccessPage />} />
             <Route path="/orders" element={<UserOnlyContainer />}>
               <Route path="" element={<OrdersPage />} />
               <Route path=":id" element={<OrderDetailPage />} />
             </Route>
             <Route
               path="/category/:category"
-              element={<CategoryProductsPage />}
+              element={<ProductsByCategoryPage />}
             />
-            <Route path="/search" element={<SearchPage />} />
+            <Route path="/search" element={<ProductsBySearchPage />} />
             <Route element={<NoUserOnlyContainer />}>
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -81,7 +84,7 @@ function App() {
             <Route path="categories" element={<CategoriesPage />} />
             <Route path="orders" element={<AdminOrdersPage />} />
             <Route path="products/add" element={<AddProductPage />} />
-            <Route path="products/edit" element={<EditProductPage />} />
+            <Route path="products/edit/:id" element={<EditProductPage />} />
           </Route>
         </Routes>
         <Toaster />

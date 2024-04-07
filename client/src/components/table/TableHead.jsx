@@ -1,6 +1,6 @@
 const TableHead = ({ children }) => {
   return (
-    <thead className="text-gray-700 uppercase bg-stone-200">
+    <thead className="bg-stone-200 uppercase text-gray-700">
       <tr className="text-sm font-bold">{children}</tr>
     </thead>
   );

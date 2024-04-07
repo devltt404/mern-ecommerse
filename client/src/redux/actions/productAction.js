@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
-import { productAxios, reviewAxios } from "../../utils/axiosInstances.js";
-import { handleActionError } from "../../utils/handleActionError.js";
+import { productAxios, reviewAxios } from "../../helpers/axiosInstances.js";
+import { handleActionError } from "../../helpers/handleActionError.js";
 import {
   addProductReview,
   setIndexProducts,
@@ -11,13 +11,12 @@ import {
   setProducts,
 } from "../slices/productSlice.js";
 
-export const getProductById = (navigate, id) => async (dispatch) => {
+export const getProductById = (id) => async (dispatch) => {
   try {
     dispatch(setProductLoading());
     const { data } = await productAxios.get(`/${id}`);
     dispatch(setProduct(data));
   } catch (error) {
-    if (error.response.status === 404) navigate("/not-found");
     handleActionError(dispatch, error, setProductError, true);
   }
 };
@@ -83,12 +82,12 @@ export const addProduct =
   };
 
 export const editProduct =
-  ({ ...productData }) =>
+  (productId, { ...productData }) =>
   async (dispatch) => {
     try {
       dispatch(setProductLoading());
-      const { data } = await productAxios.put("/", productData);
-      toast.success(data.message);
+      await productAxios.put("/" + productId, productData);
+      toast.success("Product updated successfully!");
     } catch (error) {
       handleActionError(dispatch, error, setProductError, true);
     }

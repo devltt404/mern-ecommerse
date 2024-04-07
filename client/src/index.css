@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url("https://fonts.cdnfonts.com/css/satoshi");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,10 +9,9 @@ input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
-
 
 /* fix Tailwind CSS’s h-screen on iOS Safari */
 @supports (-webkit-touch-callout: none) {
@@ -34,7 +33,6 @@ input[type=number] {
 ::-webkit-scrollbar-thumb {
   background: #a8a8a8;
   border-radius: 5px;
-
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -45,19 +43,18 @@ html {
   scroll-behavior: smooth;
 }
 
-body{
-  font-family: 'Satoshi', sans-serif;
+body {
+  font-family: "Satoshi", sans-serif;
 }
 
-.container{
-  @apply sm:px-4 md:px-8 lg:px-14 xl:px-20 mx-auto max-w-[1200px];
+.container {
+  @apply mx-auto max-w-[1200px] xl:px-20 lg:px-14 md:px-8 sm:px-4;
 }
 
-.footer-text{
+.footer-text {
   @apply text-gray-300 transition hover:text-white;
 }
 
-.footer ul>li{
+.footer ul > li {
   @apply footer-text;
 }
-

@@ -44,7 +44,12 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, setUserLoading, setUserError, setUserAvatar, setUsers} =
-  userSlice.actions;
+export const {
+  setUser,
+  setUserLoading,
+  setUserError,
+  setUserAvatar,
+  setUsers,
+} = userSlice.actions;
 export const userSelector = (state) => state.user;
 export default userSlice.reducer;

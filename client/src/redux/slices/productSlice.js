@@ -64,7 +64,8 @@ export const {
   setProductError,
   addProductReview,
   setProductImage,
-  setProducts,setIndexProducts
+  setProducts,
+  setIndexProducts,
 } = productSlice.actions;
 export const productSelector = (state) => state.product;
 export default productSlice.reducer;

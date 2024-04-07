@@ -24,12 +24,12 @@ const DropdownMenu = ({
         e.stopPropagation();
         toggleDropdown();
       }}
-      className={`min-w-max absolute flex-col bg-white border border-gray-300 shadow-md mt-1 overflow-hidden z-10 ${
+      className={`absolute z-10 mt-1 min-w-max flex-col overflow-hidden border border-gray-300 bg-white shadow-md ${
         widthClasses[width]
       } ${positionClasses[position]} ${
         isOpen
-          ? "opacity-100 translate-y-0"
-          : "invisible opacity-0 -translate-y-3"
+          ? "translate-y-0 opacity-100"
+          : "invisible -translate-y-3 opacity-0"
       } transition-all duration-200`}
     >
       {Children.map(children, (child) => {

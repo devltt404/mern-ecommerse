@@ -1,6 +1,4 @@
 const fillSalesData = (salesData, duration) => {
-
-
   const today = new Date();
   const pastDate = [];
 

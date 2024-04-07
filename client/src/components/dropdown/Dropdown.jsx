@@ -1,6 +1,6 @@
 import { Children, cloneElement, useEffect, useRef, useState } from "react";
 import DropdownMenu from "./DropdownMenu.jsx";
-import DropdownToggler from "./DropdownToggler.jsx";
+import DropdownToggle from "./DropdownToggle.jsx";
 
 const Dropdown = ({ children, className = "" }) => {
   const ref = useRef();
@@ -24,7 +24,7 @@ const Dropdown = ({ children, className = "" }) => {
   return (
     <div className={"relative " + className} ref={ref}>
       {Children.map(children, (child) => {
-        if (child.type === DropdownToggler) {
+        if (child.type === DropdownToggle) {
           return cloneElement(child, { toggleDropdown });
         } else if (child.type === DropdownMenu) {
           return cloneElement(child, { isOpen, toggleDropdown });

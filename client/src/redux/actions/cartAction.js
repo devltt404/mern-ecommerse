@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
-import { cartAxios } from "../../utils/axiosInstances.js";
-import { handleActionError } from "../../utils/handleActionError.js";
+import { cartAxios } from "../../helpers/axiosInstances.js";
+import { handleActionError } from "../../helpers/handleActionError.js";
 import {
   setCart,
   setCartError,
@@ -36,7 +36,7 @@ export const addCartItem = (id, quantity) => async (dispatch, getState) => {
       });
       dispatch(setCart(data));
     }
-    toast.success("Added to Cart");
+    toast.success("Added to cart");
   } catch (error) {
     handleActionError(dispatch, error, setCartError, true);
   }
@@ -90,8 +90,8 @@ export const updateItemQuantity =
             updatedCart.map((item) => ({
               productId: item.productId,
               quantity: item.quantity,
-            }))
-          )
+            })),
+          ),
         );
       } else {
         await cartAxios.put("/item", { productId: id, quantity: quantity });
@@ -102,8 +102,8 @@ export const updateItemQuantity =
                 return { ...item, quantity };
               }
               return item;
-            })
-          )
+            }),
+          ),
         );
       }
     } catch (error) {

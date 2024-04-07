@@ -48,5 +48,3 @@ export const fakeSalesData = [
     totalSales: 8054.97,
   },
 ];
-
-

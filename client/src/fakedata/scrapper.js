@@ -6,12 +6,12 @@ console.log({
       0,
       document
         .querySelector(".od-heading.od-heading-h1.sku-heading")
-        .innerText.indexOf(",")
+        .innerText.indexOf(","),
     ),
   description: document.querySelector('span[itemprop="description"]').firstChild
     .innerText,
   price: Number(
-    document.querySelector(".od-graphql-price-big-price").innerText.slice(1)
+    document.querySelector(".od-graphql-price-big-price").innerText.slice(1),
   ),
   images: [document.querySelector(".image-gallery-image").firstChild.src],
   category: {

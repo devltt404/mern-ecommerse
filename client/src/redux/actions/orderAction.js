@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
-import { orderAxios } from "../../utils/axiosInstances.js";
-import { handleActionError } from "../../utils/handleActionError.js";
+import { orderAxios } from "../../helpers/axiosInstances.js";
+import { handleActionError } from "../../helpers/handleActionError.js";
 import { setCart } from "../slices/cartSlice.js";
 import {
   setOrder,
@@ -23,7 +23,7 @@ export const createOrder =
       dispatch(setCart([]));
       if (!getState().user.user) localStorage.removeItem("cart");
 
-      toast.success("Order created successfully");
+      toast.success("order created successfully");
 
       return data._id;
     } catch (error) {

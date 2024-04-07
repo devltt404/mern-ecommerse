@@ -22,10 +22,13 @@ export const getProducts = async (req, res, next) => {
       filterOptions.category = category;
     }
     if (minPrice) {
-      filterOptions.price = { $gte: minPrice };
+      filterOptions.price = { $gte: parseFloat(minPrice) };
     }
     if (maxPrice) {
-      filterOptions.price = { ...filterOptions.price, $lte: maxPrice };
+      filterOptions.price = {
+        ...filterOptions.price,
+        $lte: parseFloat(maxPrice),
+      };
     }
     if (minRating) {
       filterOptions.rating = { $gte: minRating };
@@ -98,12 +101,12 @@ export const getProductById = async (req, res, next) => {
       res.status(200).json(product);
     } else {
       res.status(404);
-      throw new Error("Product not found");
+      throw new Error("product not found");
     }
   } catch (error) {
     if (error.name === "CastError") {
       res.status(404);
-      error.message = "Product not found";
+      error.message = "product not found";
     }
     next(error);
   }
@@ -120,7 +123,7 @@ export const addProduct = async (req, res, next) => {
       stock,
       images,
     });
-    res.status(201).json({ message: "Product created successfully" });
+    res.status(201).json({ message: "product created successfully" });
   } catch (error) {
     next(error);
   }
@@ -132,14 +135,14 @@ export const updateProductImage = async (req, res, next) => {
     const product = await Product.findById(id);
     if (!product) {
       res.status(404);
-      throw new Error("Product not found");
+      throw new Error("product not found");
     }
 
     const { image } = req.body;
     product.images[0] = image;
     await product.save();
 
-    res.status(200).json({ message: "Product image updated successfully" });
+    res.status(200).json({ message: "product image updated successfully" });
   } catch (error) {
     next(error);
   }
@@ -159,10 +162,10 @@ export const updateProduct = async (req, res, next) => {
       product.stock = stock;
       product.images = images;
       const updatedProduct = await product.save();
-      res.status(200).json({ message: "Product updated successfully" });
+      res.status(200).json({ message: "product updated successfully" });
     } else {
       res.status(404);
-      throw new Error("Product not found");
+      throw new Error("product not found");
     }
   } catch (error) {
     next(error);
@@ -176,10 +179,10 @@ export const deleteProduct = async (req, res, next) => {
 
     if (product) {
       await product.deleteOne();
-      res.status(200).json({ message: "Product deleted successfully" });
+      res.status(200).json({ message: "product deleted successfully" });
     } else {
       res.status(404);
-      throw new Error("Product not found");
+      throw new Error("product not found");
     }
   } catch (error) {
     next(error);

@@ -1,7 +1,7 @@
 import { googleLogout } from "@react-oauth/google";
 import toast from "react-hot-toast";
-import { cartAxios, userAxios } from "../../utils/axiosInstances.js";
-import { handleActionError } from "../../utils/handleActionError.js";
+import { cartAxios, userAxios } from "../../helpers/axiosInstances.js";
+import { handleActionError } from "../../helpers/handleActionError.js";
 import { setCart } from "../slices/cartSlice.js";
 import {
   setUser,
@@ -26,6 +26,7 @@ export const authUser =
           const cart = JSON.parse(localStorage.getItem("cart"));
           localStorage.removeItem("cart");
           dispatch(setCart(cart));
+          
           if (cart.length > 0) {
             await cartAxios.post("/", cart);
             toast.success("Your cart has been kept.");
@@ -73,7 +74,7 @@ export const logoutUser =
       dispatch(setUser(null));
       dispatch(setCart([]));
 
-      if (showToast) toast.success("User logged out.");
+      if (showToast) toast.success("user logged out.");
     } catch (error) {
       handleActionError(dispatch, error, setUserError, true);
     }
@@ -131,7 +132,7 @@ export const setRole = (userId) => async (dispatch, getState) => {
         }),
         pagination: getState().user.pagination,
         totalUsers: getState().user.totalUsers,
-      })
+      }),
     );
     toast.success(data.message);
   } catch (error) {

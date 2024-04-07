@@ -12,7 +12,7 @@ const DropdownItem = ({
 
   return (
     <li
-      className={`transition hover:bg-gray-50 cursor-pointer py-[0.8rem] ${positionClasses[position]} ${className}`}
+      className={`cursor-pointer py-[0.7rem] transition hover:bg-gray-50 ${positionClasses[position]} ${className}`}
       onClick={onClick}
     >
       {children}
