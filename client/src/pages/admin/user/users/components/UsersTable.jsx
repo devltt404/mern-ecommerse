@@ -4,6 +4,7 @@ import {
   HiOutlineUserMinus,
   HiOutlineUserPlus,
 } from "react-icons/hi2";
+import { IoIosWarning } from "react-icons/io";
 import { TbUpload } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -30,9 +31,10 @@ import { userSelector } from "../../../../../redux/slices/userSlice.js";
 const UsersTable = () => {
   const dispatch = useDispatch();
   const { users, userLoading } = useSelector(userSelector);
-  const [showModal, setShowModal] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
   const [image, setImage] = useState("");
   const [userSelectedIndex, setUserSelectedIndex] = useState(-1);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   return userLoading ? (
     <SpinnerLoading />
@@ -45,6 +47,7 @@ const UsersTable = () => {
           <TableHeadItem className="text-center">ROLE</TableHeadItem>
           <TableHeadItem className="text-right">ACTIONS</TableHeadItem>
         </TableHead>
+
         <TableBody>
           {users.map((user, index) => {
             return (
@@ -59,7 +62,7 @@ const UsersTable = () => {
                       className="absolute left-0 top-0 z-10 h-12 w-12 overflow-hidden rounded-full opacity-0 transition group-hover:cursor-pointer group-hover:opacity-100"
                       onClick={() => {
                         setUserSelectedIndex(index);
-                        setShowModal(true);
+                        setShowImageModal(true);
                       }}
                     >
                       <div className="h-full w-full bg-black bg-opacity-50">
@@ -99,7 +102,8 @@ const UsersTable = () => {
 
                     <button
                       onClick={() => {
-                        dispatch(deleteUser(user._id));
+                        setShowDeleteModal(true);
+                        setUserSelectedIndex(index);
                       }}
                     >
                       <HiOutlineTrash size={22} />
@@ -112,15 +116,46 @@ const UsersTable = () => {
         </TableBody>
       </Table>
 
-      {showModal && (
-        <Modal setShow={setShowModal}>
+      {showDeleteModal && (
+        <Modal setShow={setShowDeleteModal}>
+          <ModalBody>
+            <IoIosWarning size={70} className="mx-auto text-red-500" />
+            <p className="mb-6 mt-2 text-center text-lg">
+              Are you sure you want to delete this user?
+            </p>
+            <div className="flex justify-end gap-3">
+              <Button
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  dispatch(deleteUser(users[userSelectedIndex]._id));
+                }}
+                variant="outline"
+                size="sm"
+              >
+                Delete User
+              </Button>
+
+              <Button
+                onClick={() => setShowDeleteModal(false)}
+                variant="fill"
+                size="sm"
+              >
+                Cancel
+              </Button>
+            </div>
+          </ModalBody>
+        </Modal>
+      )}
+
+      {showImageModal && (
+        <Modal setShow={setShowImageModal}>
           <ModalHeader title="Upload Image" />
           <ModalBody>
             <form
               className="text-right"
               onSubmit={(e) => {
                 e.preventDefault();
-                setShowModal(false);
+                setShowImageModal(false);
                 dispatch(updateUserAvatar({ index: userSelectedIndex, image }));
               }}
             >

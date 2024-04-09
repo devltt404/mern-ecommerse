@@ -13,7 +13,10 @@ const CategoryBar = () => {
             {categories.map((category) => (
               <Link
                 key={category._id}
-                to={"/category/" + category.hyphenSeparated}
+                to={
+                  "/category/" +
+                  category.name.toLowerCase().split(" ").join("-")
+                }
               >
                 <li className="cursor-pointer py-[0.85rem] font-medium text-gray-200 transition hover:text-white">
                   {category.name.toUpperCase()}

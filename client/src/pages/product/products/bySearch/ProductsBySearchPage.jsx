@@ -15,8 +15,11 @@ import { getProducts } from "../../../../redux/actions/productAction.js";
 import { productSelector } from "../../../../redux/slices/productSlice.js";
 
 const ProductsBySearchPage = () => {
-  const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+  const { products, productLoading, pagination } = useSelector(productSelector);
 
   const sortByOptions = {
     "Top Rated": "topRated",
@@ -28,9 +31,6 @@ const ProductsBySearchPage = () => {
     sortBy: "topRated",
     limit: 5,
   });
-
-  const navigate = useNavigate();
-  const { products, productLoading, pagination } = useSelector(productSelector);
 
   useEffect(() => {
     dispatch(

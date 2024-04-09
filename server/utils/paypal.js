@@ -38,7 +38,12 @@ paypalAxios.interceptors.response.use(
   }
 );
 
-export const chargeOrder = async ({ totalCharge, card, billingAddress }) => {
+export const chargeWithPaypal = async ({
+  totalCharge,
+  card,
+  billingAddress,
+  res,
+}) => {
   try {
     const { data } = await paypalAxios.post(
       "https://api-m.sandbox.paypal.com/v2/checkout/orders",
@@ -74,9 +79,20 @@ export const chargeOrder = async ({ totalCharge, card, billingAddress }) => {
     );
     return data.id;
   } catch (error) {
-    // console.error(error);
-    const message =
-      error.response.data.error_description || error.response.data.message;
-    throw new Error("There's an error in Paypal payment: " + message);
+    const errorData = error.response.data;
+    console.log(errorData);
+
+    if (errorData.name === "UNPROCESSABLE_ENTITY") {
+      res.status(400);
+      throw new Error(
+        "There's an error in Paypal payment: " +
+          errorData.details[0].description
+      );
+    }
+
+    res.status(500);
+    throw new Error(
+      "There's an error in Paypal payment. Please check it again."
+    );
   }
 };

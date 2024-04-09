@@ -16,12 +16,14 @@ import { categorySelector } from "../../../../redux/slices/categorySlice.js";
 import { productSelector } from "../../../../redux/slices/productSlice.js";
 
 const ProductsByCategoryPage = () => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const params = useParams();
+  const [searchParams] = useSearchParams();
+  
+  const dispatch = useDispatch();
   const { products, productLoading, pagination } = useSelector(productSelector);
   const { categories } = useSelector(categorySelector);
 
-  const [searchParams] = useSearchParams();
   const [page, setPage] = useState(parseInt(searchParams.get("page")) || 1);
   const [category, setCategory] = useState(params.category.split("&")[0]);
 
@@ -36,7 +38,6 @@ const ProductsByCategoryPage = () => {
     limit: 5,
   });
 
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (category !== params.category) {
@@ -56,7 +57,7 @@ const ProductsByCategoryPage = () => {
         keyword: searchParams.get("keyword"),
         page,
         category: categories.find((cat) => {
-          return cat.hyphenSeparated === category;
+          return cat.name.toLowerCase().split(" ").join("-") === category;
         })?._id,
         ...filterOptions,
       }),

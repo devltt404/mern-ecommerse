@@ -9,9 +9,8 @@ import CategoriesTable from "./components/CategoriesTable.jsx";
 const CategoriesPage = () => {
   const dispatch = useDispatch();
   const { categories } = useSelector(categorySelector);
-  const [showModal, setShowModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [categoryInput, setCategoryInput] = useState("");
-  const { categoryError } = useSelector(categorySelector);
 
   return (
     <div>
@@ -20,7 +19,7 @@ const CategoriesPage = () => {
           variant="fill"
           size="sm"
           onClick={() => {
-            setShowModal(true);
+            setShowAddModal(true);
           }}
         >
           <div className="flex items-center gap-1">
@@ -29,8 +28,8 @@ const CategoriesPage = () => {
           </div>
         </Button>
 
-        {showModal && (
-          <Modal setShow={setShowModal}>
+        {showAddModal && (
+          <Modal setShow={setShowAddModal}>
             <ModalHeader title="Add Category" />
             <ModalBody>
               <form
@@ -39,7 +38,7 @@ const CategoriesPage = () => {
                   e.preventDefault();
                   await dispatch(addCategory(categoryInput));
 
-                  setShowModal(false);
+                  setShowAddModal(false);
                 }}
               >
                 <input

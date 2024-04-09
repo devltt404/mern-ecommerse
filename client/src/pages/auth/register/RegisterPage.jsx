@@ -1,5 +1,6 @@
 import { Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Button,
@@ -7,13 +8,33 @@ import {
   TextFormInput,
 } from "../../../components/index.js";
 import { authUser } from "../../../redux/actions/userAction.js";
+import {
+  resetUserError,
+  userSelector,
+} from "../../../redux/slices/userSlice.js";
 import GoogleLoginButton from "../components/GoogleLoginButton.jsx";
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
+  const { userError } = useSelector(userSelector);
+
+  const ref = useRef(null);
+
+  useEffect(() => {
+    dispatch(resetUserError());
+  }, []);
+
+  useEffect(() => {
+    if (userError?.detail) {
+      Object.keys(userError.detail).forEach((key) => {
+        ref.current.setFieldError(key, userError.detail[key]);
+      });
+    }
+  }, [userError]);
 
   return (
     <Formik
+      innerRef={ref}
       initialValues={{
         name: "",
         email: "",

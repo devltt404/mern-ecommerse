@@ -26,7 +26,7 @@ export const authUser =
           const cart = JSON.parse(localStorage.getItem("cart"));
           localStorage.removeItem("cart");
           dispatch(setCart(cart));
-          
+
           if (cart.length > 0) {
             await cartAxios.post("/", cart);
             toast.success("Your cart has been kept.");
@@ -92,14 +92,18 @@ export const getUsers =
     }
   };
 
-export const deleteUser = (userId) => async (dispatch) => {
-  try {
-    dispatch(setUserLoading());
-    const { data } = await userAxios.delete(`/${userId}`);
-    await dispatch(getUsers({ page: 1, limit: 5 }));
-    toast.success(data.message);
-  } catch (error) {
-    handleActionError(dispatch, error, setUserError, true);
+export const deleteUser = (userId) => async (dispatch, getState) => {
+  if (getState().user.user._id === userId) {
+    toast.error("Cannot delete yourself.");
+  } else {
+    try {
+      dispatch(setUserLoading());
+      const { data } = await userAxios.delete(`/${userId}`);
+      await dispatch(getUsers({ page: 1, limit: 5 }));
+      toast.success(data.message);
+    } catch (error) {
+      handleActionError(dispatch, error, setUserError, true);
+    }
   }
 };
 
@@ -120,22 +124,29 @@ export const updateUserAvatar =
   };
 
 export const setRole = (userId) => async (dispatch, getState) => {
-  try {
-    dispatch(setUserLoading());
-    const { data } = await userAxios.put("/role/" + userId);
-    dispatch(
-      setUsers({
-        users: getState().user.users.map((user) => {
-          if (user._id === userId)
-            return { ...user, role: user.role === "admin" ? "user" : "admin" };
-          return user;
+  if (getState().user.user._id === userId) {
+    toast.error("Cannot change your own role.");
+  } else {
+    try {
+      dispatch(setUserLoading());
+      const { data } = await userAxios.put("/role/" + userId);
+      dispatch(
+        setUsers({
+          users: getState().user.users.map((user) => {
+            if (user._id === userId)
+              return {
+                ...user,
+                role: user.role === "admin" ? "user" : "admin",
+              };
+            return user;
+          }),
+          pagination: getState().user.pagination,
+          totalUsers: getState().user.totalUsers,
         }),
-        pagination: getState().user.pagination,
-        totalUsers: getState().user.totalUsers,
-      }),
-    );
-    toast.success(data.message);
-  } catch (error) {
-    handleActionError(dispatch, error, setUserError, true);
+      );
+      toast.success(data.message);
+    } catch (error) {
+      handleActionError(dispatch, error, setUserError, true);
+    }
   }
 };

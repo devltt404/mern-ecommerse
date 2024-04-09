@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { HiOutlinePencilSquare, HiOutlineTrash } from "react-icons/hi2";
+import { IoIosWarning } from "react-icons/io";
 import { TbUpload } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -30,7 +31,8 @@ const ProductsTable = () => {
   const dispatch = useDispatch();
   const { products, productLoading } = useSelector(productSelector);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [image, setImage] = useState("");
   const [productSelectedIndex, setProductSelectedIndex] = useState(-1);
 
@@ -66,7 +68,7 @@ const ProductsTable = () => {
                         className="absolute left-0 top-0 z-10 h-20 w-20 opacity-0 transition group-hover:cursor-pointer group-hover:opacity-100"
                         onClick={() => {
                           setProductSelectedIndex(index);
-                          setShowModal(true);
+                          setShowImageModal(true);
                         }}
                       >
                         <div className="h-full w-full bg-black bg-opacity-50">
@@ -106,7 +108,10 @@ const ProductsTable = () => {
                       </button>
                       <button
                         type="button"
-                        onClick={() => dispatch(deleteProduct(product._id))}
+                        onClick={() => {
+                          setShowDeleteModal(true);
+                          setProductSelectedIndex(index);
+                        }}
                       >
                         <HiOutlineTrash size={22} />
                       </button>
@@ -118,15 +123,46 @@ const ProductsTable = () => {
         </Table>
       )}
 
-      {showModal && (
-        <Modal setShow={setShowModal}>
+      {showDeleteModal && (
+        <Modal setShow={setShowDeleteModal}>
+          <ModalBody>
+            <IoIosWarning size={70} className="mx-auto text-red-500" />
+
+            <p className="mb-6 mt-2 text-center text-lg">
+              Are you sure you want to delete this product?
+            </p>
+            <div className="flex justify-end gap-3">
+              <Button
+                onClick={() => {
+                  setShowDeleteModal(false);
+                  dispatch(deleteProduct(products[productSelectedIndex]._id));
+                }}
+                variant="outline"
+                size="sm"
+              >
+                Delete Product
+              </Button>
+              <Button
+                onClick={() => setShowDeleteModal(false)}
+                variant="fill"
+                size="sm"
+              >
+                Cancel
+              </Button>
+            </div>
+          </ModalBody>
+        </Modal>
+      )}
+
+      {showImageModal && (
+        <Modal setShow={setShowImageModal}>
           <ModalHeader title="Upload Image" />
           <ModalBody>
             <form
               className="text-right"
               onSubmit={(e) => {
                 e.preventDefault();
-                setShowModal(false);
+                setShowImageModal(false);
                 dispatch(
                   updateProductImage({ image, index: productSelectedIndex }),
                 );

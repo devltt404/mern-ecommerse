@@ -10,7 +10,7 @@ export default ({ user, res }) => {
     .status(200)
     .json({
       user: {
-        id: user._id,
+        _id: user._id,
         name: user.name,
         role: user.role,
       },

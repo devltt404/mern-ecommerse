@@ -15,7 +15,6 @@ import ReviewArea from "./components/ReviewArea.jsx";
 
 const ProductDetailPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { product, productLoading } = useSelector(productSelector);
   const { cartLoading } = useSelector(cartSelector);

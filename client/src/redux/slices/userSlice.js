@@ -41,6 +41,9 @@ const userSlice = createSlice({
       state.userLoading = false;
       state.userError = action.payload;
     },
+    resetUserError: (state) => {
+      state.userError = null;
+    },
   },
 });
 
@@ -49,7 +52,7 @@ export const {
   setUserLoading,
   setUserError,
   setUserAvatar,
-  setUsers,
+  setUsers,resetUserError
 } = userSlice.actions;
 export const userSelector = (state) => state.user;
 export default userSlice.reducer;

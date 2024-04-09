@@ -5,7 +5,7 @@ const BestSellingProducts = ({ products, isLoading }) => {
     <SkeletonWrapper className="h-full" isLoading={isLoading}>
       <div className="h-full bg-white px-6 pt-6 shadow-lg">
         <h2 className="mb-2 text-xl font-semibold">Best selling</h2>
-        <ul>
+        <ul className="py-3">
           {products.map((product) => (
             <li
               key={product._id}

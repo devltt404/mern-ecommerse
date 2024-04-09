@@ -17,11 +17,12 @@ export const getCategories = () => async (dispatch) => {
   }
 };
 
-export const addCategory = (category) => async (dispatch) => {
+export const addCategory = (category) => async (dispatch, getState) => {
   try {
     dispatch(setCategoriesLoading());
     const { data } = await categoryAxios.post("/", { category });
-    dispatch(setCategories(data));
+
+    dispatch(setCategories(getState().category.categories.concat(data)));
 
     toast.success("Category added successfully");
   } catch (error) {
@@ -29,13 +30,27 @@ export const addCategory = (category) => async (dispatch) => {
   }
 };
 
-export const deleteCategory = (categoryId) => async (dispatch) => {
+export const deleteCategory = (category) => async (dispatch) => {
+  if (category.numProducts > 0) {
+    toast.error("Cannot delete category that has products");
+  } else {
+    try {
+      dispatch(setCategoriesLoading());
+      const { data } = await categoryAxios.delete("/" + category._id);
+      dispatch(setCategories(data));
+
+      toast.success("Category deleted successfully");
+    } catch (error) {
+      handleActionError(dispatch, error, setCategoriesError, true);
+    }
+  }
+};
+
+export const getDetailedCategories = () => async (dispatch) => {
   try {
     dispatch(setCategoriesLoading());
-    const { data } = await categoryAxios.delete("/" + categoryId);
+    const { data } = await categoryAxios.get("/detail");
     dispatch(setCategories(data));
-
-    toast.success("Category deleted successfully");
   } catch (error) {
     handleActionError(dispatch, error, setCategoriesError, true);
   }

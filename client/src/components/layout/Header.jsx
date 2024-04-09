@@ -57,7 +57,7 @@ const Header = () => {
                 {categories.map((category) => (
                   <li key={category._id}>
                     <Link
-                      to={`/category/${category.hyphenSeparated}`}
+                      to={`/category/${category.name.toLowerCase().split(" ").join("-")}`}
                       onClick={() => setShowSidebar(false)}
                       className="block h-full w-full px-6 py-4 transition hover:bg-gray-100 hover:font-medium"
                     >

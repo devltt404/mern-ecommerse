@@ -15,6 +15,9 @@ export const handleActionError = (
     (import.meta.env.PROD
       ? "There was an unexpected error. Please try again later."
       : error.message);
-  dispatch(setError(msg));
-  if (showToast) toast.error(msg);
+
+  const err = { message: msg };
+  if (error.response?.data?.detail) err.detail = error.response.data.detail;
+  dispatch(setError(err));
+  if (showToast) toast.error(err.message);
 };

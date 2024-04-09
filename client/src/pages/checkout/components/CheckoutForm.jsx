@@ -64,7 +64,7 @@ const CheckoutForm = () => {
         card: Yup.object().shape({
           number: Yup.string().required("Card number is required"),
           expiry: Yup.string().required("Expiry is required"),
-          cvc: Yup.string().required("CVC is required"),
+          cvc: Yup.string().length(3, "Please enter a valid CVC"),
         }),
       })}
       onSubmit={async (values) => {
