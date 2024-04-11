@@ -2,7 +2,12 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        inner: "0px 0px 0px 2px inset",
+        outer: "0px 0px 0px 1px",
+      },
+    },
     screens: {
       "2xl": { max: "1535px" },
       xl: { max: "1279px" },

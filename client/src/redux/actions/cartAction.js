@@ -15,26 +15,21 @@ export const addCartItem = (id, quantity) => async (dispatch, getState) => {
     dispatch(setCartLoading());
     const { user } = getState().user;
 
+    const postBody = { productId: id, quantity };
+    if (!user) postBody.cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const { data } = await cartAxios.post("/item", postBody);
+    dispatch(setCart(data));
+
     if (!user) {
-      const { cart } = getState().cart;
-      let newCart = cart.map(({ productDetail, ...rest }) => rest);
-
-      const existingItem = newCart.find((item) => item.productId === id);
-
-      if (existingItem) {
-        existingItem.quantity += quantity;
-      } else {
-        newCart.push({ productId: id, quantity });
-      }
-
-      dispatch(setCart(newCart));
-      localStorage.setItem("cart", JSON.stringify(newCart));
-    } else {
-      const { data } = await cartAxios.post("/item", {
-        productId: id,
-        quantity,
-      });
-      dispatch(setCart(data));
+      localStorage.setItem(
+        "cart",
+        JSON.stringify(
+          data.map((item) => ({
+            productId: item.productId,
+            quantity: item.quantity,
+          })),
+        ),
+      );
     }
     toast.success("Added to cart");
   } catch (error) {
@@ -46,15 +41,15 @@ export const getDetailedCart = () => async (dispatch, getState) => {
   try {
     dispatch(setCartLoading());
 
-    const { data: cart } = await cartAxios.post("/detail", {
+    const { data } = await cartAxios.post("/detail", {
       cart: getState().cart.cart.map((item) => ({
         productId: item.productId,
         quantity: item.quantity,
       })),
     });
 
-    const subtotal = cart.reduce((acc, item) => {
-      return acc + item.productDetail.price * item.quantity;
+    const subtotal = data.reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
     }, 0);
 
     const shipping = subtotal >= 35 ? 0 : 10;
@@ -62,7 +57,7 @@ export const getDetailedCart = () => async (dispatch, getState) => {
     dispatch(setSubtotal(Number(subtotal.toFixed(2))));
     dispatch(setShipping(shipping));
     dispatch(setTotal(Number((subtotal + shipping).toFixed(2))));
-    dispatch(setCart(cart));
+    dispatch(setCart(data));
   } catch (error) {
     handleActionError(dispatch, error, setCartError, true);
   }
@@ -74,38 +69,27 @@ export const updateItemQuantity =
     try {
       dispatch(setCartLoading());
       const { user } = getState().user;
-      const { cart } = getState().cart;
+
+      const putBody = {
+        productId: id,
+        quantity,
+      };
+      if (!user) putBody.cart = JSON.parse(localStorage.getItem("cart"));
+      const { data } = await cartAxios.put("/item", putBody);
+      dispatch(setCart(data));
 
       if (!user) {
-        const updatedCart = cart.map((item) => {
-          if (item.productId === id) {
-            return { ...item, quantity };
-          }
-          return item;
-        });
-        dispatch(setCart(updatedCart));
         localStorage.setItem(
           "cart",
           JSON.stringify(
-            updatedCart.map((item) => ({
-              productId: item.productId,
+            data.map((item) => ({
+              productId: item.product._id,
               quantity: item.quantity,
             })),
           ),
         );
-      } else {
-        await cartAxios.put("/item", { productId: id, quantity: quantity });
-        dispatch(
-          setCart(
-            cart.map((item) => {
-              if (item.productId === id) {
-                return { ...item, quantity };
-              }
-              return item;
-            }),
-          ),
-        );
       }
+      toast.success("Quantity updated");
     } catch (error) {
       handleActionError(dispatch, error, setCartError, true);
     }
@@ -115,7 +99,7 @@ export const deleteCartItem = (productId) => async (dispatch, getState) => {
   try {
     dispatch(setCartLoading());
     const { cart } = getState().cart;
-    const newCart = cart.filter((item) => item.productId !== productId);
+    const newCart = cart.filter((item) => item.product._id !== productId);
 
     if (getState().user.user) {
       await cartAxios.delete("/item/" + productId);

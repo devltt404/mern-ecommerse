@@ -1,19 +1,32 @@
 import { TextFormInput } from "../../../components/index.js";
 
-const AddressForm = ({ name }) => {
+const AddressForm = ({ name, control }) => {
   return (
-    <div className="mb-2 mt-4">
-      <h2 className="mb-1 text-2xl font-semibold">
+    <div className="my-2">
+      <h2 className="mb-2 text-2xl font-semibold">
         {name === "shippingAddress" ? "Shipping " : "Billing "} Address
       </h2>
 
-      <div className="flex flex-col gap-2">
-        <TextFormInput placeholder="Address" name={`${name}.address`} />
+      <div className="flex flex-col gap-4">
+        <TextFormInput
+          control={control}
+          placeholder="Address"
+          name={`${name}.address`}
+        />
 
         <div className="grid grid-cols-3 gap-4">
-          <TextFormInput placeholder="City" name={`${name}.city`} />
-          <TextFormInput placeholder="State" name={`${name}.state`} />
           <TextFormInput
+            control={control}
+            placeholder="City"
+            name={`${name}.city`}
+          />
+          <TextFormInput
+            control={control}
+            placeholder="State"
+            name={`${name}.state`}
+          />
+          <TextFormInput
+            control={control}
             placeholder="Postal Code"
             name={`${name}.postalCode`}
           />

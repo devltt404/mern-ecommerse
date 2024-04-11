@@ -15,7 +15,7 @@ const AddProductPage = () => {
           await dispatch(addProduct(values));
           navigate("/admin/products");
         }}
-        initialValues={{
+        defaultValues={{
           name: "Iphone 7",
           price: "300",
           stock: "30",

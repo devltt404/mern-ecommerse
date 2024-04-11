@@ -10,7 +10,7 @@ const QuantityInput = ({
   onQuantityInputBlur = () => {},
 }) => {
   return (
-    <div className="flex h-fit w-fit items-center border-[1.5px] border-gray-200 px-2 py-2">
+    <div className="flex h-fit w-fit items-center border border-gray-200 px-2 py-2 focus-within:border-black focus-within:shadow-outer shadow-black transition">
       <button
         className="text-gray-400 transition hover:text-black"
         onClick={onMinus}

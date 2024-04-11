@@ -2,7 +2,11 @@ const MultipleToggleRadio = ({ name, values, setSelected, selected }) => {
   return (
     <div className="flex border border-gray-400">
       {values.map((value) => (
-        <label key={value} htmlFor={value} className="h-full cursor-pointer">
+        <label
+          key={value}
+          htmlFor={value}
+          className="h-full cursor-pointer transition hover:bg-gray-100"
+        >
           <input
             type="radio"
             name={name}

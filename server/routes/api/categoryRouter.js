@@ -11,7 +11,6 @@ const categoryRouter = express.Router();
 
 categoryRouter.get("/", getCategories);
 categoryRouter.get("/detail", decodeToken, isAdmin, getDetailedCategories);
-
 categoryRouter.post("/", decodeToken, isAdmin, addCategory);
 categoryRouter.delete("/:id", decodeToken, isAdmin, deleteCategory);
 categoryRouter.put("/:id", decodeToken, isAdmin, updateCategory);

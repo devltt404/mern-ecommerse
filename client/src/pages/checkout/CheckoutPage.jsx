@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { SpinnerLoading } from "../../components/index.js";
@@ -15,6 +16,12 @@ const CheckoutPage = () => {
     dispatch(getDetailedCart());
   }, []);
 
+  useEffect(() => {
+    if (!cartLoading && cart.length === 0) {
+      toast.error("Your cart is empty.");
+    }
+  }, [cartLoading, cart]);
+
   return cartLoading ? (
     <SpinnerLoading />
   ) : cart.length === 0 ? (
@@ -22,7 +29,7 @@ const CheckoutPage = () => {
       <Navigate to="/" />
     </>
   ) : (
-    cart[0]?.productDetail && (
+    cart[0]?.product && (
       <div className="container grid grid-cols-[55%_45%] gap-x-8 gap-y-12 py-8 lg:grid-cols-1">
         <CheckoutForm />
         <CheckoutSummary />

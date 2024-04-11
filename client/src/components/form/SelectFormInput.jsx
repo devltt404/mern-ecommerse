@@ -1,33 +1,47 @@
-import { ErrorMessage, Field, useField } from "formik";
-
-const FormSelectInput = ({ label = "", name, children }) => {
-  const [, meta] = useField(name);
-
+import { Controller } from "react-hook-form";
+import Select from "react-select";
+const SelectFormInput = ({
+  name,
+  options,
+  control,
+  label,
+  defaultValue,
+  error,
+}) => {
   return (
     <div>
-      {label !== "" && (
-        <label htmlFor={name} className="font-medium text-gray-700">
-          {label}
-        </label>
+      {label && (
+        <label className="mb-2 block font-medium text-gray-700">{label}</label>
       )}
-      <Field
+      <Controller
         name={name}
-        as="select"
-        className={`mb-1 mt-2 w-full  border-[1.8px] px-4 py-2 outline-none transition ${
-          meta.touched && meta.error
-            ? "border-red-500"
-            : "border-gray-300 focus:border-black"
-        } `}
-      >
-        {children}
-      </Field>
-      <ErrorMessage
-        name={name}
-        component="div"
-        className="text-sm text-red-500"
+        defaultValue={defaultValue}
+        control={control}
+        render={({ field: { onChange, value, ref } }) => (
+          <Select
+            theme={(theme) => ({
+              ...theme,
+              borderRadius: 0,
+              colors: {
+                ...theme.colors,
+                primary25: "#dddddd",
+                primary50: "#c5c5c5",
+                primary75: "#acacac",
+                primary: "black",
+              },
+            })}
+            ref={ref}
+            options={options}
+            value={options.find((v) => v.value === value)}
+            onChange={(val) => {
+              onChange(val.value);
+            }}
+          />
+        )}
       />
+      {error && <p className="text-sm text-red-500">{error.message}</p>}
     </div>
   );
 };
 
-export default FormSelectInput;
+export default SelectFormInput;

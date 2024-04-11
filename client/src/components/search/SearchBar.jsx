@@ -15,7 +15,7 @@ const SearchBar = () => {
         ref.current.blur();
         setKeyword("");
       }}
-      className="flex w-[500px] items-center gap-4 border-[1.5px] border-gray-300 px-4 py-2 text-gray-400 transition focus-within:border-black focus-within:text-black lg:w-[400px] md:order-1 md:w-full"
+      className="flex w-[500px] items-center gap-4 border border-gray-300 px-4 py-2 text-gray-400 transition focus-within:border-black focus-within:shadow-outer shadow-black focus-within:text-black lg:w-[400px] md:order-1 md:w-full"
     >
       <IoSearch size={20} className="" />
       <input

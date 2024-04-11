@@ -2,7 +2,7 @@ import RatingStar from "./RatingStar.jsx";
 
 const RatingRow = ({ rating, size }) => {
   return (
-    <div className="inline-flex gap-[1px]">
+    <div className="inline-flex gap-[1.5px]">
       <RatingStar starIndex={1} rating={rating} size={size} />
       <RatingStar starIndex={2} rating={rating} size={size} />
       <RatingStar starIndex={3} rating={rating} size={size} />

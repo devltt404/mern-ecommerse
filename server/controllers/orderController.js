@@ -20,19 +20,41 @@ export const createOrder = async (req, res, next) => {
 
     if (cart.length === 0) {
       res.status(400);
-      throw new Error("cart is empty.");
+      throw new Error("Cart is empty.");
     }
 
-    const products = await Promise.all(
+    let isAProductInvalid = false;
+    let propagatedCart = await Promise.all(
       cart.map((item) => {
         return Product.findById(item.productId);
       })
     ).catch(() => {
-      res.status(404);
-      throw new Error("There's an invalid product.");
+      isAProductInvalid = true;
     });
 
-    const orderProducts = products.map((product, index) => {
+    propagatedCart = propagatedCart.filter((product, index) => {
+      if (!product || product.stock < cart[index].quantity) {
+        isAProductInvalid = true;
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    if (isAProductInvalid) {
+      return res.status(400).json({
+        message:
+          "There's an invalid product in the cart. Your cart has been updated.",
+        cart: propagatedCart.map((item, index) => {
+          return {
+            productId: item._id,
+            quantity: cart[index].quantity,
+          };
+        }),
+      });
+    }
+
+    const orderProducts = propagatedCart.map((product, index) => {
       if (product.stock < cart[index].quantity) {
         res.status(400);
         throw new Error("There's not enough stock.");
@@ -79,7 +101,7 @@ export const createOrder = async (req, res, next) => {
       dbPromises.push(req.user.save());
     }
 
-    products.forEach(async (product, index) => {
+    propagatedCart.forEach(async (product, index) => {
       product.stock = product.stock - cart[index].quantity;
       product.numSold = product.numSold + cart[index].quantity;
       await product.save();
@@ -96,19 +118,12 @@ export const createOrder = async (req, res, next) => {
 
 export const getUserOrders = async (req, res, next) => {
   try {
-    await req.user.populate("orders");
-
-    res.status(200).json(
-      req.user.orders.map((order) => {
-        return {
-          _id: order._id,
-          total: order.total,
-          createdAt: order.createdAt,
-          shippingAddress: order.shippingAddress,
-          orderProducts: order.orderProducts,
-        };
-      })
+    await req.user.populate(
+      "orders",
+      "total createdAt shippingAddress orderProducts"
     );
+
+    res.status(200).json(req.user.orders);
   } catch (error) {
     next(error);
   }
@@ -121,21 +136,16 @@ export const getOrders = async (req, res, next) => {
 
     const orders = await Order.find()
       .limit(limit)
+      .sort({ createdAt: -1 })
+      .select("userId createdAt shippingAddress total")
       .skip(limit * (page - 1))
-      .populate("userId")
+      .populate("userId", "name")
       .lean();
 
     const totalOrders = await Order.countDocuments();
 
     res.status(200).json({
-      orders: orders.map((order) => {
-        return {
-          _id: order._id,
-          total: order.total,
-          createdAt: order.createdAt,
-          shippingAddress: order.shippingAddress,
-        };
-      }),
+      orders,
       totalOrders,
       pagination: {
         page: page,
@@ -151,7 +161,11 @@ export const getOrderById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const order = await Order.findById(id).lean();
+    const order = await Order.findById(id)
+      .select(
+        "createdAt shippingAddress orderProducts customer subtotal shipping total payment"
+      )
+      .lean();
     if (!order) {
       res.status(404);
       throw new Error("order not found.");
@@ -167,17 +181,7 @@ export const getOrderById = async (req, res, next) => {
       throw new Error("You are not authorized to view this order.");
     }
 
-    res.status(200).json({
-      _id: order._id,
-      createdAt: order.createdAt,
-      shippingAddress: order.shippingAddress,
-      orderProducts: order.orderProducts,
-      customer: order.customer,
-      subtotal: order.subtotal,
-      shipping: order.shipping,
-      total: order.total,
-      payment: order.payment,
-    });
+    res.status(200).json(order);
   } catch (error) {
     next(error);
   }

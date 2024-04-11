@@ -11,7 +11,7 @@ import {
 } from "../../../../../components/index.js";
 import { orderSelector } from "../../../../../redux/slices/orderSlice.js";
 
-const AdminOrdersTable = () => {
+const OrdersTable = () => {
   const { orders, orderLoading } = useSelector(orderSelector);
 
   return orderLoading ? (
@@ -19,8 +19,8 @@ const AdminOrdersTable = () => {
   ) : (
     <Table>
       <TableHead>
-        <TableHeadItem className="text-left">ID</TableHeadItem>
-        <TableHeadItem className="text-center">DATE</TableHeadItem>
+        <TableHeadItem className="text-left">DATE</TableHeadItem>
+        <TableHeadItem className="text-left">ORDER BY</TableHeadItem>
         <TableHeadItem className="text-center">SHIP TO</TableHeadItem>
         <TableHeadItem className="text-right">TOTAL</TableHeadItem>
       </TableHead>
@@ -28,9 +28,11 @@ const AdminOrdersTable = () => {
       <TableBody>
         {orders.map((order) => (
           <TableBodyRow key={order._id}>
-            <TableBodyItem className="text-left">{order._id}</TableBodyItem>
-            <TableBodyItem className="text-center">
-              {moment(order.createdAt).format("MM/DD/YYYY")}
+            <TableBodyItem className="text-left">
+              {moment(order.createdAt).format("MM/DD/YYYY - hh:mm A")}
+            </TableBodyItem>
+            <TableBodyItem className="text-left">
+              {order.userId?.name || "Guest"}
             </TableBodyItem>
             <TableBodyItem className="text-center">
               {order.shippingAddress.address}
@@ -43,4 +45,4 @@ const AdminOrdersTable = () => {
   );
 };
 
-export default AdminOrdersTable;
+export default OrdersTable;

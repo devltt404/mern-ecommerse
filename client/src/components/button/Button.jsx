@@ -8,6 +8,7 @@ const Button = ({
   width = "auto",
   size = "md",
   isLoading = false,
+  className,
   ...props
 }) => {
   if (isLoading) disabled = true;
@@ -35,7 +36,7 @@ const Button = ({
     <button
       type={type}
       disabled={disabled}
-      className={`relative font-medium transition  disabled:opacity-70 ${sizeClasses[size]} ${variantClasses[variant]} ${widthClasses[width]}`}
+      className={`relative font-medium transition  disabled:opacity-70 ${sizeClasses[size]} ${variantClasses[variant]} ${widthClasses[width]} ${className}`}
       {...props}
     >
       {isLoading && (

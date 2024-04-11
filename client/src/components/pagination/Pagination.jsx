@@ -33,7 +33,7 @@ const Pagination = ({ handlePageSelected, totalPages, page }) => {
       </button>
       <input
         type="number"
-        className="me-1 h-8 w-8 border border-gray-300 p-1 text-center outline-none focus:border-black disabled:opacity-50 disabled:hover:bg-transparent"
+        className="focus:shadow-outer me-1 h-8 w-8 border border-gray-300 p-1 text-center shadow-black outline-none transition focus:border-black disabled:opacity-50 disabled:hover:bg-transparent"
         value={inputPage}
         onChange={(e) => setInputPage(e.target.value)}
         onKeyDown={(e) => {

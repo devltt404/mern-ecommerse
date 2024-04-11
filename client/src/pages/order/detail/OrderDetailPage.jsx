@@ -1,19 +1,31 @@
 import moment from "moment";
 import { useEffect } from "react";
+import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { SpinnerLoading } from "../../../components/index.js";
 import { getOrder } from "../../../redux/actions/orderAction.js";
 import { orderSelector } from "../../../redux/slices/orderSlice.js";
+import { userSelector } from "../../../redux/slices/userSlice.js";
 import CheckoutItem from "../../checkout/components/CheckoutItem.jsx";
 
 const OrderDetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { order, orderLoading } = useSelector(orderSelector);
+  const { user } = useSelector(userSelector);
+
+  const effectFunction = async () => {
+    await dispatch(getOrder(id));
+    if (order.userId && order.userId !== user._id) {
+      navigate("/");
+      toast.error("You are not authorized to view this page");
+    }
+  };
 
   useEffect(() => {
-    dispatch(getOrder(id));
+    effectFunction();
   }, []);
 
   return orderLoading ? (

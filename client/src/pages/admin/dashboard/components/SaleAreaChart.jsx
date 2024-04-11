@@ -4,28 +4,21 @@ import {
   MultipleToggleRadio,
   SkeletonWrapper,
 } from "../../../../components/index.js";
-import { fakeSalesData } from "../../../../fakedata/index.js";
 import { orderAxios } from "../../../../helpers/axiosInstances.js";
 
 const SaleAreaChart = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [selected, setSelected] = useState("Demo");
+  const [selected, setSelected] = useState("Week");
   const [formatedData, setFormatedData] = useState([]);
-  const [tickValues, setTickValues] = useState([]);
 
   const getSalesData = useCallback(async () => {
     setIsLoading(true);
 
-    const { data } =
-      selected !== "Demo"
-        ? await orderAxios.get("/sales", {
-            params: {
-              duration: selected.toLowerCase(),
-            },
-          })
-        : {
-            data: fakeSalesData,
-          };
+    const { data } = await orderAxios.get("/sales", {
+      params: {
+        duration: selected.toLowerCase(),
+      },
+    });
 
     setFormatedData(
       data.map((sale) => {
@@ -50,7 +43,7 @@ const SaleAreaChart = () => {
           <h2 className="text-xl font-semibold">Sales Analytics</h2>
 
           <MultipleToggleRadio
-            values={["Demo", "Week", "Year"]}
+            values={["Week", "Year"]}
             selected={selected}
             setSelected={setSelected}
             name="chart-options"

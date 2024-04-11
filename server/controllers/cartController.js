@@ -1,10 +1,11 @@
 import Product from "../models/productModel.js";
+import propagateCart from "../utils/propagteCart.js";
 
 export const setCart = async (req, res, next) => {
   try {
     req.user.cart = req.body.cart;
     await req.user.save();
-    res.status(200).json({ message: "user cart has been set." });
+    res.status(200).json({ message: "User cart has been set." });
   } catch (error) {
     next(error);
   }
@@ -16,16 +17,17 @@ export const addCartItem = async (req, res, next) => {
 
     if (!productId || !quantity) {
       res.status(400);
-      throw new Error("product ID and quantity are required");
+      throw new Error("Product ID and quantity are required");
     }
 
     const product = await Product.findById(productId);
     if (!product) {
       res.status(404);
-      throw new Error("product not found");
+      throw new Error("Product not found");
     }
 
-    const existingItem = req.user.cart.find(
+    const cart = req.user?.cart || req.body.cart;
+    const existingItem = cart.find(
       (item) => item.productId.toString() === productId
     );
 
@@ -40,11 +42,11 @@ export const addCartItem = async (req, res, next) => {
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
-      req.user.cart.push({ productId, quantity: quantity });
+      cart.push({ productId, quantity });
     }
 
-    await req.user.save();
-    res.status(201).json(req.user.cart);
+    req.user && (await req.user.save());
+    res.status(200).json(cart);
   } catch (error) {
     next(error);
   }
@@ -53,18 +55,8 @@ export const addCartItem = async (req, res, next) => {
 export const getDetailedCart = async (req, res, next) => {
   try {
     const { cart } = req.body;
-    const getItemDetailPromises = cart.map((item) => {
-      return Product.findById(item.productId)
-        .select("name price category stock images")
-        .populate("category")
-        .lean();
-    });
-    const itemsDetail = await Promise.all(getItemDetailPromises);
 
-    const detailedCart = itemsDetail.map((item, index) => {
-      return { ...cart[index], productDetail: item };
-    });
-    res.status(200).json(detailedCart);
+    res.status(200).json(await propagateCart(cart));
   } catch (error) {
     next(error);
   }
@@ -75,25 +67,32 @@ export const updateCartItemQuantity = async (req, res, next) => {
     const { productId, quantity } = req.body;
     if (!productId || !quantity) {
       res.status(400);
-      throw new Error("product ID and quantity are required");
+      throw new Error("Product ID and quantity are required");
     }
 
-    const existingItem = Product.findById(productId);
+    const product = Product.findById(productId);
 
-    if (!existingItem) {
+    if (!product) {
       res.status(404);
       throw new Error("Item not found");
     }
 
-    const product = Product.findById(existingItem.productId);
     if (quantity > product.stock) {
       res.status(400);
       throw new Error("Not enough stock");
     }
 
-    existingItem.quantity = quantity;
-    await req.user.save();
-    res.json({ message: "cart updated" });
+    if (quantity <= 0) {
+      res.status(400);
+      throw new Error("Quantity must be greater than 0");
+    }
+
+    const cart = req.user?.cart || req.body.cart;
+    const item = cart.find((item) => item.productId.toString() === productId);
+    item.quantity = quantity;
+
+    req.user && (await req.user.save());
+    res.json(await propagateCart(cart));
   } catch (error) {
     next(error);
   }

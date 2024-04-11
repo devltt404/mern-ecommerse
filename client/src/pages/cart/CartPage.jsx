@@ -25,14 +25,14 @@ const CartPage = () => {
         <SpinnerLoading />
       ) : (
         <div className="flex gap-16 xl:gap-8 lg:flex-col lg:gap-12">
-          {cart[0]?.productDetail?.name && (
+          {cart[0]?.product?.name && (
             <>
               <div className="flex flex-1 flex-col gap-8">
                 {cart.map((item) => {
                   return (
                     <CartItem
                       key={item.productId}
-                      product={item.productDetail}
+                      product={item.product}
                       quantity={item.quantity}
                     />
                   );

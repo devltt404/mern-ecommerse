@@ -91,7 +91,7 @@ const ProductsByCategoryPage = () => {
             <DropdownMenu position="right" width="full">
               {Object.keys(sortByOptions).map((key) => (
                 <DropdownItem
-                  className="text-sm"
+                  className={`text-sm ${sortByOptions[key] === filterOptions.sortBy && "font-semibold"}`}
                   key={key}
                   onClick={() => {
                     setFilterOptions({

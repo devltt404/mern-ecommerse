@@ -33,37 +33,37 @@ const orderSchema = new mongoose.Schema(
     customer: {
       firstName: {
         type: String,
-        required: true,
+        required: [true, "Please enter your first name."],
       },
       lastName: {
         type: String,
-        required: true,
+        required: [true, "Please enter your last name."],
       },
       email: {
         type: String,
-        required: true,
+        required: [true, "Please enter your email."],
       },
       phone: {
         type: String,
-        required: true,
+        required: [true, "Please enter your phone number."],
       },
     },
     shippingAddress: {
       address: {
         type: String,
-        required: true,
+        required: [true, "Please enter your address."],
       },
       city: {
         type: String,
-        required: true,
+        required: [true, "Please enter your city."],
       },
       state: {
         type: String,
-        required: true,
+        required: [true, "Please enter your state."]
       },
       postalCode: {
         type: String,
-        required: true,
+        required: [true, "Please enter your postal code."],
       },
     },
     subtotal: {

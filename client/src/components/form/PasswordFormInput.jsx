@@ -1,25 +1,36 @@
-import { ErrorMessage, Field, useField } from "formik";
 import { useState } from "react";
+import { useController } from "react-hook-form";
 import { IoEyeOffOutline, IoEyeOutline } from "react-icons/io5";
 
-const FormPasswordInput = ({ label, name, placeholder }) => {
-  const [, meta] = useField(name);
+const PasswordFormInput = ({ label, placeholder, control, name }) => {
+  const {
+    field,
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+  });
+
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div>
-      <label htmlFor={name} className="font-medium text-gray-700">
+      <label htmlFor={name} className="mb-2 block font-medium text-gray-700">
         {label}
       </label>
       <div className="relative">
-        <Field
+        <input
+          onChange={field.onChange}
+          onBlur={field.onBlur}
+          value={field.value}
+          name={field.name}
+          ref={field.ref}
           id={name}
-          name={name}
           type={showPassword ? "text" : "password"}
-          className={`mb-1 mt-2 w-full  border-[1.8px] py-2 pl-4 pr-12 outline-none transition ${
-            meta.touched && meta.error
+          className={`w-full  border-[1.8px] py-2 pl-4 pr-12 outline-none transition ${
+            error
               ? "border-red-500"
-              : "border-gray-300 focus:border-black"
+              : "focus:shadow-outer border-gray-300 shadow-black focus:border-black "
           } `}
           placeholder={placeholder}
           autoComplete="on"
@@ -35,13 +46,9 @@ const FormPasswordInput = ({ label, name, placeholder }) => {
           )}
         </div>
       </div>
-      <ErrorMessage
-        name={name}
-        component="div"
-        className="text-sm text-red-500"
-      />
+      {error && <p className="text-sm text-red-500">{error.message}</p>}
     </div>
   );
 };
 
-export default FormPasswordInput;
+export default PasswordFormInput;

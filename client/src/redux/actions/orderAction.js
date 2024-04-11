@@ -27,6 +27,14 @@ export const createOrder =
 
       return data._id;
     } catch (error) {
+      if (error.response?.data?.cart) {
+        dispatch(setCart(error.response.data.cart));
+        if (!getState().user.user)
+          localStorage.setItem(
+            "cart",
+            JSON.stringify(error.response.data.cart),
+          );
+      }
       handleActionError(dispatch, error, setOrderError, true);
       throw new Error();
     }

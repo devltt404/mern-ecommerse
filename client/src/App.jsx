@@ -62,9 +62,9 @@ function App() {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/orders" element={<UserOnlyContainer />}>
-              <Route path="" element={<OrdersPage />} />
-              <Route path=":id" element={<OrderDetailPage />} />
+              <Route path="/orders" element={<OrdersPage />} />
             </Route>
+            <Route path="/orders/:id" element={<OrderDetailPage />} />
             <Route
               path="/category/:category"
               element={<ProductsByCategoryPage />}

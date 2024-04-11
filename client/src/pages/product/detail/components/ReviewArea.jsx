@@ -34,8 +34,10 @@ const ReviewArea = () => {
           </Button>
 
           <div
-            className={`mb-2 overflow-hidden transition-all duration-500 ${
-              showAddReview ? "opacity-1 max-h-[1000px]" : "max-h-0 opacity-0"
+            className={`transition-all duration-500 ${
+              showAddReview
+                ? "opacity-1 max-h-[1000px]"
+                : "max-h-0 overflow-y-hidden opacity-0"
             }`}
           >
             <AddReview />

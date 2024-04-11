@@ -31,7 +31,7 @@ const EditProductPage = () => {
             await dispatch(editProduct(id, values));
             navigate(-1);
           }}
-          initialValues={{
+          defaultValues={{
             name: product.name,
             price: product.price,
             stock: product.stock,

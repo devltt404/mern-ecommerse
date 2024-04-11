@@ -4,7 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { TableWithPagination } from "../../../../components/index.js";
 import { getOrders } from "../../../../redux/actions/orderAction.js";
 import { orderSelector } from "../../../../redux/slices/orderSlice.js";
-import AdminOrdersTable from "./components/AdminOrdersTable.jsx";
+import OrdersTable from "./components/OrdersTable.jsx";
 
 const OrdersPage = () => {
   const [searchParams] = useSearchParams();
@@ -25,7 +25,7 @@ const OrdersPage = () => {
       </h1>
 
       <TableWithPagination
-        Table={AdminOrdersTable}
+        Table={OrdersTable}
         page={pagination.page}
         totalPages={pagination.totalPages}
         handlePageSelected={(page) => {

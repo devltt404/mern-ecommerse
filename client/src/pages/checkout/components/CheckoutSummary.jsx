@@ -17,8 +17,8 @@ const CheckoutSummary = () => {
         {cart.map((item) => {
           return (
             <CheckoutItem
-              key={item.productId}
-              product={item.productDetail}
+              key={item.product._id}
+              product={item.product}
               quantity={item.quantity}
             />
           );

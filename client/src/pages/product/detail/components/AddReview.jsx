@@ -1,68 +1,63 @@
-import { Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addReview } from "../../../../redux/actions/productAction.js";
 
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+import TextareaFormInput from "../../../../components/form/TextareaFormInput.jsx";
 import {
   Button,
   RatingFormInput,
   TextFormInput,
 } from "../../../../components/index.js";
+import { productSelector } from "../../../../redux/slices/productSlice.js";
 
 const AddReview = () => {
+  const schema = Yup.object().shape({
+    title: Yup.string().required("Title is required"),
+    content: Yup.string().required("Content is required"),
+    rating: Yup.number().required("Rating is required"),
+  });
+
+  const { handleSubmit, control } = useForm({
+    defaultValues: {
+      title: "",
+      content: "",
+      rating: 0,
+    },
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data) => {
+    dispatch(addReview(data));
+  };
+
   const dispatch = useDispatch();
+  const { productLoading } = useSelector(productSelector);
 
   return (
-    <Formik
-      initialValues={{
-        title: "",
-        content: "",
-        rating: 0,
-      }}
-      validate={(values) => {
-        const errors = {};
-        if (!values.title) {
-          errors.title = "Title is required";
-        }
-        if (!values.content) {
-          errors.content = "Content is required";
-        }
-        if (values.rating == 0) {
-          errors.rating = "Rating is required";
-        }
-        return errors;
-      }}
-      onSubmit={({ title, content, rating }) => {
-        dispatch(addReview({ title, content, rating }));
-      }}
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="mt-4 flex flex-col gap-4"
     >
-      {(formik) => (
-        <Form className="my-2 flex flex-col gap-2">
-          <RatingFormInput name="rating" />
-          <TextFormInput
-            name="title"
-            label="Title"
-            placeholder="Enter review title"
-          />
-          <TextFormInput
-            type="textarea"
-            name="content"
-            label="Content"
-            placeholder="Enter review title"
-          />
+      <RatingFormInput control={control} name="rating" />
+      <TextFormInput
+        control={control}
+        name="title"
+        label="Title"
+        placeholder="Enter review title"
+      />
+      <TextareaFormInput
+        control={control}
+        name="content"
+        label="Content"
+        placeholder="Enter review title"
+      />
 
-          <Button
-            type="submit"
-            variant="fill"
-            disabled={
-              Object.keys(formik.touched).length == 0 ||
-              Object.keys(formik.errors).length > 0
-            }
-          >
-            Submit
-          </Button>
-        </Form>
-      )}
-    </Formik>
+      <Button className="my-2" type="submit" variant="fill" isLoading={productLoading}>
+        Submit
+      </Button>
+    </form>
   );
 };
 

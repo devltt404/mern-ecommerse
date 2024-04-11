@@ -15,9 +15,8 @@ productRouter.get("/index", getProductsForIndexPage);
 productRouter.get("/:id", getProductById);
 productRouter.get("/", getProducts);
 productRouter.post("/", addProduct);
-productRouter.delete("/:id", deleteProduct);
-productRouter.put("/:id", updateProduct);
-
+productRouter.delete("/:id", decodeToken, isAdmin, deleteProduct);
+productRouter.put("/:id", decodeToken, isAdmin, updateProduct);
 productRouter.put("/image/:id", decodeToken, isAdmin, updateProductImage);
 
 export default productRouter;

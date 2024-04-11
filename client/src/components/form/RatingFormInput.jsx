@@ -1,8 +1,14 @@
-import { ErrorMessage, useField } from "formik";
+import { useController } from "react-hook-form";
 import RatingStar from "../rating/RatingStar.jsx";
 
-const RatingFormInput = ({ name }) => {
-  const [field, , helpers] = useField("rating");
+const RatingFormInput = ({ name, control }) => {
+  const {
+    field: { onChange, value },
+    fieldState: { error },
+  } = useController({
+    name,
+    control,
+  });
 
   return (
     <div>
@@ -12,18 +18,14 @@ const RatingFormInput = ({ name }) => {
           <RatingStar
             key={starIndex}
             starIndex={starIndex}
-            rating={field.value}
-            onClick={() => helpers.setValue(starIndex)}
+            rating={value}
+            onClick={() => onChange(starIndex)}
             className="cursor-pointer"
             size={25}
           />
         ))}
       </div>
-      <ErrorMessage
-        name={name}
-        component="div"
-        className="text-sm text-red-500"
-      />
+      {error && <p className="text-sm text-red-500">{error.message}</p>}
     </div>
   );
 };

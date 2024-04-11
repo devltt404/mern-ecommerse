@@ -14,17 +14,19 @@ const OrdersPage = () => {
     dispatch(getUserOrders());
   }, []);
 
-  return orderLoading ? (
-    <SpinnerLoading />
-  ) : (
+  return (
     <div className="container py-6">
-      <h1 className="mb-4 text-3xl font-semibold">My Orders</h1>
-      {orders.length === 0 ? (
+      <h1 className="mb-4 text-3xl font-semibold">
+        My Orders <span className="font-medium">({orders.length})</span>
+      </h1>
+      {orderLoading ? (
+        <SpinnerLoading />
+      ) : orders.length === 0 ? (
         <p className="text-lg">You don't have any orders yet.</p>
       ) : (
         orders.map((order) => {
           return (
-            <Link to={`/orders/${order._id}`}>
+            <Link key={order._id} to={`/orders/${order._id}`}>
               <div className="mb-4 border border-gray-300 p-4 transition hover:scale-[1.02]">
                 <div className="grid grid-cols-[68%_30%] justify-between">
                   <div>
@@ -38,13 +40,13 @@ const OrdersPage = () => {
                   </div>
 
                   <div className="text-right">
-                    <p className="mb-1">{order.orderProducts.length} Items</p>
+                    <p className="mb-1">{order.orderProducts?.length} Items</p>
                     <p className="text-xl font-semibold">${order.total}</p>
                   </div>
                 </div>
 
                 <ul className="mt-4 flex flex-wrap gap-5 [&>li]:w-16 ">
-                  {order.orderProducts.map((product) => (
+                  {order.orderProducts?.map((product) => (
                     <li key={product._id} className="relative">
                       <img
                         src={product.image}
