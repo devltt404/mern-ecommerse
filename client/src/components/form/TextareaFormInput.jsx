@@ -23,7 +23,7 @@ const TextareaFormInput = ({ label, placeholder, control, name }) => {
         name={field.name}
         ref={field.ref}
         id={name}
-        className={`h-20 w-full border-[1.8px] px-4 py-2 outline-none transition ${
+        className={`h-20 w-full border px-4 py-2 outline-none transition ${
           error
             ? "border-red-500"
             : "focus:shadow-outer border-gray-300 shadow-black focus:border-black"

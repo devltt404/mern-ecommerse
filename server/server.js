@@ -13,13 +13,6 @@ dotenv.config();
 const app = express();
 app.use(morgan("dev"));
 
-const _dirname = path.dirname("");
-const buildPath = path.join(_dirname, "../client/dist");
-app.use(express.static(buildPath));
-app.get("/", function (req, res) {
-  res.sendFile(path.join(buildPath, "index.html"));
-});
-
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -30,6 +23,16 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use("/api/v1", apiRouter);
+
+const __dirname = path.dirname("");
+const buildPath = path.join(__dirname, "../client/dist");
+app.use(express.static(buildPath));
+app.get("*", function (req, res) {
+  res.sendFile("index.html", {
+    root: path.join(__dirname, "..", "client", "dist"),
+  });
+});
+
 app.use(errorHandler);
 
 await connectDB();

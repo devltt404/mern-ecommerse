@@ -27,7 +27,7 @@ const PasswordFormInput = ({ label, placeholder, control, name }) => {
           ref={field.ref}
           id={name}
           type={showPassword ? "text" : "password"}
-          className={`w-full  border-[1.8px] py-2 pl-4 pr-12 outline-none transition ${
+          className={`w-full  border py-2 pl-4 pr-12 outline-none transition ${
             error
               ? "border-red-500"
               : "focus:shadow-outer border-gray-300 shadow-black focus:border-black "

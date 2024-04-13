@@ -72,6 +72,7 @@ const LoginPage = () => {
           </Link>
         </p>
       </div>
+
       <div className="mb-1 flex flex-col gap-4">
         <TextFormInput
           control={control}
@@ -91,8 +92,30 @@ const LoginPage = () => {
         <p className="text-right text-gray-600">Forgot your password?</p>
       </div>
 
-      <Button type="submit" variant="fill" isLoading={userLoading}>
+      <Button
+        className="mb-3"
+        type="submit"
+        variant="fill"
+        isLoading={userLoading}
+      >
         Login
+      </Button>
+
+      <Button
+        type="button"
+        variant="outline"
+        isLoading={userLoading}
+        onClick={() => {
+          dispatch(
+            authUser({
+              endpoint: "/login",
+              email: "admin@myshop.com",
+              password: "1",
+            }),
+          );
+        }}
+      >
+        Demo Admin account
       </Button>
 
       <div className="my-3 flex items-center gap-6">

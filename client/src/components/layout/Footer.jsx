@@ -14,7 +14,7 @@ const Footer = () => {
           <h3>About us</h3>
           <p className="footer-text text-sm leading-6">
             My Shop is a demo e-commerce website built with React, Redux, and
-            Tailwind CSS. This project is for educational purposes only.
+            Tailwind CSS.
           </p>
         </div>
 
@@ -40,11 +40,11 @@ const Footer = () => {
           <ul>
             <li>
               <p className="leading-6">
-                Address: 803 Hillary Pike, Howeborough, MI 59270-9431
+                Address: 803 Hillary Pike, Howeborough, MI 59270-9431 (Fake)
               </p>
             </li>
             <li>
-              <p>Phone: +1 123 456 7890</p>
+              <p>Phone: +1 123 456 7890 (Fake)</p>
             </li>
             <li>
               <Link to="mailto:ductripham@usf.edu">

@@ -13,6 +13,12 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+/* Reset input default styles  */
+input {
+  -webkit-appearance: none !important;
+  border-radius:0;
+}
+
 /* fix Tailwind CSS’s h-screen on iOS Safari */
 @supports (-webkit-touch-callout: none) {
   .h-screen {

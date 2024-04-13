@@ -10,7 +10,7 @@ const QuantityInput = ({
   onQuantityInputBlur = () => {},
 }) => {
   return (
-    <div className="flex h-fit w-fit items-center border border-gray-200 px-2 py-2 focus-within:border-black focus-within:shadow-outer shadow-black transition">
+    <div className="flex h-fit w-fit items-center border border-gray-200 px-2 py-2 shadow-black transition focus-within:border-black focus-within:shadow-outer">
       <button
         className="text-gray-400 transition hover:text-black"
         onClick={onMinus}
@@ -22,7 +22,7 @@ const QuantityInput = ({
         type="number"
         className="w-6 bg-transparent text-center outline-none"
         value={quantity}
-        onChange={(e) => setQuantity(e.target.value)}
+        onChange={(e) => setQuantity(parseInt(e.target.value))}
         onBlur={onQuantityInputBlur}
       />
       <button
