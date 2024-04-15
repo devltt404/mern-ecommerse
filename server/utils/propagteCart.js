@@ -16,6 +16,14 @@ export default async function propagateCart(cart) {
       productId: item._id,
     };
   });
-
-  return detailedCart;
+  const subtotal = parseFloat(
+    detailedCart
+      .reduce((acc, item) => {
+        return acc + item.product.price * item.quantity;
+      }, 0)
+      .toFixed(2)
+  );
+  const shipping = subtotal >= 35 ? 0 : 10;
+  const total = parseFloat((subtotal + shipping).toFixed(2));
+  return { cart: detailedCart, subtotal, shipping, total };
 }

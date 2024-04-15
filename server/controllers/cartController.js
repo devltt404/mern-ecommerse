@@ -3,6 +3,7 @@ import propagateCart from "../utils/propagteCart.js";
 
 export const setCart = async (req, res, next) => {
   try {
+    console.log(req.body.cart);
     req.user.cart = req.body.cart;
     await req.user.save();
     res.status(200).json({ message: "User cart has been set." });
@@ -54,7 +55,12 @@ export const addCartItem = async (req, res, next) => {
 
 export const getDetailedCart = async (req, res, next) => {
   try {
-    const { cart } = req.body;
+    let cart;
+    if (req.user) {
+      cart = req.user.cart;
+    } else {
+      cart = req.body.cart;
+    }
 
     res.status(200).json(await propagateCart(cart));
   } catch (error) {
@@ -92,7 +98,9 @@ export const updateCartItemQuantity = async (req, res, next) => {
     item.quantity = quantity;
 
     req.user && (await req.user.save());
-    res.json(await propagateCart(cart));
+
+    const returnCart = await propagateCart(cart);
+    res.status(200).json(returnCart);
   } catch (error) {
     next(error);
   }
@@ -107,17 +115,24 @@ export const deleteCartItem = async (req, res, next) => {
       throw new Error("product ID is required");
     }
 
-    const newCart = req.user.cart.filter(
+    const cart = req.user?.cart || req.body.cart;
+
+    const newCart = cart.filter(
       (item) => item.productId.toString() !== productId
     );
-    if (newCart.length === req.user.cart.length) {
+    if (newCart.length === cart.length) {
       res.status(404);
       throw new Error("Item not found");
     }
 
-    req.user.cart = newCart;
+    if (req.user) req.user.cart = newCart;
     await req.user.save();
-    res.json({ message: "Item removed from cart" });
+
+    if (cart.length === 0) {
+      res.status(200).json({ cart: [] });
+    } else {
+      res.status(200).json(await propagateCart(newCart));
+    }
   } catch (error) {
     next(error);
   }
