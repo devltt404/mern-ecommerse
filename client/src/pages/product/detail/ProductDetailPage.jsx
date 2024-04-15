@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Button,
   QuantityInput,
@@ -27,7 +28,11 @@ const ProductDetailPage = () => {
   };
 
   const handlePlus = () => {
-    setQuantity(quantity + 1);
+    if (quantity == product.stock) {
+      toast.error("Not enough stock");
+    } else {
+      setQuantity(quantity + 1);
+    }
   };
 
   useEffect(() => {
@@ -72,8 +77,6 @@ const ProductDetailPage = () => {
                 setQuantity={setQuantity}
                 onMinus={handleMinus}
                 onPlus={handlePlus}
-                min={1}
-                max={product.stock}
               />
             </div>
 

@@ -21,14 +21,13 @@ const cartSlice = createSlice({
       state.cartError = null;
       state.cart = action.payload;
     },
-    setSubtotal: (state, action) => {
-      state.subtotal = action.payload;
-    },
-    setShipping: (state, action) => {
-      state.shipping = action.payload;
-    },
-    setTotal: (state, action) => {
-      state.total = action.payload;
+    setPropagatedCart: (state, action) => {
+      state.cartLoading = false;
+      state.cartError = null;
+      state.cart = action.payload.cart;
+      state.subtotal = action.payload.subtotal;
+      state.shipping = action.payload.shipping;
+      state.total = action.payload.total;
     },
     setCartError: (state, action) => {
       state.cartLoading = false;
@@ -42,6 +41,7 @@ export const {
   setDetailedCart,
   setCartLoading,
   setCartError,
+  setPropagatedCart,
   setShipping,
   setSubtotal,
   setTotal,

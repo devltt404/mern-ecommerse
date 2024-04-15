@@ -8,7 +8,7 @@ const Button = ({
   width = "auto",
   size = "md",
   isLoading = false,
-  className,
+  className ="",
   ...props
 }) => {
   if (isLoading) disabled = true;

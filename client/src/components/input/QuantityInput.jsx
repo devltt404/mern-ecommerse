@@ -5,8 +5,7 @@ const QuantityInput = ({
   setQuantity,
   onPlus,
   onMinus,
-  min,
-  max,
+
   onQuantityInputBlur = () => {},
 }) => {
   return (
@@ -14,7 +13,6 @@ const QuantityInput = ({
       <button
         className="text-gray-400 transition hover:text-black"
         onClick={onMinus}
-        disabled={quantity === min}
       >
         <HiMiniMinus size={20} />
       </button>
@@ -22,13 +20,12 @@ const QuantityInput = ({
         type="number"
         className="w-6 bg-transparent text-center outline-none"
         value={quantity}
-        onChange={(e) => setQuantity(parseInt(e.target.value))}
+        onChange={(e) => setQuantity(parseInt(e.target.value) || "")}
         onBlur={onQuantityInputBlur}
       />
       <button
         className="text-gray-400 transition hover:text-black"
         onClick={onPlus}
-        disabled={quantity === max}
       >
         <HiMiniPlus size={20} />
       </button>

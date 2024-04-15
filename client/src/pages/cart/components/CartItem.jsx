@@ -45,7 +45,11 @@ const CartItem = ({ product, quantity }) => {
   };
 
   const handlePlus = () => {
-    dispatch(updateItemQuantity({ id: product._id, quantity: quantity + 1 }));
+    if (quantity === product.stock) {
+      toast.error("Not enough stock");
+    } else {
+      dispatch(updateItemQuantity({ id: product._id, quantity: quantity + 1 }));
+    }
   };
 
   const handleMinus = () => {

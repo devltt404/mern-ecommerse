@@ -18,24 +18,23 @@ export const authUser =
       dispatch(setUserLoading());
 
       const { data } = await userAxios.post(endpoint, userData);
-      dispatch(setUser(data.user));
 
       if (data.cart.length === 0) {
         if (!localStorage.getItem("cart")) dispatch(setCart([]));
         else {
           const cart = JSON.parse(localStorage.getItem("cart"));
-          localStorage.removeItem("cart");
           dispatch(setCart(cart));
 
           if (cart.length > 0) {
-            await cartAxios.post("/", cart);
+            await cartAxios.post("/", { cart });
             toast.success("Your cart has been kept.");
           }
         }
       } else {
         dispatch(setCart(data.cart));
       }
-
+      dispatch(setUser(data.user));
+      localStorage.removeItem("cart");
       toast.success("Welcome " + data.user.name);
     } catch (error) {
       handleActionError(dispatch, error, setUserError, true);

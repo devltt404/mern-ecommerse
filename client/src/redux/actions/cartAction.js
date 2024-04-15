@@ -5,9 +5,7 @@ import {
   setCart,
   setCartError,
   setCartLoading,
-  setShipping,
-  setSubtotal,
-  setTotal,
+  setPropagatedCart,
 } from "../slices/cartSlice.js";
 
 export const addCartItem = (id, quantity) => async (dispatch, getState) => {
@@ -48,16 +46,7 @@ export const getDetailedCart = () => async (dispatch, getState) => {
       })),
     });
 
-    const subtotal = data.reduce((acc, item) => {
-      return acc + item.product.price * item.quantity;
-    }, 0);
-
-    const shipping = subtotal >= 35 ? 0 : 10;
-
-    dispatch(setSubtotal(Number(subtotal.toFixed(2))));
-    dispatch(setShipping(shipping));
-    dispatch(setTotal(Number((subtotal + shipping).toFixed(2))));
-    dispatch(setCart(data));
+    dispatch(setPropagatedCart(data));
   } catch (error) {
     handleActionError(dispatch, error, setCartError, true);
   }
@@ -76,7 +65,7 @@ export const updateItemQuantity =
       };
       if (!user) putBody.cart = JSON.parse(localStorage.getItem("cart"));
       const { data } = await cartAxios.put("/item", putBody);
-      dispatch(setCart(data));
+      dispatch(setPropagatedCart(data));
 
       if (!user) {
         localStorage.setItem(
@@ -98,16 +87,14 @@ export const updateItemQuantity =
 export const deleteCartItem = (productId) => async (dispatch, getState) => {
   try {
     dispatch(setCartLoading());
-    const { cart } = getState().cart;
-    const newCart = cart.filter((item) => item.product._id !== productId);
+    const { data } = await cartAxios.delete("/item/" + productId, {
+      cart: getState().cart.cart,
+    });
 
-    if (getState().user.user) {
-      await cartAxios.delete("/item/" + productId);
-    } else {
+    if (!getState().user.user) {
       localStorage.setItem("cart", JSON.stringify(newCart));
     }
-
-    dispatch(setCart(newCart));
+    dispatch(setPropagatedCart(data));
     toast.success("Item removed from cart");
   } catch (error) {
     handleActionError(dispatch, error, setCartError, true);
