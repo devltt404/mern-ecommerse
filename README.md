@@ -4,7 +4,7 @@ Welcome to my MERN (MongoDB, Express.js, React.js, Node.js) ecommerse web applic
 
 ## Demo
 
-Website: **[shop.devltt404.site](http://shop.devltt404.site)**
+Website: **[shop.devltt.site](http://shop.devltt.site)**
 
 [![Screenshot-2024-04-14-195446.png](https://i.postimg.cc/1zsgGDcr/Screenshot-2024-04-14-195446.png)](https://postimg.cc/zy2X5bQy)
 &nbsp;
