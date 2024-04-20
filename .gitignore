@@ -4,4 +4,5 @@
 /server/.env
 /client/.env
 
+/client/.eslintrc.cjs
 /client/dist

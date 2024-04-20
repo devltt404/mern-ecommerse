@@ -15,7 +15,6 @@ input[type="number"] {
 
 /* Reset input default styles  */
 input {
-  -webkit-appearance: none !important;
   border-radius:0;
 }
 

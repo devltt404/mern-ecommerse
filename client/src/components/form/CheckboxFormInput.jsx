@@ -11,15 +11,16 @@ const CheckboxFormInput = ({ children, name, control }) => {
 
   return (
     <>
-      <label className="block cursor-pointer">
+      <label htmlFor={name} className="block cursor-pointer">
         <input
+          id={name}
           onChange={field.onChange}
           onBlur={field.onBlur}
           name={field.name}
           ref={field.ref}
           checked={field.value}
           type="checkbox"
-          className="me-2 h-[0.85rem] w-[0.85rem] cursor-pointer accent-black"
+          className={`me-2 h-[0.85rem] w-[0.85rem] cursor-pointer accent-black`}
         />
         <span className="select-none">{children}</span>
       </label>
